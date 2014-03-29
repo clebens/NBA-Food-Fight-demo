@@ -1,4 +1,4 @@
-timbers-companion
+blazers-companion
 =================
 
-Timbers in-game web app
+Blazers in-game web app

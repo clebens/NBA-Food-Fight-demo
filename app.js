@@ -1,7 +1,17 @@
+// Includes
 var express = require('express');
-var key = '549518c2-a1c1-40c5-897a-68bd37e9f04b';
+var fs = require('fs');
 
-var db = require('orchestrate')(key);
+//Global Variable Declarations
+
+//Grab Orchestrate.io API key from local file 
+//(to support easy key shielding)
+var orcKey = fs.readFileSync('./orcKey', {encoding: 'utf8'}).replace('\n', '');
+
+//Grab xmlstats API key from local file
+var xmlstatsKey = fs.readFileSync('./xmlstatsKey', {encoding: 'utf8'}).replace('\n', '');
+
+var db = require('orchestrate')(orcKey);
 
 var app = express();
 

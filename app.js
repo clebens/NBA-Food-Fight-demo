@@ -15,7 +15,7 @@ app.get('/api/Users/:userId', function (req, res) {
 
 	db.get('Users', req.params.userId)
 	.then(function(result){
-		res.send(result);			
+		res.send(result.body);			
 	})
 	.fail(function(err){
 		console.log(err);

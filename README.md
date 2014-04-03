@@ -1,4 +1,4 @@
-blazers-companion
+NBA Food Fight
 =================
 
-Blazers in-game web app
+This is a read me file.

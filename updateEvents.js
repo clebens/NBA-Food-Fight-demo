@@ -108,7 +108,9 @@ function getEvents(date) {
 				}
 				// End Foreach Contents
 				count++;
-				setTimeout(next, 10000);
+
+				// Set to access once per minute
+				setTimeout(next, 60000);
 			}
 		}
 
@@ -143,10 +145,11 @@ yesterday.setDate(yesterday.getDate()-1);
 
 /* Update every 20 seconds) */
 function getTimelyEvents() {
-	//getEvents(today);
+	getEvents(today);
 	getEvents(yesterday);
 	console.log('blah')
 }
 
-getTimelyEvents();
+//set to update events every two hours
+setInterval(getTimelyEvents, 7200000);
 

@@ -1,12 +1,9 @@
+
 // Includes
-var $ = require('jquery');
-var express = require('express');
-var http = require('http');
 var path = require('path');
 var fs = require('fs');
 var superagent = require('superagent');
 var exphbs = require('express3-handlebars');
-var async = require('async');
 
 //Global Variable Declarations
 
@@ -20,48 +17,6 @@ var xmlstatsRoot = 'https://erikberg.com/';
 var db = require('orchestrate')(orcKey);
 
 
-
-/* function updateWithTeamList() {
-	function getTeamList(callback) {
-		var teamList = [];
-		
-
-		db.list('Teams', {limit: 100})
-		.then(function(result) {
-			result.body.results.forEach(function(item) {
-				teamList.push(item.path.key);
-			});
-
-			callback(teamList);	
-		})
-		.fail(function(err) {
-			console.log(err);
-		});	
-
-	}	
-
-	function updateEvents(teamList) {
-	
-	var getEventsByTeamID = function(teamId) {
-		superagent
-		.get('https://erikberg.com/nba/results/' + teamList + '.json')
-		.set('Authorization', 'Bearer ' + xmlstatsKey)
-		.set('User-Agent', 'NBA-FF v.1 (colin.lebens@gmail.com)')
-		.end(function(res) {
-			db
-		});
-	}
-
-
-
-
-	getTeamList(updateEvents);
-	
-} */
-
-function sendXMLToDb(collection, key, data) {
-	db.put(collection, key, data);
-}
 
 function getEvents(date) {
 	//Format the date string: yyyyMMdd
@@ -85,26 +40,31 @@ function getEvents(date) {
 	.end(function(res) {
 		
 		var qty = res.body.event.length;
-		console.log(qty);
 		var count = 0;
 		var eventArray = res.body.event;
 
 		function next() {
 			if (eventArray[count]) {
-				item = eventArray[count];
+				var item = eventArray[count];
 				// Foreach Contents
 				var key = item.event_id;
 				var dbObject = {
 					'homeTeamId': item.home_team.team_id,
 					'awayTeamId': item.away_team.team_id,
 					'eventStatus': item.event_status,
+					'eventTime': new Date(item.start_date_time),
 					'statsObject': {}
 				};
-
-				if (dbObject['eventStatus'] == 'completed') {
+				if (dbObject['eventStatus'] === 'completed') {
 					addStatsToDBObject(dbObject, key);
 				} else {
-					db.put('Events', item.event_id, dbObject);
+					db.put('Events', item.event_id, dbObject)			
+					.then(function(result) {
+						console.log(item.event_id + ' added to Events collection.')
+					})
+					.fail(function(err) {
+						console.error(err);
+					});
 				}
 				// End Foreach Contents
 				count++;
@@ -119,16 +79,19 @@ function getEvents(date) {
 
 
 	function addStatsToDBObject(dbObject, event_id) {
-		console.log('Object: ');
-		console.log(dbObject);
-
 		superagent
 		.get('https://erikberg.com/nba/boxscore/' + event_id + '.json')
 		.set('Authorization', 'Bearer ' + xmlstatsKey)
 		.set('User-Agent', 'NBA-FF v.1 (colin.lebens@gmail.com)')
 		.end(function(res) {
 			dbObject.statsObject = res.body;
-			db.put('Events', event_id, dbObject);
+			db.put('Events', event_id, dbObject)
+			.then(function(result) {
+				console.log(event_id + ' added to Events collection.')
+			})
+			.fail(function(err) {
+				console.error(err);
+			});
 		});
 	}
 
@@ -141,15 +104,24 @@ function addTeamToDB(teamId, teamObject) {
 
 var today = new Date();
 var yesterday = new Date();
+var tomorrow = new Date();
 yesterday.setDate(yesterday.getDate()-1);
+tomorrow.setDate(tomorrow.getDate()+1);
 
 /* Update every 20 seconds) */
-function getTimelyEvents() {
+exports.getTimelyEvents = function() {
+	getEvents(tomorrow);
 	getEvents(today);
 	getEvents(yesterday);
-	console.log('blah')
 }
 
+// Uncomment next line to clear database before updating
+//db.deleteCollection('Events');
+
+// Uncomment next line to execute database update from
+// command line (rather than in dependent source);
+// exports.getTimelyEvents();
+
 //set to update events every two hours
-setInterval(getTimelyEvents, 7200000);
+//setInterval(getTimelyEvents, 7200000);
 

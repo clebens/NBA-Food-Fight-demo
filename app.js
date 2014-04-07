@@ -1,5 +1,6 @@
 // Includes
 var express = require('express');
+var http = require('http');
 var fs = require('fs');
 
 //Global Variable Declarations
@@ -17,6 +18,11 @@ var app = express();
 
 var port = Number(process.env.PORT || 5000);
 
+// use the following if you want to be able to parse the body of the request
+// app.configure(function(){
+//   app.use(express.bodyParser());
+// });
+
 app.get('*', function(req, res) {
 	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');
 	res.send('Hello, world!');
@@ -28,6 +34,12 @@ app.listen(port, function() {
 
 // Put Routes
 // Andrew
+
+app.put("/users/:userId", function(req, res) {
+  // editUserInfo(req);
+  res.send("Updating profile for user #" + req.params.userId + ".");
+});
+
 
 
 // End Put Routes

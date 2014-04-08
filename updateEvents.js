@@ -69,8 +69,8 @@ function getEvents(date) {
 				// End Foreach Contents
 				count++;
 
-				// Set to access once per minute
-				setTimeout(next, 60000);
+				// Delay between accesses (in ms)
+				setTimeout(next, 10000);
 			}
 		}
 
@@ -85,6 +85,16 @@ function getEvents(date) {
 		.set('User-Agent', 'NBA-FF v.1 (colin.lebens@gmail.com)')
 		.end(function(res) {
 			dbObject.statsObject = res.body;
+			addFoodToDBObject(dbObject, event_id);
+		});
+	}
+
+	function addFoodToDBObject(dbObject, event_id) {
+		console.log(event_id);
+		db.get('Teams', dbObject.homeTeamId)
+		.then(function(result) {
+			console.log(result.body);
+
 			db.put('Events', event_id, dbObject)
 			.then(function(result) {
 				console.log(event_id + ' added to Events collection.')
@@ -92,7 +102,11 @@ function getEvents(date) {
 			.fail(function(err) {
 				console.error(err);
 			});
-		});
+		})
+		.fail(function(err){
+			console.log(err);
+		})
+
 	}
 
 } 
@@ -116,11 +130,11 @@ exports.getTimelyEvents = function() {
 }
 
 // Uncomment next line to clear database before updating
-//db.deleteCollection('Events');
+db.deleteCollection('Events');
 
 // Uncomment next line to execute database update from
 // command line (rather than in dependent source);
-// exports.getTimelyEvents();
+exports.getTimelyEvents();
 
 //set to update events every two hours
 //setInterval(getTimelyEvents, 7200000);

@@ -128,16 +128,6 @@ app.get('/Teams/:teamname', function (req, res) {
 	})
 })
 
-
-
-// })
-
-
-// app.get('/', function(req, res) { 
-// 	res.send('Hello World!');
-
-// });
-
 // End Get Routes
 
 

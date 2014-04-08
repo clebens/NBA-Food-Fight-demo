@@ -50,9 +50,135 @@ app.get('*', function(req, res) {
 	res.send(404);
 });
 
+
 app.listen(port, function() {
  	console.log('Listening on port: ' + port);
 });
+
+// Get Users
+
+app.get('/Users/:username', function (req, res) {
+	 db.get('Users', req.params.username)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No user found.')
+	})
+})
+
+
+app.get('/Users', function (req, res) {
+	 db.list('Users')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No users found.')
+	})
+})
+
+
+
+// Get Events
+
+app.get('/Events/today', function (req, res) {
+	db.list('Events')
+	.then(function (result) {
+		var today = new Date().toISOString().slice(0,10);
+		if (result.body.value.eventTime.slice(0,10) === today ) {
+			res.send(result.body)
+		}
+	})
+	.fail(function (err) {
+		res.end('No games today.')
+	})
+})
+
+
+app.get('/Events/:gamekey', function (req, res) {
+	 db.get('Events', req.params.gamekey)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('That game does not exist.')
+	})
+})
+
+app.get('/Events', function (req, res) {
+	 db.list('Events')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No games found.')
+	})
+})
+
+
+// Get Foods
+
+app.get('/Foods', function (req, res) {
+	 db.list('Foods')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No food found.')
+	})
+})
+
+
+app.get('/Foods/:food', function (req, res) {
+	 db.get('Foods', req.params.food)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('That food does not exist.')
+	})
+})
+
+
+// Get Teams
+app.get('/Teams', function (req, res) {
+	 db.list('Teams')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No teams found.')
+	})
+})
+
+
+app.get('/Teams/:teamname', function (req, res) {
+	 db.get('Teams', req.params.teamname)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('That team was not found.')
+	})
+})
+
 
 // Put Routes
 // Andrew
@@ -106,3 +232,4 @@ function addEventToDB(eventObject) {
 
 
 // End Database Updates
+

@@ -40,6 +40,11 @@ app.get('/api/Teams', function(req, res) {
 });
 
 
+// use the following if you want to be able to parse the body of the request
+// app.configure(function(){
+//   app.use(express.bodyParser());
+// });
+
 app.get('*', function(req, res) {
 	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');
 	res.send(404);
@@ -51,6 +56,34 @@ app.listen(port, function() {
 
 // Put Routes
 // Andrew
+
+app.put("/Users/:userId/add", function(req, res) {
+  // addUserInfo(req);
+  res.send("Adding profile for user: " + req.params.userId + ".");
+});
+
+app.put("/Users/:userId/edit", function(req, res) {
+  // editUserInfo(req);
+  res.send("Editing profile for user: " + req.params.userId + ".");
+});
+
+// function addUserInfo (info) {
+
+//   var user = {
+//     "userName": "info.params.userId"
+    // foodAwards: info.params.foodAwards,
+    // record: info.params.record,
+    // previousResult: info.params.previousResult,
+    // dailySelection: info.params.dailySelection
+//   };
+
+//   db.put('Users', info.params.userId, user);
+
+// }
+
+
+//db.put("collection", "key", obj) -->
+//to change one field, need to get the complete db object, then overwrite the field and put it back
 
 
 // End Put Routes

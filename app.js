@@ -50,6 +50,20 @@ app.get('/Users', function (req, res) {
 
 // Get Events
 
+app.get('/Events/today', function (req, res) {
+	db.list('Events')
+	.then(function (result) {
+		var today = new Date().toISOString().slice(0,10);
+		if (result.body.value.eventTime.slice(0,10) === today ) {
+			res.send(result.body)
+		}
+	})
+	.fail(function (err) {
+		res.end('No games today.')
+	})
+})
+
+
 app.get('/Events/:gamekey', function (req, res) {
 	 db.get('Events', req.params.gamekey)
 	.then(function (result) {
@@ -73,6 +87,7 @@ app.get('/Events', function (req, res) {
 		res.end('No games found.')
 	})
 })
+
 
 // Get Foods
 

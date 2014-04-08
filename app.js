@@ -42,7 +42,7 @@ app.get('/Users', function (req, res) {
 	})
 	.fail(function (err) {
 
-		res.end('No user found.')
+		res.end('No users found.')
 	})
 })
 
@@ -58,7 +58,7 @@ app.get('/Events/gamekey', function (req, res) {
 	})
 	.fail(function (err) {
 
-		res.end('No user found.')
+		res.end('That game does not exist.')
 	})
 })
 
@@ -70,7 +70,7 @@ app.get('/Events', function (req, res) {
 	})
 	.fail(function (err) {
 
-		res.end('No user found.')
+		res.end('No games found.')
 	})
 })
 
@@ -111,7 +111,7 @@ app.get('/Teams', function (req, res) {
 	})
 	.fail(function (err) {
 
-		res.end('No food found.')
+		res.end('No teams found.')
 	})
 })
 
@@ -124,7 +124,7 @@ app.get('/Teams/:teamname', function (req, res) {
 	})
 	.fail(function (err) {
 
-		res.end('No food found.')
+		res.end('That team was not found.')
 	})
 })
 

@@ -50,7 +50,7 @@ app.get('/Users', function (req, res) {
 
 // Get Events
 
-app.get('/Events/gamekey', function (req, res) {
+app.get('/Events/:gamekey', function (req, res) {
 	 db.get('Events', req.params.gamekey)
 	.then(function (result) {
 		console.log(result.body);

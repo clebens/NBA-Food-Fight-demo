@@ -1,5 +1,5 @@
 var express = require('express');
-var key = '549518c2-a1c1-40c5-897a-68bd37e9f04b';
+var key = 'c446cb0c-dca0-4fae-b5dc-31e296dd7f4a';
 
 var db = require('orchestrate')(key);
 
@@ -19,6 +19,124 @@ var port = 3000;
 // Get Routes
 // Ian
 
+// Get Users
+
+app.get('/Users/:username', function (req, res) {
+	 db.get('Users', req.params.username)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No user found.')
+	})
+})
+
+
+app.get('/Users', function (req, res) {
+	 db.list('Users')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No user found.')
+	})
+})
+
+
+
+// Get Events
+
+app.get('/Events/gamekey', function (req, res) {
+	 db.get('Events', req.params.gamekey)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No user found.')
+	})
+})
+
+app.get('/Events', function (req, res) {
+	 db.list('Events')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No user found.')
+	})
+})
+
+// Get Foods
+
+app.get('/Foods', function (req, res) {
+	 db.list('Foods')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No food found.')
+	})
+})
+
+
+app.get('/Foods/:food', function (req, res) {
+	 db.get('Foods', req.params.food)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('That food does not exist.')
+	})
+})
+
+
+// Get Teams
+app.get('/Teams', function (req, res) {
+	 db.list('Teams')
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No food found.')
+	})
+})
+
+
+app.get('/Teams/:teamname', function (req, res) {
+	 db.get('Teams', req.params.teamname)
+	.then(function (result) {
+		console.log(result.body);
+		res.send(result.body)
+	})
+	.fail(function (err) {
+
+		res.end('No food found.')
+	})
+})
+
+
+
+// })
+
+
+// app.get('/', function(req, res) { 
+// 	res.send('Hello World!');
+
+// });
 
 // End Get Routes
 
@@ -79,6 +197,6 @@ var port = 3000;
 // 	res.end('Hello, world!');
 // });
 
-// app.listen(port, function() {
-// 	console.log('Listening on port: ' + port);
-// });
+app.listen(port, function() {
+	console.log('Listening on port: ' + port);
+});

@@ -1,0 +1,46 @@
+#!/usr/bin/nodejs
+
+// addbbview
+//
+// Shell script to generate a backbone view skeleton with a name
+
+var fs = require('fs');
+
+const REQUIREJS = true;
+
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+var viewName = '';
+
+if (process.argv[2]) { viewName = capitaliseFirstLetter(process.argv[2]); }
+else { viewName = 'View' }
+
+outputStr = "";
+
+if (REQUIREJS) { FIRST_TAB = "\t"; }
+else { FIRST_TAB = "" }
+
+if (REQUIREJS) { outputStr += "define(function(require) {\n\n"; }
+	outputStr += FIRST_TAB + "var Backbone = require('backbone');\n\n";
+	outputStr += FIRST_TAB + "var " + viewName + " = Backbone.View.extend({\n\n";
+	outputStr += FIRST_TAB + "\tdefaults: {\n";
+	outputStr += FIRST_TAB + "\t},\n\n";
+
+	outputStr += FIRST_TAB + "\tinitialize: function() {\n";
+	outputStr += FIRST_TAB + "\t},\n\n";
+
+	outputStr += FIRST_TAB + "\tvalidate: function(attribs) {\n";
+	outputStr += FIRST_TAB + "\t}\n\n";
+	outputStr += FIRST_TAB + "});\n\n";
+
+if (REQUIREJS)	{
+	outputStr += FIRST_TAB + "return Todo;\n";
+	outputStr += "});"
+}
+
+console.log(outputStr);
+
+fs.writeFileSync('./' + viewName.toLowerCase() + '-view.js', outputStr);

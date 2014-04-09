@@ -169,8 +169,16 @@ app.get('/Teams/:teamname', function (req, res) {
 // Put Routes
 // Andrew
 
-app.put("/Users/:userId/add", function(req, res) {
+app.put("/Users/:userId/add/:foodAwards/:record/:previousResult/:dailySelection", function(req, res) {
   // addUserInfo(req);
+    var user = {
+    "userName": req.params.userId,
+    "foodAwards": req.params.foodAwards,
+    "record": req.params.record,
+    "previousResult": req.params.previousResult,
+    "dailySelection": req.params.dailySelection
+  };
+  db.put('Users', req.params.userId, user);
   res.send("Adding profile for user: " + req.params.userId + ".");
 });
 

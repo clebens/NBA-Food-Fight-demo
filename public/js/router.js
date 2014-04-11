@@ -5,15 +5,17 @@ define(function(require) {
 		
 
 		routes: {
-			'current': 'displayCurrentWeather',
+			'team': 'showTeam',
 			'forecast': 'displayForecast',
 			'hourly-forecast': 'displayHourlyForecast'
 		},
 
 		initialize: function(options) {
-			this.currentWeatherView = options.current;
-			this.forecastView = options.forecast;
-			this.hourlyForecastView = options.hourlyForecast;
+			this.teamView = options.team;
+				},
+
+		showTeam: function() {
+			this.teamView
 		},
 
 		displayForecast: function() {

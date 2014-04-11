@@ -45,10 +45,6 @@ app.get('/api/Teams', function(req, res) {
 //   app.use(express.bodyParser());
 // });
 
-app.get('*', function(req, res) {
-	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');
-	res.send(404);
-});
 
 
 app.listen(port, function() {
@@ -186,6 +182,12 @@ app.put("/Users/:userId/edit", function(req, res) {
   // editUserInfo(req);
   res.send("Editing profile for user: " + req.params.userId + ".");
 });
+
+app.get('*', function(req, res) {
+	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');
+	res.send(404);
+});
+
 
 // function addUserInfo (info) {
 

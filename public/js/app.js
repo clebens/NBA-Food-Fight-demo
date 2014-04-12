@@ -1,11 +1,11 @@
 define(function(require) {
 
-	  var $                  = require('jquery');
-	  var backbone 		 = require('backbone');
-	  var Router = require('router');
+  var $ = require('jquery');
+  var backbone = require('backbone');
+  var Router = require('router');
   var app = {};
 
-  	var foodFightRouter = new Router();
+	var foodFightRouter = new Router();
 
 /*    var currentWeatherView = new CurrentWeatherView({
       model: currentWeatherMode

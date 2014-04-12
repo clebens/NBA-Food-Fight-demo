@@ -45,10 +45,6 @@ app.get('/api/Teams', function(req, res) {
 //   app.use(express.bodyParser());
 // });
 
-app.get('*', function(req, res) {
-	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');
-	res.send(404);
-});
 
 
 app.listen(port, function() {
@@ -107,10 +103,25 @@ app.get('/Events', function (req, res) {
 	.fail(function (err) {
 
 		res.end('No games found.')
+	});
+});
+
+
+app.get('/Schedule', function (req, res) {
+	 db.list('Events')
+	.then(function (result) {
+		console.log(result.body);
+		outputArr = [];
+		result.body.results.forEach(function(item) {
+			outputArr.push(item.value);
+		});
+		res.send(outputArr);
 	})
-})
+	.fail(function (err) {
 
-
+		res.end('No games found.')
+	});
+});
 // Get Foods
 
 app.get('/Foods', function (req, res) {
@@ -186,6 +197,12 @@ app.put("/Users/:userId/edit", function(req, res) {
   // editUserInfo(req);
   res.send("Editing profile for user: " + req.params.userId + ".");
 });
+
+app.get('*', function(req, res) {
+	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');
+	res.send(404);
+});
+
 
 // function addUserInfo (info) {
 

@@ -75,6 +75,7 @@ function getEvents(date) {
 		}
 
 		next();
+	
 	});
 
 

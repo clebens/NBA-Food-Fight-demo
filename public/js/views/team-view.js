@@ -4,16 +4,13 @@ define(function(require) {
 
 	var Team = Backbone.View.extend({
 
-		defaults: {
-		},
+		el: '#main',
 
-		initialize: function() {
-		},
-
-		validate: function(attribs) {
+		render: function() {
+			this.$el.html('<h1>Team!</h1>');
 		}
 
 	});
 
-	return Todo;
+	return Team;
 });

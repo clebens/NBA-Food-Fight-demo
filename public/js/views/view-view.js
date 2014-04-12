@@ -4,16 +4,9 @@ define(function(require) {
 
 	var View = Backbone.View.extend({
 
-		defaults: {
-		},
 
-		initialize: function() {
-		},
-
-		validate: function(attribs) {
-		}
 
 	});
 
-	return Todo;
+	return View;
 });

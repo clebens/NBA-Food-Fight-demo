@@ -5,50 +5,38 @@ define(function(require) {
 		
 
 		routes: {
-			'current': 'displayCurrentWeather',
-			'forecast': 'displayForecast',
+			'team': 'showTeam',
+			'schedule': 'showDailySchedule',
 			'hourly-forecast': 'displayHourlyForecast'
 		},
 
 		initialize: function(options) {
-			this.currentWeatherView = options.current;
-			this.forecastView = options.forecast;
-			this.hourlyForecastView = options.hourlyForecast;
+					},
+
+		showTeam: function() {
+		//	this.teamView
 		},
 
-		displayForecast: function() {
-			this.showElement('forecast');
-		},
-
-		displayCurrentWeather: function() {
-			this.showElement('current-weather');
-		},
-
-		displayHourlyForecast: function() {
-			this.showElement('hourly-forecast');
-		},
-
-		showElement: function(element) {
-
-			if (element==='forecast') {
-				this.forecastView.$el.show();
-			} else {
-				this.forecastView.$el.hide();
-			}
+		showDailySchedule: function() {
 			
-			if (element==='hourly-forecast') {
-				this.hourlyForecastView.$el.show();
-			} else {
-				this.hourlyForecastView.$el.hide();
-			}
-			
-			if (element==='current-weather') {
-				this.currentWeatherView.$el.show();
-			} else {
-				this.currentWeatherView.$el.hide();
-			}
-			
+			var Schedule           = require('collections/schedule-collection');
+			var Router             = require('router');
+
+		    
+		    var currentSchedule  = new Schedule();
+
+	    	currentSchedule.fetch();
+	    	
+	    	var filteredSchedule = currentSchedule.chain()
+	    	.map(function(item) { return item.get('homeTeamId')})
+	    	.value();
+		    
+		    console.log(currentSchedule);
+		    console.log(filteredSchedule);
+
 		}
+
+
 	});
 
 	return Router;

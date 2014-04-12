@@ -103,10 +103,25 @@ app.get('/Events', function (req, res) {
 	.fail(function (err) {
 
 		res.end('No games found.')
+	});
+});
+
+
+app.get('/Schedule', function (req, res) {
+	 db.list('Events')
+	.then(function (result) {
+		console.log(result.body);
+		outputArr = [];
+		result.body.results.forEach(function(item) {
+			outputArr.push(item.value);
+		});
+		res.send(outputArr);
 	})
-})
+	.fail(function (err) {
 
-
+		res.end('No games found.')
+	});
+});
 // Get Foods
 
 app.get('/Foods', function (req, res) {

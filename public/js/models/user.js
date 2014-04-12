@@ -1,6 +1,5 @@
-var app = app || {};
+var UserModel = Backbone.Model.extend({
 
-app.User = Backbone.Model.extend({
   defaults: {
     userName: '',
     foodAwards: '',
@@ -8,4 +7,7 @@ app.User = Backbone.Model.extend({
     previousResult: {},
     dailySelection: {}
   }
+
 });
+
+module.exports = UserModel;

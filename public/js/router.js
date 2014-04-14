@@ -7,7 +7,10 @@ define(function(require) {
 		routes: {
 			'team': 'showTeam',
 			'schedule': 'showDailySchedule',
-			'hourly-forecast': 'displayHourlyForecast'
+			'sign-up': 'showUserSignin',
+			'user-main': 'showUser',
+			'user-signup': 'showSignup',
+			'user-food': 'showUserFood'
 		},
 
 		initialize: function(options) {
@@ -33,6 +36,24 @@ define(function(require) {
 		    
 		    console.log(currentSchedule);
 		    console.log(filteredSchedule);
+
+		},
+
+		showUserSignin: function () {
+      this.userSignedOut.$el.hide();
+      this.userSignedIn.$el.hide();
+      this.userSignUp.$el.show();
+      this.userFood.$el.hide();
+		},
+
+		showUser: function () {
+			//
+		},
+
+		showSignup: function () {
+			//
+		},
+		showUserFood: function () {
 
 		}
 

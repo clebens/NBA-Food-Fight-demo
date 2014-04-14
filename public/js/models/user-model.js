@@ -7,5 +7,7 @@ app.User = Backbone.Model.extend({
     record: {},
     previousResult: {},
     dailySelection: {}
-  }
+  },
 });
+
+module.exports = app.User;

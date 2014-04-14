@@ -6,7 +6,10 @@ var UserModel = Backbone.Model.extend({
     record: {},
     previousResult: {},
     dailySelection: {}
-  }
+  },
+    initialize: function() {
+    console.log("A model has been initialized.");
+  },
 
 });
 

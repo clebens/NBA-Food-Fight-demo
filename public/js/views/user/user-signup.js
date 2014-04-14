@@ -1,16 +1,12 @@
-var app = app || {};
+define(function (require) {
+  var Backbone = require('backbone');
+  var template = require('hbs!templates/user-signup');
 
-app.UserView = Backbone.View.extend({
-
-  events: {
-    'click #user-button': 'buttonPush',
-    'click #password-logout': 'logout', 
-    
-  },
+  var UserSignUp = Backbone.View.extend({
+    el: '#'
 
   initialize: function() {
-    this.$el = $('#user-container')
-    console.log("User View has been initialized.");
+    this.render;
   },
 
   render: function() {
@@ -30,5 +26,3 @@ app.UserView = Backbone.View.extend({
 
 
 });
-
-module.exports = UserView

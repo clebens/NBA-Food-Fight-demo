@@ -1,11 +1,13 @@
 var app = app || {};
 
 app.User = Backbone.Model.extend({
-	defaults: {
-		eventId: '',
-		homeTeamId: '',
-		awayTeamId: '',
-		eventStatus: '',
-		statsObject: {}
-	}
+  defaults: {
+    userName: '',
+    foodAwards: '',
+    record: {},
+    previousResult: {},
+    dailySelection: {}
+  },
 });
+
+module.exports = app.User;

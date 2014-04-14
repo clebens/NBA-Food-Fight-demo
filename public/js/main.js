@@ -5,7 +5,7 @@ requirejs.config({
 		'jquery': 'lib/jquery',
 		'backbone': 'lib/backbone',
 		'underscore': 'lib/underscore',
-		'hbs' : 'require-handlebars-plugin/hbs',
+		'hbs' : 'lib/require-handlebars-plugin/hbs',
 		'templates': '../templates'
 	}
 });

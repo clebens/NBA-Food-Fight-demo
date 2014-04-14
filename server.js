@@ -1,5 +1,4 @@
 // Includes
-var $ = require('jquery');
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -20,7 +19,7 @@ var db = require('orchestrate')(orcKey);
 
 var app = express();
 
-var port = Number(process.env.PORT || 5000);
+var server = http.createServer(app).listen(5000);
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -32,7 +31,7 @@ app.use(express.bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/Teams', function(req, res) {
-	db.list('Teams', {limit: 100})
+	db.list('Teams')
 	.then(function(result) {
 		console.log(result.body.results);
 		res.send(result.body.results);
@@ -51,9 +50,11 @@ app.get('*', function(req, res) {
 });
 
 
-app.listen(port, function() {
- 	console.log('Listening on port: ' + port);
-});
+
+
+// app.listen(port, function() {
+//  	console.log('Listening on port: ' + port);
+// });
 
 // Get Users
 
@@ -226,4 +227,63 @@ function addEventToDB(eventObject) {
 
 
 // End Database Updates
+
+
+// http.createServer(function(req, res){
+// 	var pathname = url.parse(req.url, true).pathname;
+
+// 	if (pathname === '/api/'){
+// 		apiHandler(req, res);
+// 	} else if (pathname === '/api/teams'){
+// 		teamsData(req,res);
+// 	}	else {
+// 			if (pathname === '/'){
+// 				pathname +='index.html';
+// 			}
+// 			staticFileHandler(pathname, res);
+// 		}
+
+// }).listen(8080);
+
+// var apiRoutes = {
+// 	'GET': {
+// 		'teams': function (req, res) {
+// 			var teams = [];
+// 			db.list('Teams')
+// 			.then(function (result) {
+// 				var items = result.body.results;
+// 				console.log(items);
+// 			})
+// 			.fail(function(err) {
+// 				console.log("could not read");
+// 			})
+
+// 			}
+		
+
+// 	}
+// }
+
+
+// function teamsData(req, res){
+// 		if(req.method === "GET"){
+// 		db.list('Teams').then(function(result){
+// 			res.setHeader('Content-Type', mime.lookup('json'));
+// 			res.end(JSON.stringify(result.body));
+// 		}).fail(function (err){
+// 			console.log(err);
+// 		});
+// 		} else if (req.method === "POST"){
+// 		var body ='';
+// 		req.on('data', function(chunk){
+// 			body += chunk;
+// 		});
+// 	}
+// };
+
+// 	teamsData();
+
+
+
+
 

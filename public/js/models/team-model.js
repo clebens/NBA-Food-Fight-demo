@@ -24,3 +24,4 @@ define(function(require) {
 
 	return Team;
 });
+

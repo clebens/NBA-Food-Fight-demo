@@ -1,6 +1,17 @@
 requirejs.config({
 	urlRoot: '/js',
 
+  paths: {
+    'jquery': 'lib/jquery',
+    'jquery-cookie': 'lib/bower-components/jquery-cookie/jquery.cookie',
+    'backbone': 'lib/backbone',
+    'bootstrap': 'lib/bootstrap',
+    'thorax': 'lib/thorax',
+    'underscore': 'lib/underscore',
+    'hbs' : 'lib/require-handlebars-plugin/hbs',
+    'templates': '../templates'
+  },
+
   shim: {
     'underscore': {
       exports: '_'
@@ -26,15 +37,6 @@ requirejs.config({
     }
 
   },
-	paths: {
-		'jquery': 'lib/jquery',
-		'backbone': 'lib/backbone',
-    'bootstrap': 'lib/bootstrap',
-    'thorax': 'lib/thorax',
-		'underscore': 'lib/underscore',
-    'hbs' : 'lib/require-handlebars-plugin/hbs',
-		'templates': 'templates'
-	},
 
   hbs: { // optional
       helpers: true,            // default: true

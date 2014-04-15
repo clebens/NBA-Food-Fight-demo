@@ -1,12 +1,24 @@
 
 define(function (require) {
-  var Thorax = require('thorax');
-  var UserView = Thorax.View.extend({
-    name: 'UserView',
+  var Backbone = require('backbone');
+  
+  var UserView = Backbone.View.extend({
+   name: 'UserView',
 
-    initialize: function () {
+    initialize: function (options) {
+      
+      // Template initialization Workaround
+      if (options.template) {
+      	this.template = options.template;
+      }
+
       this.render();
+    },
+
+    render: function() { 
+    	this.$el.html(this.template(this.model.toJSON())); 
     }
+    
 
   });
 

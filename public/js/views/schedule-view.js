@@ -6,7 +6,7 @@ define(function(require) {
 	var $ = require('jquery');
 	var Schedule = Backbone.View.extend({
 
-		el: '#main',		
+		el: '#todays-schedule',		
 
 
 		initialize: function (initialSchedule) {
@@ -16,6 +16,7 @@ define(function(require) {
 		},
 
 		render: function() {
+			this.$el.html('');
 			this.collection
 			.each(function(item) {
 				this.renderGame(item);

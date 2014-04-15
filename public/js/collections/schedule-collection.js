@@ -1,7 +1,7 @@
 define(function(require) {
 
 	var Backbone = require('backbone');
-	var Game = require('models/event-model');
+	var Game = require('models/game-model');
  
 
 	var Schedule = Backbone.Collection.extend({

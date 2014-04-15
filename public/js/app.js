@@ -6,86 +6,61 @@ define(function(require) {
   var Router = require('router');
   var app = {};
   var UserView = require('views/user-view');
+
   var UserModel = require('models/user');
+  var currentUserModel = new UserModel();
 
-
-  // var userSigninView = new UserView({
-  //   el: '#user-signin',
-  //   template: require('hbs!templates/user-signin'),
-  //   model: UserModel
-  // });
-
+  console.log(userViewTemplate);
+  
   var userView = new UserView({
     el: '#user-display',
     template: require('hbs!templates/user-display'),
-    model: UserModel
+    model: currentUserModel
+  });
+
+  var userSigninView = new UserView({
+    el: '#user-signin',
+    template: require('hbs!templates/user-signin'),
+    render: function() { this.$el.html(this.template(this.model.toJSON())); },
+    model: currentUserModel
   });
 
   var userSignupView = new UserView({
     el: '#user-signup',
     template: require('hbs!templates/user-signup'),
     render: function() { this.$el.html(this.template(this.model.toJSON())); },
-    model: UserModel
+    model: currentUserModel
   });	
 
   var userFoodView = new UserView({
     el: '#user-food',
     template: require('hbs!templates/user-food'),
-    model: UserModel
+    model: currentUserModel
   }); 
-
-  // var foodFightRouter = new Router({
-  //   userSignin: userSigninView,
-  //   user: userView,
-  //   userSignup: userSignupView,
-  //   userFood: userFoodView
-  // });
-
-  var userModel = new UserModel();
-  var userView = new UserView({model: userModel});
-
-
-/*    var currentWeatherView = new CurrentWeatherView({
-      model: currentWeatherMode
-    });
-    
-    var dailyForecastView = new ForecastView({
-      el: '#daily-forecast',
-      template: require('hbs!templates/forecast-7'),
-      collection: dailyForecastCollection
-    });
-
-    var hourlyForecastView = new ForecastView({
-      el: '#hourly-forecast',
-      template: require('hbs!templates/forecast-48'),
-      collection: hourlyForecastCollection
-    });
-  */
 
 
   var Schedule           = require('collections/schedule-collection');
   var ScheduleView = require('views/schedule-view');
-  var Router             = require('router');
-
+  
   var currentSchedule  = new Schedule();
 
   currentSchedule.fetch();
 
-  console.log(currentSchedule);
-  
-  var scheduleView = new ScheduleView(currentSchedule);
+
+  var currentScheduleView = new ScheduleView(currentSchedule);
+
+  userView.render()
+  var router = new Router({
+    // User Header Views
+    'userView': userView,
+    'userSigninView': userSigninView,
+    'userSignupView': userSignupView,
+
+    // Schedule Views
+    'currentScheduleView': currentScheduleView
+    // User Awards Views
+  });
 
   Backbone.history.start();
-
-/*
-    app.current = currentWeatherModel;
-    app.forecast = dailyForecastCollection;
-    app.views = {};
-    app.views.currentWeatherView = currentWeatherView;
-    app.views.dailyForecastView = dailyForecastView;
-*/
-
-  //window.app = app;
-
 
 });

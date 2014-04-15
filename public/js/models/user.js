@@ -1,7 +1,7 @@
 define(function (require) {
-  var Thorax = require('thorax');
+  var Backbone = require('backbone');
 
-  var UserModel = Thorax.Model.extend({
+  var UserModel = Backbone.Model.extend({
 
   defaults: {
     userName: '',

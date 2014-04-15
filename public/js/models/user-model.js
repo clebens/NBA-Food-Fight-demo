@@ -1,13 +1,29 @@
-var app = app || {};
+define(function(require) {
 
-app.User = Backbone.Model.extend({
-  defaults: {
-    userName: '',
-    foodAwards: '',
-    record: {},
-    previousResult: {},
-    dailySelection: {}
-  },
+	var Backbone = require('backbone');
+
+	var User = Backbone.Model.extend({
+	
+		defaults: {
+		    userName: '',
+		    foodAwards: '',
+		    record: {},
+		    previousResult: {},
+		    dailySelection: {}
+		}, 
+
+		initialize: function() {
+
+		},
+
+		validate: function() {
+
+		}
+
+
+
+	});
+
+	return User;
 });
 
-module.exports = app.User;

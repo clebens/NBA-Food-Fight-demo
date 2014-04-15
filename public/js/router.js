@@ -5,28 +5,37 @@ define(function(require) {
 		
 
 		routes: {
+			'/': 'initPage',
 			'team': 'showTeam',
-			'schedule': 'showDailySchedule',
+			'schedule': 'showCurrentSchedule',
 			'user-signin': 'showUserSignin',
 			'user': 'showUser',
 			'user-signup': 'showSignup',
 			'user-food': 'showUserFood'
 		},
 
-		initialize: function(options) {
-					},
+		initialize: function(options) {	
 
-		showTeam: function() {
-		//	this.teamView
+		// Assign passed User Objects 
+		this.userSignoutView = options.userSignoutView;
+	    this.userSigninView = options.userSigninView;
+	    this.userSignupView = options.userSignupView;
+	    this.currentScheduleView = options.currentScheduleView;
+
 		},
 
-		showDailySchedule: function() {
-			
+		initPage: function(options) {
+			this.showUserSignin();
+			this.showCurrentSchedule();
+		},
 
+		showCurrentSchedule: function() {
+			this.currentScheduleView.$el.show();
 		},
 
 		showUserSignin: function () {
- 		//
+	    this.userSigninView.$el.show();
+	    this.userSignupView.$el.hide();
 		},
 
 		showUser: function () {
@@ -34,10 +43,8 @@ define(function(require) {
 		},
 
 		showSignup: function () {
-	    this.userSignoutView.$el.hide();
 	    this.userSigninView.$el.hide();
 	    this.userSignupView.$el.show();
-	    this.userFoodView.$el.hide();
 		},
 		showUserFood: function () {
 

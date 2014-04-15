@@ -1,18 +1,49 @@
 define(function(require) {
 
   var $ = require('jquery');
+  var Thorax = require('thorax');
   var backbone = require('backbone');
   var Router = require('router');
   var app = {};
-  var UserView = require('./views/user-view');
-  var UserModel = require('./models/user')
-
-	var foodFightRouter = new Router();
+  var UserView = require('views/user-view');
+  var UserModel = require('models/user');
 
 
-  // var userModel = new UserModel();
-  // var userView = new UserView({model: userModel});
-  // userView.render();
+  // var userSigninView = new UserView({
+  //   el: '#user-signin',
+  //   template: require('hbs!templates/user-signin'),
+  //   model: UserModel
+  // });
+
+  var userView = new UserView({
+    el: '#user-display',
+    template: require('hbs!templates/user-display'),
+    model: UserModel
+  });
+
+  var userSignupView = new UserView({
+    el: '#user-signup',
+    template: require('hbs!templates/user-signup'),
+    render: function() { this.$el.html(this.template(this.model.toJSON())); },
+    model: UserModel
+  });	
+
+  var userFoodView = new UserView({
+    el: '#user-food',
+    template: require('hbs!templates/user-food'),
+    model: UserModel
+  }); 
+
+  // var foodFightRouter = new Router({
+  //   userSignin: userSigninView,
+  //   user: userView,
+  //   userSignup: userSignupView,
+  //   userFood: userFoodView
+  // });
+
+  var userModel = new UserModel();
+  var userView = new UserView({model: userModel});
+
 
 /*    var currentWeatherView = new CurrentWeatherView({
       model: currentWeatherMode
@@ -30,6 +61,7 @@ define(function(require) {
       collection: hourlyForecastCollection
     });
   */
+
 
   var Schedule           = require('collections/schedule-collection');
   var ScheduleView = require('views/schedule-view');

@@ -7,8 +7,8 @@ define(function(require) {
 		routes: {
 			'team': 'showTeam',
 			'schedule': 'showDailySchedule',
-			'sign-up': 'showUserSignin',
-			'user-main': 'showUser',
+			'user-signin': 'showUserSignin',
+			'user': 'showUser',
 			'user-signup': 'showSignup',
 			'user-food': 'showUserFood'
 		},
@@ -26,10 +26,7 @@ define(function(require) {
 		},
 
 		showUserSignin: function () {
-      this.userSignedOut.$el.hide();
-      this.userSignedIn.$el.hide();
-      this.userSignUp.$el.show();
-      this.userFood.$el.hide();
+ 		//
 		},
 
 		showUser: function () {
@@ -37,7 +34,10 @@ define(function(require) {
 		},
 
 		showSignup: function () {
-			//
+	    this.userSignoutView.$el.hide();
+	    this.userSigninView.$el.hide();
+	    this.userSignupView.$el.show();
+	    this.userFoodView.$el.hide();
 		},
 		showUserFood: function () {
 

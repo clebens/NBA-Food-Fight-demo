@@ -17,50 +17,83 @@ function updateTeamsFromXMLStats() {
 	.end(function(res) {
 		
 		res.body.forEach(function(xmlTeamObj) {
-			var teamObject={};
-			var teamId;
+			var dbObject={};
+			var team_id;
 			
-			teamId = xmlTeamObj['team_id'];
-			teamObject['teamName'] = xmlTeamObj['first_name'] + ' ' +
+			team_id = xmlTeamObj['team_id'];
+			dbObject['teamName'] = xmlTeamObj['first_name'] + ' ' +
 										xmlTeamObj['last_name'];
-			teamObject['teamLogo'] = '/images/logos/' + teamId + '-logo.jpg';
-			teamObject['foodRules'] = [{
+			dbObject['teamLogo'] = '/images/logos/' + team_id + '-logo.jpg';
+			dbObject['foodRules'] = [{
 				'foodId': 'chalupa',
-				'foodRule': '100pts',
-				'ruleDescription': 'If the ' + teamObject['teamName'] + ' score 100 points, you win a Chalupa!',
+				'ruleId': 'homeTeam100pts',
+				'ruleDescription': 'If the ' + dbObject['teamName'] + ' score 100 points, you win a Chalupa!',
 			}];
 
-			var foodsComplete = 0;
-			
-			teamObject.foodRules.forEach(function(item, index, array) {
-			
-			//console.log(item.foodId);
-				db.get('Foods', item.foodId)
-				.then(function(result) {
-					item.foodId = result.body.foodId;
-					item.foodIcon = result.body.foodIcon;
-					item.foodDescription = result.body.foodDescription;
-					item.foodDescription = result.body.foodDescription;
-					foodsComplete++;
-					if (foodsComplete === array.length) {
-						addTeamToDB(teamId, teamObject);
-					} 
-				})
-				.fail(function(err) {
-					console.log(err);
-				});
-			});
+			addRuleInfoTodbObject(dbObject, team_id);
 
-			
-			
 		});
 			
 	});		
 }
 
-function addTeamToDB(teamId, teamObject) {
-	console.log(teamId + ': ' + JSON.stringify(teamObject));
-	db.put('Teams', teamId, teamObject); 
+function addFoodTodbObject(dbObject, team_id) {
+	var foodsComplete = 0;
+	
+	dbObject.foodRules.forEach(function(item, index, array) {
+	
+	//console.log(item.foodId);
+		db.get('Foods', item.foodId)
+		.then(function(result) {
+			item.foodId = result.body.foodId;
+			item.foodIcon = result.body.foodIcon;
+			item.foodDescription = result.body.foodDescription;
+			item.foodDescription = result.body.foodDescription;
+			foodsComplete++;
+			console.log(foodsComplete + ',' + array.length);
+			if (foodsComplete === array.length) {
+				addTeamToDB(dbObject, team_id);
+			} 
+		})
+		.fail(function(err) {
+			console.log('food error');
+			//console.log(err);
+		});
+	});
+
+}
+
+function addRuleInfoTodbObject(dbObject, team_id) {
+	var rulesComplete = 0;
+	
+	dbObject.foodRules.forEach(function(item, index, array) {
+	
+	//console.log(item.foodId);
+		db.get('Rules', item.ruleId)
+		.then(function(result) {
+			item.ruleId = result.body.ruleId;
+			item.ruleDescription = parseDescription(result.body.ruleDescription, dbObject);
+			item.ruleLogic = result.body.ruleLogic;
+			rulesComplete++;
+			console.log(rulesComplete + ',' + array.length);
+			if (rulesComplete === array.length) {
+				addFoodTodbObject(dbObject, team_id);
+			} 
+		})
+		.fail(function(err) {
+			console.log('rule error: ' + item.ruleId);
+			//console.log(err);
+		});
+	});
+}
+
+function parseDescription(description, dbObject) {
+	return description.replace('$homeTeamName', dbObject.teamName);
+}
+
+function addTeamToDB(dbObject, team_id) {
+	console.log(team_id + ': ' + JSON.stringify(dbObject));
+	db.put('Teams', team_id, dbObject); 
 }
 
 function addTeamKeyToDB(key) {

@@ -33,7 +33,7 @@ requirejs.config({
     'thorax': 'lib/thorax',
 		'underscore': 'lib/underscore',
     'hbs' : 'lib/require-handlebars-plugin/hbs',
-		'templates': '../templates'
+		'templates': 'templates'
 	},
 
   hbs: { // optional

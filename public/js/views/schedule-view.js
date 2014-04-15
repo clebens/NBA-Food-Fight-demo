@@ -16,8 +16,8 @@ define(function(require) {
 		},
 
 		render: function() {
-			
-			this.collection.each(function(item) {
+			this.collection
+			.each(function(item) {
 				this.renderGame(item);
 			}, this);
 

@@ -31,23 +31,23 @@ function updateTeamsFromXMLStats() {
 			}];
 
 			var foodsComplete = 0;
-			//console.log(teamObject.foodRules);
+			
 			teamObject.foodRules.forEach(function(item, index, array) {
-				db.get('Food', item.foodId)
+			
+			//console.log(item.foodId);
+				db.get('Foods', item.foodId)
 				.then(function(result) {
-					console.log(here);
 					item.foodId = result.body.foodId;
 					item.foodIcon = result.body.foodIcon;
 					item.foodDescription = result.body.foodDescription;
+					item.foodDescription = result.body.foodDescription;
+					foodsComplete++;
 					if (foodsComplete === array.length) {
-						cosnole.log(teamObject);
 						addTeamToDB(teamId, teamObject);
-					} else {
-						foodsComplete++;
-					}
+					} 
 				})
 				.fail(function(err) {
-					console.log(err):
+					console.log(err);
 				});
 			});
 

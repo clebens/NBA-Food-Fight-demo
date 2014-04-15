@@ -50,6 +50,4 @@ define(function (require) {
 
 // module.exports = UserView
 
-=======
-// module.exports = UserView
->>>>>>> userViews
+

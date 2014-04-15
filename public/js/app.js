@@ -10,7 +10,6 @@ define(function(require) {
   var UserModel = require('models/user');
   var currentUserModel = new UserModel();
 
-  console.log(userViewTemplate);
   
   var userView = new UserView({
     el: '#user-display',

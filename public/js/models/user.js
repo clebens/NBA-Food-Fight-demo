@@ -1,3 +1,5 @@
+/*
+
 var UserModel = Backbone.Model.extend({
 
   defaults: {
@@ -14,3 +16,5 @@ var UserModel = Backbone.Model.extend({
 });
 
 module.exports = UserModel;
+
+*/

@@ -58,13 +58,7 @@ function getEvents(date) {
 				if (dbObject['eventStatus'] === 'completed') {
 					addStatsToDBObject(dbObject, key);
 				} else {
-					db.put('Events', item.event_id, dbObject)			
-					.then(function(result) {
-						console.log(item.event_id + ' added to Events collection.')
-					})
-					.fail(function(err) {
-						console.error(err);
-					});
+					addHomeTeamToDBObject(dbObject, key);
 				}
 				// End Foreach Contents
 				count++;
@@ -86,15 +80,27 @@ function getEvents(date) {
 		.set('User-Agent', 'NBA-FF v.1 (colin.lebens@gmail.com)')
 		.end(function(res) {
 			dbObject.statsObject = res.body;
-			addFoodToDBObject(dbObject, event_id);
+			addHomeTeamToDBObject(dbObject, event_id);
 		});
 	}
 
-	function addFoodToDBObject(dbObject, event_id) {
-		console.log(event_id);
+	function addHomeTeamToDBObject(dbObject, event_id) {
 		db.get('Teams', dbObject.homeTeamId)
 		.then(function(result) {
-			console.log(result.body);
+			dbObject.homeTeam = result.body;
+			addAwayTeamToDBObject(dbObject, event_id);
+
+		})
+		.fail(function(err){
+			console.log(err);
+		})
+	}
+
+	function addAwayTeamToDBObject(dbObject, event_id) {
+		db.get('Teams', dbObject.awayTeamId)
+		.then(function(result) {
+
+			dbObject.awayTeam = result.body;
 
 			db.put('Events', event_id, dbObject)
 			.then(function(result) {
@@ -102,12 +108,12 @@ function getEvents(date) {
 			})
 			.fail(function(err) {
 				console.error(err);
-			});
+			}); 
+
 		})
 		.fail(function(err){
 			console.log(err);
 		})
-
 	}
 
 } 

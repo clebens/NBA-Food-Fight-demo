@@ -1,3 +1,4 @@
+/*
 var app = app || {};
 
 app.UserView = Backbone.View.extend({
@@ -32,3 +33,4 @@ app.UserView = Backbone.View.extend({
 });
 
 module.exports = UserView
+*/

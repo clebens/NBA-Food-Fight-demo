@@ -10,9 +10,9 @@ define(function(require) {
 	var foodFightRouter = new Router();
 
 
-
-var userView = new UserView({model: UserModel});
-userView.render();
+  // var userModel = new UserModel();
+  // var userView = new UserView({model: userModel});
+  // userView.render();
 
 /*    var currentWeatherView = new CurrentWeatherView({
       model: currentWeatherMode
@@ -30,13 +30,20 @@ userView.render();
       collection: hourlyForecastCollection
     });
   */
-    var router = new Router({
-      current: currentWeatherView,
-      dailyForecast: dailyForecastView,
-      hourlyForecast: hourlyForecastView
-    });
 
-    Backbone.history.start();
+  var Schedule           = require('collections/schedule-collection');
+  var ScheduleView = require('views/schedule-view');
+  var Router             = require('router');
+
+  var currentSchedule  = new Schedule();
+
+  currentSchedule.fetch();
+
+  console.log(currentSchedule);
+  
+  var scheduleView = new ScheduleView(currentSchedule);
+
+  Backbone.history.start();
 
 /*
     app.current = currentWeatherModel;

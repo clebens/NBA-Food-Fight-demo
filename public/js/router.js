@@ -22,20 +22,6 @@ define(function(require) {
 
 		showDailySchedule: function() {
 			
-			var Schedule           = require('collections/schedule-collection');
-			var Router             = require('router');
-
-		    
-		    var currentSchedule  = new Schedule();
-
-	    	currentSchedule.fetch();
-	    	
-	    	var filteredSchedule = currentSchedule.chain()
-	    	.map(function(item) { return item.get('homeTeamId')})
-	    	.value();
-		    
-		    console.log(currentSchedule);
-		    console.log(filteredSchedule);
 
 		},
 

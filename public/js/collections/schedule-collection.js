@@ -8,6 +8,10 @@ define(function(require) {
 
 		model: Game,
 
+		initialize: function() {
+
+		}, 
+
 		url: '/Schedule'
 
 	});

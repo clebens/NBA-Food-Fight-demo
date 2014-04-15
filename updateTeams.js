@@ -27,11 +27,31 @@ function updateTeamsFromXMLStats() {
 			teamObject['foodRules'] = [{
 				'foodId': 'chalupa',
 				'foodRule': '100pts',
-				'ruleDescription': 'Completely Random; 50% chance'
+				'ruleDescription': 'If the ' + teamObject['teamName'] + ' score 100 points, you win a Chalupa!',
 			}];
+
+			var foodsComplete = 0;
+			//console.log(teamObject.foodRules);
+			teamObject.foodRules.forEach(function(item, index, array) {
+				db.get('Food', item.foodId)
+				.then(function(result) {
+					console.log(here);
+					item.foodId = result.body.foodId;
+					item.foodIcon = result.body.foodIcon;
+					item.foodDescription = result.body.foodDescription;
+					if (foodsComplete === array.length) {
+						cosnole.log(teamObject);
+						addTeamToDB(teamId, teamObject);
+					} else {
+						foodsComplete++;
+					}
+				})
+				.fail(function(err) {
+					console.log(err):
+				});
+			});
+
 			
-			addTeamToDB(teamId, teamObject);
-			addTeamKeyToDB(teamId);
 			
 		});
 			

@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			{{ homeTeam.teamLogo }} : {{ awayTeam.teamName }} vs. <br>
+			{{ awayTeam.teamLogo }} : {{ homeTeam.teamName }}
+		</div>
+		<div class="panel-body">
+			{{ readableDate }}<br>
+			{{ readableTime }}<br><br>
+			{{#each homeTeam.foodRules }}
+				{{ this.foodId }}<br>
+				{{ this.ruleDescription }}
+			{{/each}}
+		</div>
+	</div>
+</div>

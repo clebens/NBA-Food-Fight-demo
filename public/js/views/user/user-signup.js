@@ -1,6 +1,6 @@
 define(function (require) {
   var Backbone = require('backbone');
-  var template = require('hbs!templates/user-signup');
+  var template = require('hbs!templates/user/user-signup');
 
   var UserSignUp = Backbone.View.extend({
     el: '#'

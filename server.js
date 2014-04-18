@@ -180,6 +180,20 @@ app.get('/Teams/:teamname', function (req, res) {
 // Put Routes
 // Andrew
 
+app.put("/Users", function(req, res) {
+  // addUserInfo(req);
+    var user = {
+    "userName": req.params.userId,
+    "password": req.params.password,
+    "foodAwards": {},
+    "record": {'wins': 0, 'losses': 0},
+    "previousResult": {},
+    "dailySelection": {}
+  };
+  db.put('Users', req.params.userId, user);
+  res.send("Adding profile for user: " + req.params.userId + ".");
+});
+
 app.put("/Users/:userId/add/:foodAwards/:record/:previousResult/:dailySelection", function(req, res) {
   // addUserInfo(req);
     var user = {

@@ -5,6 +5,10 @@ define(function (require) {
   var UserView = Backbone.View.extend({
    name: 'UserView',
 
+   events: {
+    // 'click #signup-button': 'signUp', 
+   },
+
     initialize: function (options) {
       
       // Template initialization Workaround
@@ -17,6 +21,11 @@ define(function (require) {
 
     render: function() { 
     	this.$el.html(this.template(this.model.toJSON())); 
+    },
+
+    signUp: function () {
+      alert("signed up!");
+
     }
     
 

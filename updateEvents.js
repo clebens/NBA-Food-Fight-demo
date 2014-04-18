@@ -5,6 +5,10 @@ var fs = require('fs');
 var superagent = require('superagent');
 var exphbs = require('express3-handlebars');
 
+
+// External Modules
+var checkRules = require('./checkRules');
+
 //Global Variable Declarations
 
 //Grab Orchestrate.io API key from local file 
@@ -15,7 +19,6 @@ var orcKey = fs.readFileSync('./orcKey', {encoding: 'utf8'}).replace('\n', '');
 var xmlstatsKey = fs.readFileSync('./xmlstatsKey', {encoding: 'utf8'}).replace('\n', '');
 var xmlstatsRoot = 'https://erikberg.com/';
 var db = require('orchestrate')(orcKey);
-
 
 
 function getEvents(date) {
@@ -101,6 +104,8 @@ function getEvents(date) {
 		.then(function(result) {
 
 			dbObject.awayTeam = result.body;
+			console.log(dbObject.homeTeam);
+			checkRules(dbObject);
 
 			db.put('Events', event_id, dbObject)
 			.then(function(result) {

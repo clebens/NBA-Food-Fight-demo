@@ -6,6 +6,7 @@ define(function(require) {
 
 		routes: {
 			'/': 'initPage',
+			'edit-team/:team': 'editTeam',
 			'team': 'showTeam',
 			'schedule': 'showCurrentSchedule',
 			'user-signin': 'showUserSignin',
@@ -30,8 +31,14 @@ define(function(require) {
 		},
 
 		showCurrentSchedule: function() {
+			this.editTeamView.$el.hide();
 			this.currentScheduleView.$el.show();
 		},
+
+		editTeam: function() {
+			this.currentScheduleView.$el.hide();
+
+		}
 
 		showUserSignin: function () {
 	    this.userSigninView.$el.show();

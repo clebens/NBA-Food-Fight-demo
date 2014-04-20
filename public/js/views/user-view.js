@@ -5,6 +5,10 @@ define(function (require) {
   var UserView = Backbone.View.extend({
    name: 'UserView',
 
+   events: {
+    'click #signup-button': 'signUp', 
+   },
+
     initialize: function (options) {
       
       // Template initialization Workaround
@@ -17,6 +21,21 @@ define(function (require) {
 
     render: function() { 
     	this.$el.html(this.template(this.model.toJSON())); 
+    },
+
+    signUp: function () {
+      // this.$el.html(this.template(this.model.toJSON()));
+      var userName = this.$el.find('#user-name').val();
+      var password = this.$el.find('#password').val();
+      this.model.set("id", userName);
+      this.model.set("password", password);
+      console.log(this.model.id);
+      this.model.save({"id": userName, "password": password});
+      // var userName = $("#user-name")[0];
+      console.log(this.model.attributes);
+      // this.model.userName = $("#user-name").attr('value'); 
+      alert("thanks for signing up, " + userName + "!\nYour password is: " + password);
+
     }
     
 

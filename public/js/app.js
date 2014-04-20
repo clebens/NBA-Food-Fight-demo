@@ -7,13 +7,14 @@ define(function(require) {
   var app = {};
   var UserView = require('views/user-view');
 
-  var UserModel = require('models/user');
+  var UserModel = require('models/user-model');
   var currentUserModel = new UserModel();
 
   
   var userView = new UserView({
     el: '#user-display',
     template: require('hbs!templates/user-display'),
+    render: function() { this.$el.html(this.template(this.model.toJSON())); },
     model: currentUserModel
   });
 

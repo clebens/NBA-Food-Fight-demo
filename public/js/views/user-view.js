@@ -27,9 +27,10 @@ define(function (require) {
       // this.$el.html(this.template(this.model.toJSON()));
       var userName = this.$el.find('#user-name').val();
       var password = this.$el.find('#password').val();
-      this.model.set("userName", userName);
+      this.model.set("id", userName);
       this.model.set("password", password);
-      this.model.save();
+      console.log(this.model.id);
+      this.model.save({"id": userName, "password": password});
       // var userName = $("#user-name")[0];
       console.log(this.model.attributes);
       // this.model.userName = $("#user-name").attr('value'); 

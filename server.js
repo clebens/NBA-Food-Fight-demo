@@ -180,38 +180,39 @@ app.get('/Teams/:teamname', function (req, res) {
 // Put Routes
 // Andrew
 
-app.put("/Users", function(req, res) {
+
+app.put("/Users/:userName", function(req, res) {
   // addUserInfo(req);
     var user = {
     "id": req.params.id,
     "userName": req.params.userName,
     "password": req.params.password,
-    "foodAwards": {},
-    "record": {'wins': 0, 'losses': 0},
-    "previousResult": {},
-    "dailySelection": {}
-  };
-  db.put('Users', req.params.userId, user);
-  res.send("Adding profile for user: " + req.params.userId + ".");
-});
-
-app.put("/Users/:userId/add/:foodAwards/:record/:previousResult/:dailySelection", function(req, res) {
-  // addUserInfo(req);
-    var user = {
-    "userName": req.params.userId,
     "foodAwards": req.params.foodAwards,
     "record": req.params.record,
     "previousResult": req.params.previousResult,
     "dailySelection": req.params.dailySelection
   };
-  db.put('Users', req.params.userId, user);
+  db.put('Users', req.params.userName, user);
   res.send("Adding profile for user: " + req.params.userId + ".");
 });
 
-app.put("/Users/:userId/edit", function(req, res) {
-  // editUserInfo(req);
-  res.send("Editing profile for user: " + req.params.userId + ".");
-});
+// app.put("/Users/:userId/add/:foodAwards/:record/:previousResult/:dailySelection", function(req, res) {
+//   // addUserInfo(req);
+//     var user = {
+//     "userName": req.params.userId,
+//     "foodAwards": req.params.foodAwards,
+//     "record": req.params.record,
+//     "previousResult": req.params.previousResult,
+//     "dailySelection": req.params.dailySelection
+//   };
+//   db.put('Users', req.params.userId, user);
+//   res.send("Adding profile for user: " + req.params.userId + ".");
+// });
+
+// app.put("/Users/:userId/edit", function(req, res) {
+//   // editUserInfo(req);
+//   res.send("Editing profile for user: " + req.params.userId + ".");
+// });
 
 app.get('*', function(req, res) {
 	console.log('[' + req.ip + '] ' + req.url  + ': Request from World.');

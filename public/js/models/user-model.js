@@ -11,7 +11,8 @@ define(function(require) {
 		    record: {},
 		    previousResult: {},
 		    dailySelection: {},
-		    url: ''
+		    id: 'John'
+		    // url: this.userName
 		}, 
 
 		initialize: function() {

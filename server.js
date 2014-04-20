@@ -183,7 +183,8 @@ app.get('/Teams/:teamname', function (req, res) {
 app.put("/Users", function(req, res) {
   // addUserInfo(req);
     var user = {
-    "userName": req.params.userId,
+    "id": req.params.id,
+    "userName": req.params.userName,
     "password": req.params.password,
     "foodAwards": {},
     "record": {'wins': 0, 'losses': 0},

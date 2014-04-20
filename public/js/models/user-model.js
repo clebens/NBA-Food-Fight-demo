@@ -10,7 +10,8 @@ define(function(require) {
 		    foodAwards: {},
 		    record: {},
 		    previousResult: {},
-		    dailySelection: {}
+		    dailySelection: {},
+		    url: ''
 		}, 
 
 		initialize: function() {
@@ -21,7 +22,7 @@ define(function(require) {
 
 		},
 
-		urlRoot: '/Users'
+		urlRoot: 'Users/'
 
 
 

@@ -3,7 +3,7 @@ requirejs.config({
 
   paths: {
     'jquery': 'lib/jquery',
-    'jquery-cookie': 'lib/bower-components/jquery-cookie/jquery.cookie',
+    'jquery-cookie': 'lib/bower_components/jquery-cookie/jquery.cookie',
     'backbone': 'lib/backbone',
     'bootstrap': 'lib/bootstrap',
     'thorax': 'lib/thorax',
@@ -13,6 +13,9 @@ requirejs.config({
   },
 
   shim: {
+    'jquery-cookie': {
+      deps: ['jquery']
+    },
     'underscore': {
       exports: '_'
     },

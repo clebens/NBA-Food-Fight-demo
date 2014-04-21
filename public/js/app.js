@@ -1,6 +1,9 @@
 define(function(require) {
 
+  //Load jquery + add cookie funcitonality to jquery
   var $ = require('jquery');
+  require('jquery-cookie');
+
   var Thorax = require('thorax');
   var backbone = require('backbone');
   var Router = require('router');

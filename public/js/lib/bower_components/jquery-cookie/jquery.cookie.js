@@ -16,7 +16,7 @@
 }(function ($) {
 
 	var pluses = /\+/g;
-
+	
 	function encode(s) {
 		return config.raw ? s : encodeURIComponent(s);
 	}

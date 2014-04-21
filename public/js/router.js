@@ -1,8 +1,8 @@
 define(function(require) {
 	var Backbone = require('backbone');
-
+	var $ = require('jquery');
+	
 	var Router = Backbone.Router.extend({
-		
 
 		routes: {
 			'/': 'initPage',
@@ -15,9 +15,8 @@ define(function(require) {
 		},
 
 		initialize: function(options) {	
-
-		var jqueryCookie = require('jquery-cookie');
 		
+
 		// Assign passed User Objects 
 		this.userSignoutView = options.userSignoutView;
 	    this.userSigninView = options.userSigninView;

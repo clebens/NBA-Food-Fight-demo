@@ -1,7 +1,7 @@
 
 define(function (require) {
   var Backbone = require('backbone');
-  
+  var $ = require('jquery');
   var UserView = Backbone.View.extend({
    name: 'UserView',
 

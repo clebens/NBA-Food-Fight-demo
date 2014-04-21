@@ -38,7 +38,7 @@ define(function(require) {
 		editTeam: function() {
 			this.currentScheduleView.$el.hide();
 
-		}
+		},
 
 		showUserSignin: function () {
 	    this.userSigninView.$el.show();

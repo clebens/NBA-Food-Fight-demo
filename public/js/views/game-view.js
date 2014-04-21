@@ -1,7 +1,7 @@
 define(function(require) {
 
 	var Backbone = require('backbone');
-	var template = require('hbs!templates/game-in-schedule');
+	var template = require('hbs!templates/game-in-schedulev2');
 
 	var GameView = Backbone.View.extend({
 

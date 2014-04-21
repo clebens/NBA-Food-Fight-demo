@@ -48,7 +48,7 @@ define(function(require) {
 
   var currentScheduleView = new ScheduleView(currentSchedule);
 
-  userView.render()
+  userView.render();
   var router = new Router({
     // User Header Views
     'userView': userView,

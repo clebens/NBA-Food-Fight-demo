@@ -1,0 +1,44 @@
+
+
+<div class="row rulespace"><p></p></div>
+<div class="row gameline">
+			<div class="col-xs-4">
+				<div class="row">
+					<h4>AWAY:</h4>
+				</div>
+				<div class="row">
+					<img src="{{awayTeam.teamLogo}}" width="75"/>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<h1>{{ formatHour readableTime }}</h1>
+			</div>
+			<div class="col-xs-4">
+				<div class="row">
+					<h4>HOME:</h4>
+				</div>
+				<div class="row">
+					<img src="{{homeTeam.teamLogo}}" width="75"/>
+				</div>
+			</div>
+		</div>
+			<div class="row prizeline">
+			<div class="col-xs-4"></div>
+			<div class="col-xs-4">
+				<img src={{#each homeTeam.foodRules }}
+				{{ this.foodIcon }}{{/each}} width="100" />
+			</div>
+			<div class="col-xs-4"></div>
+		</div>
+		<div class="row rulespace">
+			<p></p>
+		</div>
+		<div class="row ruleline">
+			<div class="col-xs-12"><h4>
+			{{#each homeTeam.foodRules }}
+				{{ this.ruleDescription }}
+			{{/each}}
+			</h4>
+			</div>
+		</div>
+		<hr />

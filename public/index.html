@@ -4,38 +4,42 @@
     <meta charset="utf-8" />
     <title>Example App</title>
     <link rel="stylesheet" href="css/bootstrap.css" charset="utf-8">
+    <link rel="stylesheet" href="css/special.css" charset="utf-8">
 </head>
 <body>
-<section id='nba-food-fight-app' class="container">
-  <br><div id="page-title" class="well">
-    <center><h1><span class="glyphicon glyphicon-trash"></span>
-    !!!FoodFight!!!
-    <span class="glyphicon glyphicon-trash"></span></h1></center>
-  </div>
-  <section id='headers'>
-    <div id="user-signin"></div>
-    <div id="user-display" style="display: none"></div>
-    <div id="user-signup" style="display: none"></div>
-    <div id="user-food" style="display: none"></div>
-  </section>
 
-<!--    
-    
-      <form id="sign-in">   
-        <input id="user-name" type="text" placeholder="username"></input>
-        <input id="password" type="text"></input>
-        <button id="user-button">ok</button> 
-        <a id="sign-up" href="#user-signup">(Sign Up)</a>
-      </form>
+<div id="page-title">
+          <center><h1>
+            FOOD FIGHT
+          </h1><h4>Because free tacos are the best tacos.</h4></center>
+        </div>
+        <div id="user">
+        <section id='headers'>
+          <div id="user-signin"></div>
+          <div id="user-display" style="display: none"></div>
+          <div id="user-signup" style="display: none"></div>
+          <div id="user-food" style="display: none"></div>
+        </section>
+      </div>  <section id='nba-food-fight-app' class="container">
+
+    <br>
+    <div class="col-md-3"></div>
+      <div class="col-md-6">
+
+      
+
+    <div id="todays-schedule"><marquee><h1>Loading...</h1></marquee>
     </div>
--->
 
-    <div id="todays-schedule"><marquee><h1>Loading...</h1></marquee></div>
-    <div id="user-awards"></div>
-  </section>
-	<section id='footers'></section>
+  </div>
+  <div class="col-md-3"></div>
+  <div id="user-awards"></div>
+
+</section>
+<section id='footers'>
     <div id="copyright-info"></div>  
 </section> 
+
 
 </body>
 </html>

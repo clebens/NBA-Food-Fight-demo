@@ -6,7 +6,7 @@ define(function (require) {
    name: 'UserView',
 
    events: {
-    'click #signup-button': 'signUp', 
+    'click #signup-button': 'signUp'
    },
 
     initialize: function (options) {
@@ -29,12 +29,12 @@ define(function (require) {
       var password = this.$el.find('#password').val();
       this.model.set("id", userName);
       this.model.set("password", password);
-      console.log(this.model.id);
+      // console.log(this.model.id);
       this.model.save();
       // var userName = $("#user-name")[0];
       console.log(this.model.attributes);
       // this.model.userName = $("#user-name").attr('value'); 
-      alert("thanks for signing up, " + userName + "!\nYour password is: " + password);
+      alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
 
     }
     

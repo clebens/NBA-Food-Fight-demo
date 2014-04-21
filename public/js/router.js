@@ -52,6 +52,20 @@ define(function(require) {
 	    this.userSigninView.$el.hide();
 	    this.userSignupView.$el.hide();
 	    this.userView.$el.show();
+
+			// var userName = $('#user-signup').html();
+			// var userName = $('#user-signup').children().children().html();
+			// var userName = $("#user-name");
+			// var userName = $("#user-name").filter(":input")[0];
+			// var userName = $('.panel').find('input[name="user-name"]').val();
+			// console.log(userName);
+			// this.userView.model.set('userName', userName);
+			// console.log(this.userView);
+
+			// this.model.set('password', this.userView.$el.attr("password"));
+			
+			// this.model.save();
+			// alert(this.model.attributes);
 			//
 		},
 

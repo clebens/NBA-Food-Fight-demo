@@ -185,12 +185,12 @@ app.put("/Users/:userName", function(req, res) {
   // addUserInfo(req);
     var user = {
     // "id": req.params.id,
-    "userName": req.params.userName,
-    "password": req.params.password || "",
-    "foodAwards": req.params.foodAwards || {},
-    "record": req.params.record || {},
-    "previousResult": req.params.previousResult || {},
-    "dailySelection": req.params.dailySelection || {}
+    "userName": req.body.userName,
+    "password": req.body.password || "",
+    "foodAwards": req.body.foodAwards || {},
+    "record": req.body.record || {},
+    "previousResult": req.body.previousResult || {},
+    "dailySelection": req.body.dailySelection || {}
   };
   db.put('Users', req.params.userName, user);
   res.send("Adding profile for user: " + req.params.userId + ".");

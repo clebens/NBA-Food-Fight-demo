@@ -2,17 +2,18 @@ define(function(require) {
 
 	var Backbone = require('backbone');
 	var Schedule = require('collections/schedule-collection');
-	var GameView = require('views/game-view')
+	var GameView = require('views/game-view');
 	var $ = require('jquery');
+	
 	var Schedule = Backbone.View.extend({
 
 		el: '#todays-schedule',		
 
 
-		initialize: function (initialSchedule) {
-		console.log(initialSchedule);
-		this.collection = initialSchedule;
-		this.listenTo (this.collection, 'add', this.render);
+		initialize: function(initialSchedule) {
+			//console.log(initialSchedule);
+			this.collection = initialSchedule;
+			this.listenTo (this.collection, 'add', this.render);
 		},
 
 		render: function() {

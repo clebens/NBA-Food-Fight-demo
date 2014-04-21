@@ -27,7 +27,6 @@ function updateTeamsFromXMLStats() {
 			dbObject['foodRules'] = [{
 				'foodId': 'chalupa',
 				'ruleId': 'homeTeam100pts',
-				'ruleDescription': 'If the ' + dbObject['teamName'] + ' score 100 points, you win a Chalupa!',
 			}];
 
 			addRuleInfoTodbObject(dbObject, team_id);

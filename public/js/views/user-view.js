@@ -28,6 +28,7 @@ define(function (require) {
       var userName = this.$el.find('#user-name').val();
       var password = this.$el.find('#password').val();
       this.model.set("id", userName);
+      this.model.set("userName", userName)
       this.model.set("password", password);
       // console.log(this.model.id);
       this.model.save();

@@ -42,13 +42,13 @@ define(function(require) {
 		},
 
 		showUser: function (options) {
-			console.log(options.attributes);
-			this.model.set('userName', 'user-name');
+			// console.log(options.attributes);
+			// this.model.set('userName', 'user-name');
 
-			this.Model.set('password', this.userView.$el.attr("password"));
+			// this.Model.set('password', this.userView.$el.attr("password"));
 			
-			this.model.save();
-			alert(this.model.attributes);
+			// this.model.save();
+			// alert(this.model.attributes);
 	    this.userSigninView.$el.hide();
 	    this.userSignupView.$el.hide();
 	    this.userView.$el.show();
@@ -71,6 +71,7 @@ define(function(require) {
 
 		showSignup: function () {
 	    this.userSigninView.$el.hide();
+	    this.userView.$el.hide();
 	    this.userSignupView.$el.show();
 		},
 

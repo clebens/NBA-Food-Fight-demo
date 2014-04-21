@@ -184,7 +184,7 @@ app.get('/Teams/:teamname', function (req, res) {
 app.put("/Users/:userName", function(req, res) {
   // addUserInfo(req);
     var user = {
-    // "id": req.params.id,
+    "id": req.body.id,
     "userName": req.body.userName,
     "password": req.body.password || "",
     "foodAwards": req.body.foodAwards || {},

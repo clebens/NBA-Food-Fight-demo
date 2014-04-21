@@ -5,23 +5,15 @@ define(function(require) {
 	var User = Backbone.Model.extend({
 	
 		defaults: {
-		    userName: 'John',
+		    userName: '',
 		    password: '',
 		    foodAwards: {},
 		    record: {},
 		    previousResult: {},
 		    dailySelection: {},
-		    id: 'John'
-		    // url: this.userName
+		    // id: ''
+		    // url: 'Users/'
 		}, 
-
-		initialize: function() {
-
-		},
-
-		validate: function() {
-
-		},
 
 		urlRoot: 'Users/'
 

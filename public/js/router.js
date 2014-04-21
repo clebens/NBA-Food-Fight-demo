@@ -50,10 +50,10 @@ define(function(require) {
 	    this.userView.$el.show();
 			// var userName = $('#user-signup').html();
 			// var userName = $('#user-signup').children().children().html();
-			var userName = $("#user-name");
+			// var userName = $("#user-name");
 			// var userName = $("#user-name").filter(":input")[0];
 			// var userName = $('.panel').find('input[name="user-name"]').val();
-			console.log(userName);
+			// console.log(userName);
 			// this.userView.model.set('userName', userName);
 			// console.log(this.userView);
 

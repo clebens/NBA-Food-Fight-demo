@@ -52,6 +52,7 @@ function getEvents(date) {
 				// Foreach Contents
 				var key = item.event_id;
 				var dbObject = {
+					'id': item.event_id,
 					'homeTeamId': item.home_team.team_id,
 					'awayTeamId': item.away_team.team_id,
 					'eventStatus': item.event_status,

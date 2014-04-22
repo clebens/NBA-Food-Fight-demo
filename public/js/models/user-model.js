@@ -1,24 +1,33 @@
 define(function(require) {
 
 	var Backbone = require('backbone');
+	var $ = require('jquery');
+	require('jquery-cookie');
 
 	var User = Backbone.Model.extend({
 	
-		defaults: {
-		    userName: '',
-		    foodAwards: '',
-		    record: {},
-		    previousResult: {},
-		    dailySelection: {}
-		}, 
-
 		initialize: function() {
+			var curUserName = $.cookie('user-name');
 
+			if (curUserName) {
+				this.set('userName', curUserName);
+				this.set('id', curUserName);
+				this.fetch();
+			}
 		},
 
-		validate: function() {
+		defaults: {
+		    userName: '',
+		    password: '',
+		    foodAwards: {},
+		    record: {},
+		    previousResult: {},
+		    dailySelection: {},
+		    // id: ''
+		    // url: 'Users/'
+		}, 
 
-		}
+		urlRoot: 'Users/'
 
 
 

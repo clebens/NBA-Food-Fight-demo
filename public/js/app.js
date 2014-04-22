@@ -11,8 +11,17 @@ define(function(require) {
   var UserView = require('views/user-view');
 
   var UserModel = require('models/user-model');
-  var currentUserModel = new UserModel();
+  var currentUserModel = new UserModel({
+    initialize:  function () {
+    var curUserName = $.cookie('user-name');
 
+      if (curUserName) {
+        this.set('userName', curUserName);
+        this.set('id', curUserName);
+        this.fetch();
+      }
+    }
+  });
   
   var userView = new UserView({
     el: '#user-display',
@@ -38,6 +47,7 @@ define(function(require) {
   var userFoodView = new UserView({
     el: '#user-food',
     template: require('hbs!templates/user-food'),
+    render: function() { this.$el.html(this.template(this.model.toJSON())); },
     model: currentUserModel
   }); 
 
@@ -60,7 +70,8 @@ define(function(require) {
     'userSignupView': userSignupView,
 
     // Schedule Views
-    'currentScheduleView': currentScheduleView
+    'currentScheduleView': currentScheduleView,
+    'userFoodView': userFoodView
     // User Awards Views
   });
 

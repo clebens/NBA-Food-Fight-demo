@@ -30,8 +30,8 @@ define(function (require) {
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
-      var userName = this.$el.find('#user-name').val();
-      var password = this.$el.find('#password').val();
+      var userName = this.$el.find('#user-name-signup').val();
+      var password = this.$el.find('#password-signup').val();
       this.model.set("id", userName);
       this.model.set("userName", userName)
       this.model.set("password", password);
@@ -39,21 +39,26 @@ define(function (require) {
       this.model.save();
       $.cookie('user-name', userName, { expires: 7, path: '/' });
       // var userName = $("#user-name")[0];
-      console.log(this.model.attributes);
+      console.log('Created user: ' + userName);
       // this.model.userName = $("#user-name").attr('value');
 
       alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+      window.location.href = "#user-view"; 
     },
 
     signOut: function() {
       $.removeCookie('user-name');
-      window.location.href = '#user-signin';
+      window.location.href = '/';
     },
 
     signIn: function() {
-      var userName = this.$el.find('#user-name').val();
-      var password = this.$el.find('#password').val();
+      $('#failed-login').html('');
+      var userName = this.$el.find('#user-name-login').val();
+      var password = this.$el.find('#password-login').val();
       this.model.set('id', userName);
+      
+      var self = this;
+
       this.model.fetch({
         success: function(model, response, options) {
           if(password === model.get('password')) {
@@ -65,12 +70,18 @@ define(function (require) {
 
 
           } else {
-             console.log('Incorrect Password');
+             //self.$el.find('#failed-login').innerHtml('<br><p class="red">Invalid username or password.</p>');
+             self.$el.find('#user-name-login').addClass('has-error');
+             self.$el.find('#user-name-login').append(' <span class="glyphicon glyphicon-remove form-control-feedback"></span>')
+              console.log('Incorrect Password');
           }
         }, 
 
         error: function(model, response, options) {
           console.log(response);
+          if(response.responseText === "No user found.") {
+            $('#failed-login').html('<p class="red">Invalid username or password.');
+          }
         },
 
 

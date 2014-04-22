@@ -1,8 +1,54 @@
-<div class="panel">
+   	
+<div class="row">
+	<div class="col-xs-2"></div>
+	<div class="col-xs-2"></div>
+	<div class="col-xs-1"></div>
+
+	<div class="col-xs-2">
+		  	<input type="text" id="user-name-login" class="form-control" placeholder="Username">
+	</div>
+	
+	<div class="col-xs-2">
+			<input type="text" id="password-login" class="form-control" placeholder="Password">
+	</div>
+
+	<button type="button" class="btn btn-primary" id="signin-button">Sign In</button>
+	    	
+	<button class="btn btn-default" data-toggle="modal" data-target=".create-account-modal">Create Account</button>
+
+</div>
+
+
+	<div class="modal fade bs-example-modal-sm create-account-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+    	  <form class="form-signin">
+    	  
+    	  	<input type="text" id="user-name-signup" class="form-control" placeholder="Username">
+  			<input type="text" id="password-signup" class="form-control" placeholder="Password">
+
+    	<button type="button" class="btn btn-primary navbar-btn" id="signup-button">Create Account</button>
+    	</a>
+
+    
+    	<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+    	</form>
+    </div>
+  </div>
+</div>
+
   <!-- <form id="sign-in" action=""> -->  
-    <input id="user-name" type="text" name="name" placeholder="username"></input>
+    <center>
+
+
+<!--    <input id="user-name" type="text" name="name" placeholder="username"></input>
+
+-->
+
+<!--
     <input id="password" type="password" name="pwd" placeholder="password"></input>
-    <a id="sign-in-anchor" href="#user-view"><button id="signin-button">Sign In</button></a>
-    <a id="signUp" href="#user-signup">(Sign Up)</a>
+-->
+
+    <div class="red" id="login-status"></div>
+    </center>
 <!--  </form> -->
- </div>

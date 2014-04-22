@@ -1,9 +1,8 @@
 
 	<div class="panel panel-success" id="game-display">
-		<div class="event_data" event-id="{{ this.id }}"></div>
 		<div class="panel-heading">
-			{{ homeTeam.teamLogo }} : {{ awayTeam.teamName }} vs. <br>
-			{{ awayTeam.teamLogo }} : {{ homeTeam.teamName }}
+			<img src="{{ homeTeam.teamLogo }}"> : {{ awayTeam.teamName }} vs. <br>
+			<img src="{{ awayTeam.teamLogo }}"> : {{ homeTeam.teamName }}
 		</div>
 		<div class="panel-body">
 			{{ readableDate }}<br>

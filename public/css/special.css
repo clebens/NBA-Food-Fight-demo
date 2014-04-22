@@ -86,6 +86,14 @@ hr {
 
 }
 
+#user-name-login {
+	width:27%;
+}
+
+#password-login {
+	width:27%;
+}
+
 #user-display {
 	display: inline;
 	text-align: center;

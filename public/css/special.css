@@ -1,0 +1,94 @@
+
+body {
+
+}
+
+hr {
+    border: 0;
+
+    margin-top: 3em;
+    margin-bottom: 3em;
+
+    height: 1px;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+}
+
+
+.gameline {
+	background-color: #C4C4C4;
+
+	text-align: center;
+	
+}
+
+.gameline h1 {
+	padding-top: 1em;
+
+}
+
+.gameline h4 {
+	padding-top: 1em;
+
+}
+
+
+.ruleline {
+	background-color: #5C7FAC;
+	color: white;
+	text-align: center;
+	}
+.rulespace {
+	background-color: gray;
+}
+
+.prizeline {
+	background-color: #C4C4C4;
+	padding-bottom: 1em;
+	text-align: center;
+	
+	 
+}
+.prize img {
+
+	padding-top: 2em;
+}
+
+
+img {
+	padding-right: 1em;
+}
+
+.foodrule {
+border: solid;
+border-width: thin;
+border-spacing: 3em;
+padding: 0.5em;
+text-align: center;
+
+}
+
+#page-title {
+	background-color: silver;
+	padding-top: 0.2em;
+	margin: 0;
+}
+
+#page-title h4 {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+#user {
+	background-color: silver;
+	padding: 0.2em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.panel {
+	background-color: silver;
+}

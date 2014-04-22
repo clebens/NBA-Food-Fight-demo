@@ -1,15 +1,38 @@
 
-	<div class="panel panel-success" id="game-display">
-		<div class="panel-heading">
-			<img src="{{ homeTeam.teamLogo }}"> : {{ awayTeam.teamName }} vs. <br>
-			<img src="{{ awayTeam.teamLogo }}"> : {{ homeTeam.teamName }}
-		</div>
-		<div class="panel-body">
-			{{ readableDate }}<br>
-			{{ readableTime }}<br><br>
-			{{#each homeTeam.foodRules }}
-				{{ this.foodId }}<br>
+
+<div class="row">
+	<div class="col-md-12"><h3>{{ formatHour readableTime }}</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-8">
+				<div class="row">
+					<div class="col-xs-3">
+						<img src="{{ awayTeam.teamLogo }}" />
+					</div>
+					<div class="col-xs-9">
+						<h4>{{ awayTeam.teamName }}</h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3">
+					<img src="{{ homeTeam.teamLogo }}"  />
+					</div>
+					<div class="col-xs-9">
+						<h4>{{ homeTeam.teamName }}</h4>
+					</div>
+				</div>
+			</div>
+	<div class="col-xs-4"><img src="{{#each homeTeam.foodRules }}
+				{{ this.foodIcon }}{{/each}}" width="140" />
+	</div>
+</div>
+<div class="row">
+	<div class="foodrule col-md-12">
+		{{#each homeTeam.foodRules }}
 				{{ this.ruleDescription }}
 			{{/each}}
-		</div>
 	</div>
+
+</div>	
+	<hr />

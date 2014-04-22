@@ -4,6 +4,7 @@ define(function(require) {
 	var template = require('hbs!templates/game-in-schedule');
 	var User = require('models/user-model');
 
+
 	var GameView = Backbone.View.extend({
 
 			tagName: 'div',

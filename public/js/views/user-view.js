@@ -54,6 +54,7 @@ define(function (require) {
     signIn: function() {
       this.$el.hide();
       $('#failed-login').html('');
+      $('#user-loading').html('<br /><img src="/images/login-loader.gif" />');
       var userName = this.$el.find('#user-name-login').val();
       var password = this.$el.find('#password-login').val();
       this.model.set('id', userName);
@@ -62,6 +63,7 @@ define(function (require) {
 
       this.model.fetch({
         success: function(model, response, options) {
+          $('#user-loading').html('');
           if(password === model.get('password')) {
             console.log('User logged in!');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
@@ -77,6 +79,7 @@ define(function (require) {
         }, 
 
         error: function(model, response, options) {
+          $('#user-loading').html('');
           console.log(response);
           //if(response.responseText === "No user found.") {
             $('#failed-login').html('<p class="text-danger">Invalid username or password.');

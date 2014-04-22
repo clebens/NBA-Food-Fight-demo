@@ -92,6 +92,15 @@ hr {
 	margin: auto;
 }
 
+#user-loading {
+	text-align: center;
+	margin: auto;
+}
+
+#user-loading img {
+	left: 50%;
+    margin-top: 16px;
+}
 
 .ruleline {
 	background-color: #5C7FAC;

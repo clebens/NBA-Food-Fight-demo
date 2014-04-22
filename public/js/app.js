@@ -27,7 +27,7 @@ define(function(require) {
     el: '#user-display',
     template: require('hbs!templates/user-display'),
     
-    
+
     model: currentUserModel
   });
 

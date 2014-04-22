@@ -5,7 +5,7 @@ define(function(require) {
 	var Router = Backbone.Router.extend({
 
 		routes: {
-			'/': 'initPage',
+			'': 'initPage',
 			'team': 'showTeam',
 			'schedule': 'showCurrentSchedule',
 			'user-signin': 'showUserSignin',
@@ -15,19 +15,23 @@ define(function(require) {
 		},
 
 		initialize: function(options) {	
-		
-
-		// Assign passed User Objects 
-		this.userSignoutView = options.userSignoutView;
-	    this.userSigninView = options.userSigninView;
-	    this.userSignupView = options.userSignupView;
-	    this.userView = options.userView;
-	    this.currentScheduleView = options.currentScheduleView;
-
+			// Assign passed User Objects 
+			this.userSignoutView = options.userSignoutView;
+		    this.userSigninView = options.userSigninView;
+		    this.userSignupView = options.userSignupView;
+		    this.userView = options.userView;
+		    this.currentScheduleView = options.currentScheduleView;
+		    
 		},
 
-		initPage: function(options) {
-			this.showUserSignin();
+		initPage: function() {
+			console.log('here');
+			console.log($.cookie('user-name'));
+			if ($.cookie('user-name')) {
+				this.showUser();
+			} else {
+				this.showUserSignin();
+			}
 			this.showCurrentSchedule();
 		},
 
@@ -36,9 +40,9 @@ define(function(require) {
 		},
 
 		showUserSignin: function () {
-	    this.userSigninView.$el.show();
-	    this.userSignupView.$el.hide();
-	    this.userView.$el.hide();
+		    this.userSigninView.$el.show();
+		    this.userSignupView.$el.hide();
+		    this.userView.$el.hide();
 		},
 
 		showUser: function (options) {

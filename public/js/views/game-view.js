@@ -32,11 +32,27 @@ define(function(require) {
 
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
-			var curUser = new User({id: $.cookie('user-name') });
-			curUser.fetch();
-			curUser.set('dailySelection', this.model.get('id'));
-			console.log(curUser.get('id') + " selected " + curUser.get('dailySelection'));
-			curUser.save();
+			var curUser = new User({
+				id: $.cookie('user-name')
+			});
+			var curEventId = this.model.get('id');
+			curUser.fetch({
+				success: function(model, response, options) {
+					model.set('dailySelection', curEventId);
+					console.log(model.get('id'));
+					console.log(model.get('userName'));
+					console.log(model.get('password'));
+					console.log(model.get('dailySelection'));
+					console.log(model.get('id') + " selected " + model.get('dailySelection'));
+					model.save();
+				},
+
+				error: function(model, response, options) {
+					console.log(response.responseText);
+				}
+			});
+			
+			//curUser.save();
 		}
 
 	});

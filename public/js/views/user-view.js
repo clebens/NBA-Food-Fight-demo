@@ -26,7 +26,16 @@ define(function (require) {
 
     render: function() { 
     	this.$el.html(this.template(this.model.toJSON())); 
+      if (this.model.get('userName')) {
+        this.renderRecentResult();  
+      }
     },
+
+    renderRecentResult: function() {
+      var recentTemplate = require('hbs!templates/recent-game');
+      $('#most-recent-result').html(recentTemplate());
+      
+    }, 
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
@@ -47,7 +56,10 @@ define(function (require) {
     },
 
     signOut: function() {
+      this.$el.hide();
       $.removeCookie('user-name');
+      this.model.set(this.defaults);
+      console.log(this.model);
       window.location.href = '/';
     },
 

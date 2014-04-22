@@ -41,7 +41,7 @@ define(function(require) {
     model: currentUserModel
   }); 
 
-
+  
   var Schedule           = require('collections/schedule-collection');
   var ScheduleView = require('views/schedule-view');
   

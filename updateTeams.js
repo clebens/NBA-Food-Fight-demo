@@ -24,10 +24,7 @@ function updateTeamsFromXMLStats() {
 			dbObject['teamName'] = xmlTeamObj['first_name'] + ' ' +
 										xmlTeamObj['last_name'];
 			dbObject['teamLogo'] = '/images/logos/' + team_id + '-logo.png';
-			dbObject['foodRules'] = [{
-				'foodId': 'chalupa',
-				'ruleId': 'homeTeam100pts',
-			}];
+			dbObject['foodRules'] = [];
 
 			addRuleInfoTodbObject(dbObject, team_id);
 

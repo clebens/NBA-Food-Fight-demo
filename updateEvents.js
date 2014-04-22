@@ -106,7 +106,9 @@ function getEvents(date) {
 
 			dbObject.awayTeam = result.body;
 			console.log(dbObject.homeTeam);
-			checkRules(dbObject);
+			if (dbObject.eventStatus === "completed") {
+				checkRules(dbObject);
+			}
 
 			db.put('Events', event_id, dbObject)
 			.then(function(result) {

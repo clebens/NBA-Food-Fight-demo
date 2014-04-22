@@ -26,8 +26,6 @@ define(function(require) {
   var userView = new UserView({
     el: '#user-display',
     template: require('hbs!templates/user-display'),
-    
-
     model: currentUserModel
   });
 

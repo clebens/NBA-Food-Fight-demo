@@ -35,9 +35,9 @@ hr {
 	
 }
 
-.page-title .panel {
+.panel {
 	.margin: 0px;
-	.border: 16px;
+	.border: 24;
 }
 
 .page-title h1 {
@@ -135,6 +135,13 @@ border-spacing: 3em;
 padding: 0.5em;
 text-align: center;
 
+}
+
+#title-panel.panel-default {
+	text-align: center;
+	border-color: #454545;
+	border-width: 2px;
+	border-radius: 25px;
 }
 
 #page-title {

@@ -33,6 +33,12 @@ define(function(require) {
 
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
+
+			if (!($.cookie('user-name'))) {
+				alert("Sign up or sign in to select a game");
+				return
+			}
+
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});

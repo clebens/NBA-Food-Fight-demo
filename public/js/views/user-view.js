@@ -52,6 +52,7 @@ define(function (require) {
     },
 
     signIn: function() {
+      this.$el.hide();
       $('#failed-login').html('');
       var userName = this.$el.find('#user-name-login').val();
       var password = this.$el.find('#password-login').val();
@@ -65,23 +66,21 @@ define(function (require) {
             console.log('User logged in!');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
 
-
             window.location.href = '#user-view';
 
 
           } else {
-             //self.$el.find('#failed-login').innerHtml('<br><p class="red">Invalid username or password.</p>');
-             self.$el.find('#user-name-login').addClass('has-error');
-             self.$el.find('#user-name-login').append(' <span class="glyphicon glyphicon-remove form-control-feedback"></span>')
-              console.log('Incorrect Password');
+            $('#failed-login').html('<p class="text-danger">Invalid username or password.');
+             self.$el.show();
+             console.log('Incorrect Password');
           }
         }, 
 
         error: function(model, response, options) {
           console.log(response);
-          if(response.responseText === "No user found.") {
-            $('#failed-login').html('<p class="red">Invalid username or password.');
-          }
+          //if(response.responseText === "No user found.") {
+            $('#failed-login').html('<p class="text-danger">Invalid username or password.');
+            self.$el.show();
         },
 
 
@@ -95,41 +94,3 @@ define(function (require) {
   return UserView;
 
 })
-
-
-// var app = app || {};
-
-// app.UserView = Backbone.View.extend({
-
-//   events: {
-//     'click #user-button': 'buttonPush',
-//     'click #password-logout': 'logout', 
-    
-//   },
-
-//   initialize: function() {
-//     this.$el = $('#user-container')
-//     console.log("User View has been initialized.");
-//   },
-
-//   render: function() {
-//     this.$el.html("<h1>Users are here</h1>");
-//     console.log("rendering...")
-//   },
-
-//   buttonPush: function() {
-//     //from home page --> goes to game selection page/view
-//     //from game selection  page --> goes to food view
-//     //from food view --> goes to game selection view
-//   },
-
-//   logout: function() {
-//     //goes to --> home page
-//   }
-
-
-// });
-
-// module.exports = UserView
-
-

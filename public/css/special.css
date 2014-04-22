@@ -17,6 +17,16 @@ hr {
     background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
 }
 
+@font-face {
+	font-family: "Melbourne-bold";
+	src: url("/fonts/melbourne-bold.otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+.font-melbourne {
+	font-family: 'Melbourne-bold';
+}
 
 .gameline {
 	background-color: #C4C4C4;
@@ -25,6 +35,47 @@ hr {
 	
 }
 
+.page-title .panel {
+	.margin: 0px;
+	.border: 16px;
+}
+
+.page-title h1 {
+	font-family: 'Melbourne-bold';
+	font-size: 72pt;
+	display: inline;
+	margin-top: ;
+}
+
+.page-title h2 {
+	font-family: 'Melbourne-bold';
+	font-size: 64pt;
+	display: inline;
+}
+
+.page-title h6 {
+	font-family: 'Melbourne-bold';
+	font-size: 16pt;
+	margin-bottom: 0;
+}
+
+.page-title br {
+	margin-top: 5px;
+}
+
+.modal-header {
+	padding-bottom: 0;
+	padding-top: 6px;
+}
+
+.modal-body {
+	padding-bottom: 0;
+}
+.user-signin {
+	display: inline;
+	margin: auto;
+	text-align: center;
+}
 .gameline h1 {
 	padding-top: 1em;
 
@@ -33,6 +84,12 @@ hr {
 .gameline h4 {
 	padding-top: 1em;
 
+}
+
+#user-display {
+	display: inline;
+	text-align: center;
+	margin: auto;
 }
 
 

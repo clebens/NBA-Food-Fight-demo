@@ -71,11 +71,12 @@ define(function (require) {
 
         error: function(model, response, options) {
           console.log(response);
-        }
+        },
+
 
       });
       
-   }
+   },
     
 
   });

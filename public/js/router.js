@@ -22,6 +22,7 @@ define(function(require) {
 		    this.userSignupView = options.userSignupView;
 		    this.userView = options.userView;
 		    this.currentScheduleView = options.currentScheduleView;
+		    this.userFoodView = options.userFoodView;
 		    
 		},
 
@@ -44,6 +45,7 @@ define(function(require) {
 		    this.userSigninView.$el.show();
 		    this.userSignupView.$el.hide();
 		    this.userView.$el.hide();
+  	    this.userFoodView.$el.hide();
 		},
 
 		showUser: function (options) {
@@ -57,6 +59,7 @@ define(function(require) {
 	    this.userSigninView.$el.hide();
 	    this.userSignupView.$el.hide();
 	    this.userView.$el.show();
+	    this.userFoodView.$el.hide();
 
 			// var userName = $('#user-signup').html();
 			// var userName = $('#user-signup').children().children().html();
@@ -78,10 +81,14 @@ define(function(require) {
 	    this.userSigninView.$el.hide();
 	    this.userView.$el.hide();
 	    this.userSignupView.$el.show();
+	    this.userFoodView.$el.hide();
 		},
 
 		showUserFood: function () {
-
+	    this.userSigninView.$el.hide();
+	    this.userView.$el.hide();
+	    this.userSignupView.$el.hide();
+	    this.userFoodView.$el.show();
 		}
 
 

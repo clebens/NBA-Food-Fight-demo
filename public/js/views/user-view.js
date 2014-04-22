@@ -2,11 +2,14 @@
 define(function (require) {
   var Backbone = require('backbone');
   var $ = require('jquery');
+  require('jquery-cookie');
+
   var UserView = Backbone.View.extend({
    name: 'UserView',
 
    events: {
-    'click #signup-button': 'signUp'
+    'click #signup-button': 'signUp',
+    'click #signin-button': 'signIn'
    },
 
     initialize: function (options) {
@@ -32,12 +35,26 @@ define(function (require) {
       this.model.set("password", password);
       // console.log(this.model.id);
       this.model.save();
+      $.cookie('user-name', userName, { expires: 7, path: '/' });
       // var userName = $("#user-name")[0];
       console.log(this.model.attributes);
-      // this.model.userName = $("#user-name").attr('value'); 
-      alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+      // this.model.userName = $("#user-name").attr('value');
 
-    }
+      alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+    },
+
+    signIn: function() {
+      var userName = this.$el.find('#user-name').val();
+      var password = this.$el.find('#password').val();
+      this.model.set('userName', userName);
+      this.model.fetch();
+      if(password = this.model.get('password')) {
+        console.log('User logged in!');
+        $.cookie('user-name', userName, { expires: 7, path: '/' });
+      } else {
+        console.log('Incorrect Password');
+      }
+   }
     
 
   });

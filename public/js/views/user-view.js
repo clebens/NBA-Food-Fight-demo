@@ -9,7 +9,8 @@ define(function (require) {
 
    events: {
     'click #signup-button': 'signUp',
-    'click #signin-button': 'signIn'
+    'click #signin-button': 'signIn',
+    'click #user-signout': 'signOut'
    },
 
     initialize: function (options) {
@@ -45,7 +46,8 @@ define(function (require) {
     },
 
     signOut: function() {
-
+      $.removeCookie('user-name');
+      window.location.href = '#user-signin';
     },
 
     signIn: function() {
@@ -57,6 +59,11 @@ define(function (require) {
           if(password === model.get('password')) {
             console.log('User logged in!');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
+
+
+            window.location.href = '#user-view';
+
+
           } else {
              console.log('Incorrect Password');
           }

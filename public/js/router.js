@@ -1,6 +1,7 @@
 define(function(require) {
 	var Backbone = require('backbone');
 	var $ = require('jquery');
+	require('jquery-cookie');
 	
 	var Router = Backbone.Router.extend({
 

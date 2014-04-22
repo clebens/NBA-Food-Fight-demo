@@ -19,6 +19,7 @@ define(function (require) {
       	this.template = options.template;
       }
 
+      this.model.on('change', this.render, this);
       this.render();
     },
 
@@ -41,6 +42,10 @@ define(function (require) {
       // this.model.userName = $("#user-name").attr('value');
 
       alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+    },
+
+    signOut: function() {
+
     },
 
     signIn: function() {

@@ -47,6 +47,8 @@ hr {
 	margin-top: ;
 }
 
+.firstcharacter { font-family: 'Melbourne-bold'; font-size: 75pt; display: inline; }
+
 .page-title h2 {
 	font-family: 'Melbourne-bold';
 	font-size: 64pt;
@@ -150,14 +152,16 @@ img {
 }
 
 .rule-food-icon {
-	text-align: right;
+	text-align: center;
 	padding-right: 0;
 	padding-left: 0;
 }
 
 .rule-food-icon img {
 	max-width:140px; 
+	min-width: 0px;
 	max-height:140px;
+	min-height: 0px;
 }
 
 #title-panel.panel-default {
@@ -191,7 +195,7 @@ img {
 
 .game-panel {
 	width: 100%;
-	text-align: left;
+	text-align: center;
 	border-color: #454545;
 	border-width: 2px;
 	border-radius: 13px;

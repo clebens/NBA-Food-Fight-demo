@@ -31,7 +31,7 @@ define(function(require) {
 		},
 
 		selectGame: function() {
-			$.cookie('user-name', 'doggy');
+			// $.cookie('user-name', 'doggy');
 			var curUser = new User({id: $.cookie('user-name') });
 			curUser.fetch();
 			curUser.set('dailySelection', this.model.get('id'));

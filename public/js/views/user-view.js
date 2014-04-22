@@ -46,14 +46,14 @@ define(function (require) {
     signIn: function() {
       var userName = this.$el.find('#user-name').val();
       var password = this.$el.find('#password').val();
-      this.model.set('userName', userName);
-      this.model.fetch();
-      if(password = this.model.get('password')) {
+      //  this.model.set('userName', userName);
+      //  this.model.fetch();
+      // if(password = this.model.get('password')) {
         console.log('User logged in!');
         $.cookie('user-name', userName, { expires: 7, path: '/' });
-      } else {
-        console.log('Incorrect Password');
-      }
+      // } else {
+      //   console.log('Incorrect Password');
+      // }
    }
     
 

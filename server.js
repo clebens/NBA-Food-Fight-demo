@@ -187,7 +187,7 @@ app.put("/Users/:userName", function(req, res) {
     "id": req.body.id,
     "userName": req.body.userName,
     "password": req.body.password || "",
-    "foodAwards": req.body.foodAwards || {},
+    "foodAwards": req.body.foodAwards || [],
     "record": req.body.record || {},
     "previousResult": req.body.previousResult || {},
     "dailySelection": req.body.dailySelection || {}

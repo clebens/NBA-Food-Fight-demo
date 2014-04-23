@@ -42,10 +42,14 @@ define(function(require) {
 		},
 
 		showUserSignin: function () {
-		    this.userSigninView.$el.show();
-		    this.userSignupView.$el.hide();
-		    this.userView.$el.hide();
-  	    this.userFoodView.$el.hide();
+	    this.userSigninView.$el.show();
+	    this.userSignupView.$el.hide();
+	    this.userView.$el.hide();
+	    this.userFoodView.$el.hide();
+			this.currentScheduleView.$el.show();
+			$("#most-recent-result").show();
+			$("#contact-info").show();
+			$(".col-xs-6").last().show();
 		},
 
 		showUser: function (options) {
@@ -60,6 +64,10 @@ define(function(require) {
 	    this.userSignupView.$el.hide();
 	    this.userView.$el.show();
 	    this.userFoodView.$el.hide();
+			this.currentScheduleView.$el.show();
+			$("#most-recent-result").show();
+			$("#contact-info").show();
+			$(".col-xs-6").last().show();
 
 			// var userName = $('#user-signup').html();
 			// var userName = $('#user-signup').children().children().html();
@@ -82,6 +90,10 @@ define(function(require) {
 	    this.userView.$el.hide();
 	    this.userSignupView.$el.show();
 	    this.userFoodView.$el.hide();
+			this.currentScheduleView.$el.show();
+			$("#most-recent-result").show();
+			$("#contact-info").show();
+			$(".col-xs-6").last().show();
 		},
 
 		showUserFood: function () {
@@ -89,6 +101,10 @@ define(function(require) {
 	    this.userView.$el.hide();
 	    this.userSignupView.$el.hide();
 	    this.userFoodView.$el.show();
+			this.currentScheduleView.$el.hide();
+			$("#most-recent-result").hide();
+			$("#contact-info").hide();
+			$(".col-xs-6").last().hide();
 		}
 
 

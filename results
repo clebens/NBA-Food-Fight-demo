@@ -1,0 +1,38 @@
+20140422-atlanta-hawks-at-indiana-pacers
+20140422-washington-wizards-at-chicago-bulls
+20140421-golden-state-warriors-at-los-angeles-clippers
+20140420-charlotte-bobcats-at-miami-heat
+{}
+Written to DB
+-------------
+{ id: 'ncvzqkcmn',
+  userName: 'ncvzqkcmn',
+  password: 'p3i34u',
+  foodAwards: [],
+  record: { wins: 0, losses: 1 },
+  previousResult: 
+   { id: '20140420-charlotte-bobcats-at-miami-heat',
+     homeTeamId: 'miami-heat',
+     awayTeamId: 'charlotte-bobcats',
+     eventStatus: 'completed',
+     eventTime: '2014-04-20T19:30:00.000Z',
+     statsObject: 
+      { away_team: [Object],
+        home_team: [Object],
+        away_period_scores: [Object],
+        home_period_scores: [Object],
+        away_stats: [Object],
+        home_stats: [Object],
+        officials: [Object],
+        event_information: [Object],
+        away_totals: [Object],
+        home_totals: [Object] },
+     homeTeam: 
+      { teamName: 'Miami Heat',
+        teamLogo: '/images/logos/miami-heat-logo.png',
+        foodRules: [Object] },
+     awayTeam: 
+      { teamName: 'Charlotte Bobcats',
+        teamLogo: '/images/logos/charlotte-bobcats-logo.png',
+        foodRules: [Object] } },
+  dailySelection: null }

@@ -56,7 +56,10 @@ define(function (require) {
       // this.model.userName = $("#user-name").attr('value');
 
       // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+      $('.modal-backdrop').remove();
       window.location.href = "#user-view";
+      $('#failed-login').html('<p class="text-success">Thanks for signing up, " + userName + "!\nYour password is: " + password');
+      
     },
 
     signOut: function() {
@@ -88,8 +91,8 @@ define(function (require) {
 
 
           } else {
-            $('#failed-login').html('<p class="text-danger">Invalid username or password.');
              self.$el.show();
+             $('#failed-login').html('<p class="text-danger">Invalid username or password.');
              console.log('Incorrect Password');
           }
         }, 
@@ -98,8 +101,8 @@ define(function (require) {
           $('#user-loading').html('');
           console.log(response);
           //if(response.responseText === "No user found.") {
-            $('#failed-login').html('<p class="text-danger">Invalid username or password.');
             self.$el.show();
+            $('#failed-login').html('<p class="text-danger">Invalid username or password.');
         },
 
 

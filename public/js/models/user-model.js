@@ -22,7 +22,7 @@ define(function(require) {
 		    foodAwards: {},
 		    record: {},
 		    previousResult: {},
-		    dailySelection: {},
+		    dailySelection: null,
 		    // id: ''
 		    // url: 'Users/'
 		}, 
@@ -33,7 +33,7 @@ define(function(require) {
 		    foodAwards: {},
 		    record: {},
 		    previousResult: {},
-		    dailySelection: {},
+		    dailySelection: null
 
 		},
 

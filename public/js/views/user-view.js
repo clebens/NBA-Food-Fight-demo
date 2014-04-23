@@ -55,8 +55,8 @@ define(function (require) {
       console.log('Created user: ' + userName);
       // this.model.userName = $("#user-name").attr('value');
 
-      alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
-      // window.location.href = "#user-view";
+      // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+      window.location.href = "#user-view";
     },
 
     signOut: function() {

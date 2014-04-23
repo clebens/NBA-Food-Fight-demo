@@ -19,6 +19,7 @@ define(function(require) {
 			//console.log(initialSchedule);
 			this.collection = initialSchedule;
 			this.listenTo (this.collection, 'add', this.render);
+      this.listenTo(this.collection, 'manualRerender', this.render);
 		},
 
 		render: function() {

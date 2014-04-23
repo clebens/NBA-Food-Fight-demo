@@ -16,6 +16,7 @@ define(function(require) {
 
 		initialize: function() {
 			this.setReadableDate();
+      this.listenTo(this.model, 'manualRerender', this.render);
 		},
 
 		setReadableDate: function() {

@@ -19,7 +19,7 @@ define(function (require) {
       if (options.template) {
       	this.template = options.template;
       }
-      var self=this;
+
       this.listenTo(this.model, 'change', this.render);
       this.listenTo(this.model, 'manualRerender', this.render);
       
@@ -56,7 +56,7 @@ define(function (require) {
       // this.model.userName = $("#user-name").attr('value');
 
       alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
-      window.location.href = "#user-view"; 
+      // window.location.href = "#user-view";
     },
 
     signOut: function() {

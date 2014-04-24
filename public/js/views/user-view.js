@@ -65,6 +65,7 @@ define(function (require) {
     signOut: function() {
       this.$el.hide();
       $.removeCookie('user-name');
+      this.model.clear();
       $('#most-recent-result').html('');
       //this.model.clearData();
       window.location.href = '#user-signin';

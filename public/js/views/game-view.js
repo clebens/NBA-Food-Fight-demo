@@ -16,8 +16,8 @@ define(function(require) {
 
 		initialize: function() {
 			this.setReadableDate();
-		
-      this.listenTo(this.model, 'manualRerender', this.render);
+
+			this.listenTo(this.model, 'manualRerender', this.render);
 		},
 
 		setReadableDate: function() {
@@ -26,15 +26,13 @@ define(function(require) {
 			this.model.set('readableDate', unreadableDate.toLocaleDateString());
 			this.model.set('readableTime', unreadableDate.toLocaleTimeString());
 
-		},
-
-		validDate: function () {
-			var unreadableGametime = Date.parse(this.model.get('eventTime'));
-			console.log(Date.now());
-			console.log(unreadableGametime);
-			
 
 		},
+
+		gameBorder: function() {
+			$(this.el).find('.panel').addClass("active").siblings().removeClass('active');
+		},
+
 
 		render: function () {
 			$(this.el).data('event_id', this.model.get('id'));
@@ -44,7 +42,6 @@ define(function(require) {
 
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
-
 
 			if (!($.cookie('user-name'))) {
 				alert("Sign up or sign in to select a game");
@@ -59,13 +56,12 @@ define(function(require) {
 			var curEventId = this.model.get('id');
 			var unreadableGametime = Date.parse(this.model.get('eventTime'));
 			if (Date.now() >= unreadableGametime) {
-			// 	$('#pick-new-game').modal('toggle');
-			//	$('.modal-backdrop').remove();
-
-
+				// $('#pick-new-game').modal('toggle');
+				// $('.modal-backdrop').remove();
 				alert("This game has already started. Pick another game.");
 				return;
 			} else {
+			this.gameBorder();
 			curUser.fetch({
 				success: function(model, response, options) {
 					model.set('dailySelection', curEventId);
@@ -96,6 +92,8 @@ define(function(require) {
 
 
 
-
-// Check if the game has started yet.
-// If the game has started, tell user this game has already started or remove it.
+// 	$(".gameContainer").addClass("active");
+// 			}, function () {
+// 				$(".gameContainer").removeClass("active");
+// 			});
+// });

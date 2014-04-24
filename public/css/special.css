@@ -47,7 +47,10 @@ hr {
 	margin-top: ;
 }
 
-.firstcharacter { font-family: 'Melbourne-bold'; font-size: 75pt; display: inline; }
+.firstcharacter { 
+	font-family: 'Melbourne-bold'; 
+	font-size: 96pt; 
+	display: inline; }
 
 .page-title h2 {
 	font-family: 'Melbourne-bold';

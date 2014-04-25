@@ -12,7 +12,7 @@ define(function(require) {
 
 		}, 
 
-		url: '/Schedule'
+		url: '/Events/Today'
 
 	});
 

@@ -82,6 +82,41 @@ app.get('/Users', function (req, res) {
 
 // Get Events
 
+app.get('/Events/Today', function (req, res) {
+	 console.log(getTodaysDate());
+	 db.search('Events', getTodaysDate())
+	.then(function (result) {
+		var outputArr = [];
+		
+		result.body.results.forEach(function(item) {
+			outputArr.push(item.value);
+		});
+		
+		res.send(outputArr);
+	})
+	.fail(function (err) {
+
+		res.end('/Events/date/:date - There are no games on that date.')
+	})
+})
+
+app.get('/Events/Date/:date', function (req, res) {
+	 db.search('Events', req.params.date)
+	.then(function (result) {
+		var outputArr = [];
+		
+		result.body.results.forEach(function(item) {
+			outputArr.push(item.value);
+		});
+		
+		res.send(outputArr);
+	})
+	.fail(function (err) {
+
+		res.end('/Events/date/:date - There are no games on that date.')
+	})
+})
+
 app.get('/Events/:gamekey', function (req, res) {
 	 db.get('Events', req.params.gamekey)
 	.then(function (result) {
@@ -97,8 +132,13 @@ app.get('/Events/:gamekey', function (req, res) {
 app.get('/Events', function (req, res) {
 	 db.list('Events')
 	.then(function (result) {
-		console.log(result.body);
-		res.send(result.body)
+		var outputArr = [];
+		
+		result.body.results.forEach(function(item) {
+			outputArr.push(item.value);
+		});
+		
+		res.send(outputArr);
 	})
 	.fail(function (err) {
 
@@ -252,11 +292,24 @@ app.get('*', function(req, res) {
 // Database Updates
 // Colin
 
-function addEventToDB(eventObject) {
+function getTodaysDate() {
+ 	var dateString = '';
+ 	var date = new Date();
+ 
+ 	dateString += date.getFullYear();
 
+ 	if(date.getMonth() < 10) 
+ 		dateString += '0'; 
+
+ 	dateString += date.getMonth()+1;
+
+ 	if(date.getDate() < 10) 
+	 	dateString += '0';
+
+	 dateString += date.getDate();
+
+	 return dateString;		 
 }
-
-
 
 // End Database Updates
 

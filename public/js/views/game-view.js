@@ -3,6 +3,15 @@ define(function(require) {
 	var Backbone = require('backbone');
 	var template = require('hbs!templates/game-in-schedule');
 	var User = require('models/user-model');
+	// var AlertModel = require('models/alert-model');
+	// var AlertView = require('./alert-view');
+	// var alertModel = new AlertModel({});
+ //  var alert = new AlertView({
+ //  	  $el: '.alert-modal',
+ //      template: require('hbs!templates/alert-modal'),
+ //    	model: alertModel
+ //  	});
+  // var Alert = require('hbs!templates/alert-modal');
 
 
 	var GameView = Backbone.View.extend({
@@ -42,13 +51,22 @@ define(function(require) {
 			return this;
 		},
 
+		showModal: function (header, description) {
+			$('#alert-modal').find('.modal-body').empty();
+			$('#alert-modal').find('.alert-title').empty();
+			$('#alert-modal').find('.modal-body').html('<p>'+description+'</p>');
+			$('#alert-modal').find('.alert-title').html('<p>'+header+'</p>');
+			$('#alert-modal').modal('show');
+		},
+
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
 
 
 			if (!($.cookie('user-name'))) {
-				alert("Sign up or sign in to select a game");
-				return
+				// showModal.call(this, 'Blah Title', 'Blah Description');
+				this.showModal('Not Signed In', 'Sign up or sign in to select a game.');				
+				return;
 			}
 
 
@@ -61,9 +79,10 @@ define(function(require) {
 			if (Date.now() >= unreadableGametime) {
 			// 	$('#pick-new-game').modal('toggle');
 			//	$('.modal-backdrop').remove();
+			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
+		
 
-
-				alert("This game has already started. Pick another game.");
+				// alert("This game has already started. Pick another game.");
 				return;
 			} else {
 			curUser.fetch({

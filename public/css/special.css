@@ -76,11 +76,17 @@ hr {
 .modal-body {
 	padding-bottom: 0;
 }
+
 .user-signin {
 	display: inline;
 	margin: auto;
 	text-align: center;
 }
+
+.alert-title {
+	color: #FF0000;
+}
+
 .gameline h1 {
 	padding-top: 1em;
 
@@ -89,6 +95,10 @@ hr {
 .gameline h4 {
 	padding-top: 1em;
 
+}
+
+.text-success {
+	text-align: center;
 }
 
 #user-name-login {

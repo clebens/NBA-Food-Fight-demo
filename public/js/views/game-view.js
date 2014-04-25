@@ -3,16 +3,6 @@ define(function(require) {
 	var Backbone = require('backbone');
 	var template = require('hbs!templates/game-in-schedule');
 	var User = require('models/user-model');
-	// var AlertModel = require('models/alert-model');
-	// var AlertView = require('./alert-view');
-	// var alertModel = new AlertModel({});
- //  var alert = new AlertView({
- //  	  $el: '.alert-modal',
- //      template: require('hbs!templates/alert-modal'),
- //    	model: alertModel
- //  	});
-  // var Alert = require('hbs!templates/alert-modal');
-
 
 	var GameView = Backbone.View.extend({
 

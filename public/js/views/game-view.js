@@ -6,7 +6,6 @@ define(function(require) {
 	var GameModel = require('models/game-model');
 
 
-
 	var GameView = Backbone.View.extend({
 
 			tagName: 'div',
@@ -56,12 +55,21 @@ define(function(require) {
 			return this;
 		},
 
+		showModal: function (header, description) {
+			$('#alert-modal').find('.modal-body').empty();
+			$('#alert-modal').find('.alert-title').empty();
+			$('#alert-modal').find('.modal-body').html('<p>'+description+'</p>');
+			$('#alert-modal').find('.alert-title').html('<p>'+header+'</p>');
+			$('#alert-modal').modal('show');
+		},
+
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
 
 			if (!($.cookie('user-name'))) {
-				alert("Sign up or sign in to select a game");
-				return
+				// showModal.call(this, 'Blah Title', 'Blah Description');
+				this.showModal('Not Signed In', 'Sign up or sign in to select a game.');				
+				return;
 			}
 
 
@@ -72,9 +80,9 @@ define(function(require) {
 			var curEventId = this.model.get('id');
 			var unreadableGametime = Date.parse(this.model.get('eventTime'));
 			if (Date.now() >= unreadableGametime) {
-				// $('#pick-new-game').modal('toggle');
-				// $('.modal-backdrop').remove();
-				alert("This game has already started. Pick another game.");
+			// 	$('#pick-new-game').modal('toggle');
+			//	$('.modal-backdrop').remove();
+			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
 				return;
 			} else {
 			this.gameClick();

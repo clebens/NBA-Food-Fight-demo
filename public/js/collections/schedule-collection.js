@@ -8,6 +8,8 @@ define(function(require) {
 
 		model: Game,
 
+		comparator: 'eventTime',
+
 		initialize: function() {
 
 		}, 

@@ -45,14 +45,16 @@ function checkUsers() {
 		db.get('Events', user.dailySelection)
 		.then(function(dailySelection){
 			dailySelection = dailySelection.body;
-			
+
+      // Only run code below if event is completed
 			if (dailySelection.eventStatus == 'completed') {
 				dailySelection.homeTeam.foodRules.forEach(function(foodRule) {
 					
 				// FOOD RULE DATA AVAILABLE
 				user.previousResult = dailySelection;
 				user.dailySelection = null;
-				if (!user.foodAwards.length) {
+
+        if (!user.foodAwards.length) {
 					user.foodAwards = [];
 				}
 

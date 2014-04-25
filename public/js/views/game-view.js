@@ -20,6 +20,7 @@ define(function(require) {
 			this.listenTo(this.model, 'manualRerender', this.render);
 		},
 
+
 		setReadableDate: function() {
 			var unreadableDate = new Date(this.model.get('eventTime'));
 		

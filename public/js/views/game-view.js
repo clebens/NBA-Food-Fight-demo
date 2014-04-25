@@ -30,7 +30,8 @@ define(function(require) {
 		},
 
 		gameBorder: function() {
-			$(this.el).find('.panel').addClass("active").siblings().removeClass('active');
+			$('.active').removeClass('active');
+			$(this.el).find('.panel').addClass("active");
 		},
 
 

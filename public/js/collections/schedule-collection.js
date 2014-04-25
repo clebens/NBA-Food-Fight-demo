@@ -8,11 +8,13 @@ define(function(require) {
 
 		model: Game,
 
+		comparator: 'eventTime',
+
 		initialize: function() {
 
 		}, 
 
-		url: '/Schedule'
+		url: '/Events/Today'
 
 	});
 

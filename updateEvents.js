@@ -1,27 +1,27 @@
 
-// Includes
-var path = require('path');
-var fs = require('fs');
-var superagent = require('superagent');
-var exphbs = require('express3-handlebars');
-
-
-// External Modules
-var checkRules = require('./checkRules');
-
-//Global Variable Declarations
-
-//Grab Orchestrate.io API key from local file 
-//(to support easy key shielding)
-var orcKey = fs.readFileSync('./orcKey', {encoding: 'utf8'}).replace('\n', '');
-
-//Grab xmlstats API key from local file
-var xmlstatsKey = fs.readFileSync('./xmlstatsKey', {encoding: 'utf8'}).replace('\n', '');
-var xmlstatsRoot = 'https://erikberg.com/';
-var db = require('orchestrate')(orcKey);
-
-
 function getEvents(date) {
+
+	// Includes
+	var path = require('path');
+	var fs = require('fs');
+	var superagent = require('superagent');
+	var exphbs = require('express3-handlebars');
+
+
+	// External Modules
+	var checkRules = require('./checkRules');
+
+	//Global Variable Declarations
+
+	//Grab Orchestrate.io API key from local file 
+	//(to support easy key shielding)
+	var orcKey = fs.readFileSync('./orcKey', {encoding: 'utf8'}).replace('\n', '');
+
+	//Grab xmlstats API key from local file
+	var xmlstatsKey = fs.readFileSync('./xmlstatsKey', {encoding: 'utf8'}).replace('\n', '');
+	var xmlstatsRoot = 'https://erikberg.com/';
+	var db = require('orchestrate')(orcKey);
+
 	//Format the date string: yyyyMMdd
 
 	var year = date.getFullYear().toString();
@@ -51,12 +51,18 @@ function getEvents(date) {
 				var item = eventArray[count];
 				// Foreach Contents
 				var key = item.event_id;
+				
+				// Generate Date
+				var gameDate = item.event_id.split('-')[0];
+
 				var dbObject = {
+
 					'id': item.event_id,
 					'homeTeamId': item.home_team.team_id,
 					'awayTeamId': item.away_team.team_id,
 					'eventStatus': item.event_status,
 					'eventTime': new Date(item.start_date_time),
+					'eventDate': gameDate,
 					'statsObject': {}
 				};
 				if (dbObject['eventStatus'] === 'completed') {
@@ -134,18 +140,20 @@ function addTeamToDB(teamId, teamObject) {
 var today = new Date();
 var yesterday = new Date();
 var tomorrow = new Date();
+var twodays = new Date();
 yesterday.setDate(yesterday.getDate()-1);
 tomorrow.setDate(tomorrow.getDate()+1);
+twodays.setDate(twodays.getDate()+2);
 
 /* Update every 20 seconds) */
 exports.getTimelyEvents = function() {
 	getEvents(tomorrow);
 	getEvents(today);
 	getEvents(yesterday);
+	getEvents(twodays);
 }
 
 // Uncomment next line to clear database before updating
-db.deleteCollection('Events');
 
 // Uncomment next line to execute database update from
 // command line (rather than in dependent source);

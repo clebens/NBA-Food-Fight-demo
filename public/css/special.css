@@ -219,3 +219,9 @@ img {
 	background-color: #454545;
 }
 
+
+.active {
+	border-color: #5cb85c;
+	border-width: 8px;
+}
+

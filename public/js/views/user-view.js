@@ -88,7 +88,7 @@ define(function (require) {
             self.model.trigger('manualRerender');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
             window.location.href = '#user-view';
-
+            // this.showLastResult();
 
           } else {
              self.$el.show();
@@ -105,10 +105,21 @@ define(function (require) {
             $('#failed-login').html('<p class="text-danger">Invalid username or password.');
         },
 
-
       });
       
-   },
+     },
+
+     showLastResult: function() {
+        if(this.model.get('previousResult').id) {
+
+            console.log(this.model.get('previousResult'));
+            var recentTemplate = require('hbs!templates/recent-game');
+
+          $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
+
+        }
+     }
+
     
 
   });

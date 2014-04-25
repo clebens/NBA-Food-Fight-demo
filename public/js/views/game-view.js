@@ -29,9 +29,10 @@ define(function(require) {
 
 		},
 
-		gameBorder: function() {
+		gameClick: function() {
 			$('.active').removeClass('active');
-			$(this.el).find('.panel').addClass("active");
+			$(this.el).find('.panel').addClass('active');
+
 		},
 
 
@@ -54,6 +55,7 @@ define(function(require) {
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});
+
 			var curEventId = this.model.get('id');
 			var unreadableGametime = Date.parse(this.model.get('eventTime'));
 			if (Date.now() >= unreadableGametime) {
@@ -62,7 +64,7 @@ define(function(require) {
 				alert("This game has already started. Pick another game.");
 				return;
 			} else {
-			this.gameBorder();
+			this.gameClick();
 			curUser.fetch({
 				success: function(model, response, options) {
 					model.set('dailySelection', curEventId);
@@ -72,6 +74,10 @@ define(function(require) {
 					console.log(model.get('dailySelection'));
 					console.log(model.get('id') + " selected " + model.get('dailySelection'));
 					model.save();
+
+					var todaySelect = $('<p>' + model.get('dailySelection') + '</p>');
+					$('#most-recent-result').prepend(todaySelect);
+
 					
 				},
 
@@ -79,6 +85,7 @@ define(function(require) {
 				error: function(model, response, options) {
 					console.log(response.responseText);
 				}
+
 			});
 		}
 			

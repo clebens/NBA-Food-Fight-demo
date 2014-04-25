@@ -32,14 +32,9 @@ define(function (require) {
     render: function() { 
       this.$el.html(this.template(this.model.toJSON())); 
       if (this.model.get('userName')) {
-         this.renderRecentResult();  
+         this.showLastResult();  
       }
     },
-
-    renderRecentResult: function() {
-      var recentTemplate = require('hbs!templates/recent-game');
-      $('#most-recent-result').html(recentTemplate());
-    }, 
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
@@ -112,7 +107,12 @@ define(function (require) {
 
      showLastResult: function() {
         if(this.model.get('previousResult').id) {
-
+            var previousResult = this.model.get('previousResult');
+            if (previousResult.homeTeam.foodRules[0].foodWon === true) {
+              previousResult.result = "WINNER";
+            } else {
+              previousResult.result = "LOSER";
+            }
             console.log(this.model.get('previousResult'));
             var recentTemplate = require('hbs!templates/recent-game');
 

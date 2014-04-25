@@ -140,14 +140,17 @@ function addTeamToDB(teamId, teamObject) {
 var today = new Date();
 var yesterday = new Date();
 var tomorrow = new Date();
+var twodays = new Date();
 yesterday.setDate(yesterday.getDate()-1);
 tomorrow.setDate(tomorrow.getDate()+1);
+twodays.setDate(twodays.getDate()+2);
 
 /* Update every 20 seconds) */
 exports.getTimelyEvents = function() {
 	getEvents(tomorrow);
 	getEvents(today);
 	getEvents(yesterday);
+	getEvents(twodays);
 }
 
 // Uncomment next line to clear database before updating

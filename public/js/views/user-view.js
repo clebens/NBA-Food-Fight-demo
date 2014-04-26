@@ -73,9 +73,12 @@ define(function (require) {
       // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
       $('.modal-backdrop').remove();
       window.location.href = "#user-view";
+
       $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!\nYour password is: ' + password);
       $('#failed-login').show();
       $('#user-name').hide();
+      $('body').removeClass("modal-open");
+
     },
 
     signOut: function() {

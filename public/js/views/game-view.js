@@ -46,6 +46,10 @@ define(function(require) {
 				}
 			});
 
+			$(this.el).find('.panel').addClass("active");
+			$('.modal-title').removeClass('red').addClass('green');
+			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
+			+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
 		},
 
 
@@ -68,6 +72,7 @@ define(function(require) {
 
 			if (!($.cookie('user-name'))) {
 				// showModal.call(this, 'Blah Title', 'Blah Description');
+				$('.modal-title').removeClass('green').addClass('red');
 				this.showModal('Not Signed In', 'Sign up or sign in to select a game.');				
 				return;
 			}
@@ -76,12 +81,12 @@ define(function(require) {
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});
-
-			var curEventId = this.model.get('id');
+			var curEventId = this.model.toJSON();
 			var unreadableGametime = Date.parse(this.model.get('eventTime'));
 			if (Date.now() >= unreadableGametime) {
 			// 	$('#pick-new-game').modal('toggle');
 			//	$('.modal-backdrop').remove();
+			$('.modal-title').removeClass('green').addClass('red');
 			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
 				return;
 			} else {

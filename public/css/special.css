@@ -83,8 +83,12 @@ hr {
 	text-align: center;
 }
 
-.alert-title {
+.red {
 	color: #FF0000;
+}
+
+.green {
+	color: #00CC00;
 }
 
 .gameline h1 {

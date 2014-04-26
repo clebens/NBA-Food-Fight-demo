@@ -3,6 +3,7 @@ define(function(require) {
 	var Backbone = require('backbone');
 	var template = require('hbs!templates/game-in-schedule');
 	var User = require('models/user-model');
+	var GameModel = require('models/game-model');
 
 	var GameView = Backbone.View.extend({
 
@@ -35,6 +36,18 @@ define(function(require) {
 			$('.modal-title').removeClass('red').addClass('green');
 			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
 			+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+			
+		},
+
+		gameDisplay: function() {
+			var gameModel = new GameModel({'id': this.model.get('dailySelection')});
+			var gameSelect = (this.model.attributes.homeTeam.teamName);
+			gameModel.fetch({
+				success: function() {
+					$('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + gameSelect + '. Good luck!</h5></div>');
+					console.log("Game Display was succesful.");
+				}
+			});
 		},
 
 
@@ -61,13 +74,13 @@ define(function(require) {
 				this.showModal('Not Signed In', 'Sign up or sign in to select a game.');				
 				return;
 			}
-
+			this.gameDisplay();
 
 
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});
-			var curEventId = this.model.get('id');
+			var curEventId = this.model.toJSON();
 			var unreadableGametime = Date.parse(this.model.get('eventTime'));
 			if (Date.now() >= unreadableGametime) {
 			// 	$('#pick-new-game').modal('toggle');
@@ -77,6 +90,7 @@ define(function(require) {
 				return;
 			} else {
 			this.gameBorder();
+			
 			curUser.fetch({
 				success: function(model, response, options) {
 					model.set('dailySelection', curEventId);
@@ -93,6 +107,7 @@ define(function(require) {
 				error: function(model, response, options) {
 					console.log(response.responseText);
 				}
+				
 			});
 		}
 			

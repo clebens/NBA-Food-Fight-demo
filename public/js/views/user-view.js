@@ -10,7 +10,10 @@ define(function (require) {
    events: {
     'click #signup-button': 'signUp',
     'click #signin-button': 'signIn',
-    'click #user-signout': 'signOut'
+    'click #user-signout': 'signOut',
+    'click #food': 'removeGreeting',
+    'click #home': 'addHello'
+
    },
 
     initialize: function (options) {
@@ -26,7 +29,15 @@ define(function (require) {
       this.render();
     },
 
+    addHello: function() {
+      $('#user-name').show();
+    },
+
     loginTest: function() {
+    },
+
+    removeGreeting: function() {
+      $('#failed-login').hide();
     },
 
     render: function() { 
@@ -34,6 +45,15 @@ define(function (require) {
       if (this.model.get('userName')) {
          this.showLastResult();  
       }
+    },
+
+    renderRecentResult: function() {
+      var recentTemplate = require('hbs!templates/recent-game');
+      $('#most-recent-result').html(recentTemplate());
+    }, 
+
+    resetInterface: function () {
+
     },
 
     signUp: function () {
@@ -53,8 +73,9 @@ define(function (require) {
       // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
       $('.modal-backdrop').remove();
       window.location.href = "#user-view";
-      $('#failed-login').html('<p class="text-success">Thanks for signing up, " + userName + "!\nYour password is: " + password');
-      
+      $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!\nYour password is: ' + password);
+      $('#failed-login').show();
+      $('#user-name').hide();
     },
 
     signOut: function() {
@@ -63,6 +84,8 @@ define(function (require) {
       this.model.clear();
       $('#most-recent-result').html('');
       //this.model.clearData();
+      // debugger;
+      this.removeGreeting();
       window.location.href = '#user-signin';
     },
 

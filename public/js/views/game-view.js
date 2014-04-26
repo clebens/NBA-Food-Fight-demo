@@ -67,7 +67,7 @@ define(function(require) {
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});
-			var curEventId = this.model.get('id');
+			var curEventId = this.model.toJSON();
 			var unreadableGametime = Date.parse(this.model.get('eventTime'));
 			if (Date.now() >= unreadableGametime) {
 			// 	$('#pick-new-game').modal('toggle');

@@ -89,6 +89,7 @@ define(function(require) {
 
 	      if (element === 'signIn') {
 	        this.userSigninView.$el.show();
+	        $('#about').show();
 	      } else {
 	        this.userSigninView.$el.hide();
 	      }
@@ -96,7 +97,7 @@ define(function(require) {
 	      if (element === 'userDisplay') {
 		    this.userView.$el.show();            
 		    this.showMenu();
-
+		    $('#about').hide();
 	      } else {
 		    this.userView.$el.hide();
             this.hideMenu();
@@ -111,7 +112,7 @@ define(function(require) {
 
 	    hideMenu: function() {
 	      $(this.menuTag).hide();
-	    },
+	    }
 
 
 	});

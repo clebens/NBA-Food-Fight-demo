@@ -96,6 +96,7 @@ define(function (require) {
       this.model.clear();
       $('#most-recent-result').html('');
       this.removeGreeting();
+
       window.location.href = '#user-signin';
     },
 
@@ -117,7 +118,8 @@ define(function (require) {
             self.model.trigger('manualRerender');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
             window.location.href = '#user-view';
- 
+
+
           } else {
              self.$el.show();
              $('#failed-login').html('<p class="text-danger">Invalid username or password.');

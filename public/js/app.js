@@ -10,33 +10,26 @@ define(function(require) {
   var app = {};
 
     // initialize menu handlers
-  $('#menu-about').click("about", displayMenuItem);
-  $('#menu-most-recent-result').click("most-recent-result", displayMenuItem);
-  $('#menu-currently-selected-game').click("currently-selected-game", displayMenuItem);
+  $('#menu-user-picks').click("user-picks", displayMenuItem);
+  $('#menu-current-schedule').click("current-schedule", displayMenuItem);
   $('#menu-user-food').click("user-food", displayMenuItem);
+  $('#menu-user-signout').click("user-signout", displayMenuItem);
 
 
-  displayMenuItem({data: "about"});
+  if ($.cookie('userName')) {
+    $('#about').hide();
+    displayMenuItem({data: 'user-picks'});
+  } else {
+    displayMenuItem({data: "current-schedule"});
+  }
 
   function displayMenuItem(eventObject) {
       console.log("eventObject.data:" + eventObject.data);
-      
-      if (eventObject.data === 'about') {
-        $('#about').show();
-      } else {
-        $('#about').hide();
-      }
 
-      if (eventObject.data === 'most-recent-result') {
-       $('#most-recent-result').show();
+      if (eventObject.data === 'current-schedule') {
+        $('#schedule-output').show();
       } else {
-        $('#most-recent-result').hide();
-      }
-
-      if (eventObject.data === 'currently-selected-game') {
-        $('#currently-selected-game').show();
-      } else {
-        $('#currently-selected-game').hide();
+        $('#schedule-output').hide();
       }
 
       if (eventObject.data === 'user-food') {
@@ -44,6 +37,19 @@ define(function(require) {
       } else {
         $('#user-food').hide();
       } 
+
+      if (eventObject.data === 'user-picks') {
+        $('#user-picks').show();
+        $('#most-recent-result').show();
+        $('#currently-selected-game').show();
+      } else {
+        $('#user-picks').hide();
+      }
+
+      if (eventObject.data === "user-signout") {
+        userView.signOut();
+        $('#schedule-output').show();
+      }
   }
   
   var UserView = require('views/user-view');

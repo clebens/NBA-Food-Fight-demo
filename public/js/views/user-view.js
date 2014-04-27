@@ -145,9 +145,10 @@ define(function (require) {
 
      showLastResult: function() {
 
-        var previousResult = this.model.get('previousResult');
-        
-        if (typeof previousResult == 'object' && previousResult != null) {
+      var previousResult = this.model.get('previousResult');
+      previousResult.title = "Previous Result";
+
+        if (typeof previousResult === 'object' && previousResult != null) {
           if(Object.keys(previousResult).length) {
               if (previousResult.homeTeam.foodRules[0].foodWon === true) {
                 previousResult.result = "WINNER";
@@ -177,12 +178,18 @@ define(function (require) {
      },
 
      dailyPick: function() {
-      var dailySelection = (this.model.get('dailySelection'));
+      var dailySelection = $.extend(true, {}, this.model.get('dailySelection'));
+      dailySelection.title = "Current Selection";
+      
+      var dailyPickTemplate = require('hbs!templates/recent-game');
+
     
         if (typeof dailySelection === 'object' && dailySelection != null) {
 
           if (Object.keys(dailySelection).length) {
-             $('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + dailySelection.homeTeam.teamName  + '. Good luck!</h5></div>');
+             // $('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + dailySelection.homeTeam.teamName  + '. Good luck!</h5></div>');
+             $('#today-picks').html(dailyPickTemplate(dailySelection));
+             dailySelection.title
            } else {
             noDailySelection();
            } 

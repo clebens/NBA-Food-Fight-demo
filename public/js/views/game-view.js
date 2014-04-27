@@ -52,6 +52,14 @@ define(function(require) {
 			$('#alert-modal').modal('show');
 		},
 
+		// verifySelection: function (curUser) {
+		// 	if (curUser.attributes.dailySelection !== {} ) {
+		// 		console.log ("You already got a game, dude")
+		// 	} else if (curUser.attributes.dailySelection !== {} ) {
+		// 		console.log("no games selected");
+		// 	}
+		// },
+
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
 
@@ -61,7 +69,6 @@ define(function(require) {
 				this.showModal('Not Signed In', 'Sign up or sign in to select a game.');				
 				return;
 			}
-
 
 
 			var curUser = new User({
@@ -75,6 +82,11 @@ define(function(require) {
 			$('.modal-title').removeClass('green').addClass('red');
 			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
 				return;
+			// } else if (curUser.attributes.dailySelection !== {} ) {
+			// 	$('.modal-title').removeClass('green').addClass('red');
+
+			// 	console.log(curUser);
+				
 			} else {
 			this.gameBorder();
 			curUser.fetch({
@@ -85,17 +97,15 @@ define(function(require) {
 					console.log(model.get('password'));
 					console.log(model.get('dailySelection'));
 					console.log(model.get('id') + " selected " + model.get('dailySelection'));
-					model.save();
-					
+					model.save();	
 				},
-
 
 				error: function(model, response, options) {
 					console.log(response.responseText);
 				}
+
 			});
 		}
-			
 			//curUser.save();
 		}
 

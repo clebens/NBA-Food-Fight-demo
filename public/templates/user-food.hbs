@@ -16,6 +16,7 @@
     <div class="col-xs-8 col-xs-offset-2">
       <div class="panel game-panel panel-default">
           <div class="food-awards">
+            <p>Your overall record is {{#each record}}{{/each}}.</p>
             {{#each foodAwards}}
             <img src="/images/food/{{this}}.png"> 
             {{/each}} 

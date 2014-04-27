@@ -30,13 +30,25 @@ define(function(require) {
 
 		},
 
-		gameBorder: function() {
+	gameBorder: function() {
 			$('.active').removeClass('active');
+			$(this.el).find('.panel').addClass('active');
+
+			var gameModel = new GameModel({'id': this.model.get('dailySelection')});
+			console.log(gameModel);
+
+			gameModel.fetch({
+				success: function() {
+					var gameSelect = gameModel.get('homeTeamId');
+					console.log(gameSelect);
+					$('#most-recent-result').replaceWith(gameSelect);
+				}
+			});
+
 			$(this.el).find('.panel').addClass("active");
 			$('.modal-title').removeClass('red').addClass('green');
 			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
 			+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
-			
 		},
 
 		currentGameDisplay: function() {
@@ -88,7 +100,6 @@ define(function(require) {
 			}
 		
 
-
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});
@@ -103,7 +114,6 @@ define(function(require) {
 			} else {
 			this.gameBorder();
 
-			
 			curUser.fetch({
 				success: function(model, response, options) {
 					model.set('dailySelection', curEventId);
@@ -113,6 +123,8 @@ define(function(require) {
 					console.log(model.get('dailySelection'));
 					console.log(model.get('id') + " selected " + model.get('dailySelection'));
 					model.save();
+
+				
 					
 				},
 
@@ -120,7 +132,7 @@ define(function(require) {
 				error: function(model, response, options) {
 					console.log(response.responseText);
 				}
-				
+
 			});
 		}
 			

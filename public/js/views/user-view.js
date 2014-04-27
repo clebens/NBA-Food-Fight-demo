@@ -43,7 +43,7 @@ define(function (require) {
     render: function() { 
       this.$el.html(this.template(this.model.toJSON())); 
       if (this.model.get('userName')) {
-         this.renderRecentResult();  
+         this.showLastResult();  
       }
     },
 
@@ -110,7 +110,7 @@ define(function (require) {
             self.model.trigger('manualRerender');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
             window.location.href = '#user-view';
-
+            // this.showLastResult();
 
           } else {
              self.$el.show();
@@ -127,10 +127,26 @@ define(function (require) {
             $('#failed-login').html('<p class="text-danger">Invalid username or password.');
         },
 
+      });
+      
+     },
 
-    });
+     showLastResult: function() {
+        if(this.model.get('previousResult').id) {
+            var previousResult = this.model.get('previousResult');
+            if (previousResult.homeTeam.foodRules[0].foodWon === true) {
+              previousResult.result = "WINNER";
+            } else {
+              previousResult.result = "LOSER";
+            }
+            console.log(this.model.get('previousResult'));
+            var recentTemplate = require('hbs!templates/recent-game');
 
-    }
+          $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
+
+        }
+     }
+
   });
     
 
@@ -138,4 +154,4 @@ define(function (require) {
 
   return UserView;
 
-});
+})

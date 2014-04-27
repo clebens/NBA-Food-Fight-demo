@@ -9,40 +9,49 @@ define(function(require) {
   var Router = require('router');
   var app = {};
 
-  // initialize menu handlers
-  $('menu-about').on('click', null, "about", displayMenuItem);
-  $('menu-most-recent-result').on('click', null, "most-recent-result", displayMenuItem);
+    // initialize menu handlers
+  $('#menu-user-picks').click("user-picks", displayMenuItem);
+  $('#menu-current-schedule').click("current-schedule", displayMenuItem);
+  $('#menu-user-food').click("user-food", displayMenuItem);
+  $('#menu-user-signout').click("user-signout", displayMenuItem);
 
+
+  if ($.cookie('userName')) {
+    $('#about').hide();
+    displayMenuItem({data: 'user-picks'});
+  } else {
+    displayMenuItem({data: "current-schedule"});
+  }
 
   function displayMenuItem(eventObject) {
-      console.log("event.data" + event.data);
-      
-      if (event.data === 'about') {
-        $('#about').show();
+      console.log("eventObject.data:" + eventObject.data);
+
+      if (eventObject.data === 'current-schedule') {
+        $('#schedule-output').show();
       } else {
-        $('#about').hide();
+        $('#schedule-output').hide();
       }
 
-      if (event.data === 'most-recent-result') {
-       $('#most-recent-result').show();
-      } else {
-        $('#most-recent-result').hide();
-      }
-
-      if (event.data === 'currently-selected-game') {
-        $('#currently-selected-game').show();
-      } else {
-        $('#currently-selected-game').hide();
-      }
-
-      if (event.data === 'user-food') {
+      if (eventObject.data === 'user-food') {
         $('#user-food').show();
       } else {
         $('#user-food').hide();
       } 
+
+      if (eventObject.data === 'user-picks') {
+        $('#user-picks').show();
+        $('#most-recent-result').show();
+        $('#currently-selected-game').show();
+      } else {
+        $('#user-picks').hide();
+      }
+
+      if (eventObject.data === "user-signout") {
+        userView.signOut();
+        $('#schedule-output').show();
+      }
   }
-
-
+  
   var UserView = require('views/user-view');
   var UserModel = require('models/user-model');
   var currentUserModel = new UserModel({
@@ -60,22 +69,26 @@ define(function(require) {
   var userView = new UserView({
     el: '#user-display',
     template: require('hbs!templates/user-display'),
+    menuTemplate: require('hbs!templates/user-menu'),
+    show: true,
+    menuTag: '#user-menu',
     model: currentUserModel
   });
 
   var userSigninView = new UserView({
     el: '#user-signin',
+    showMenu: false,
     template: require('hbs!templates/user-signin'),
     render: function() { this.$el.html(this.template(this.model.toJSON())); },
     model: currentUserModel
   });
 
-  var userSignupView = new UserView({
-    el: '#user-signup',
-    template: require('hbs!templates/user-signup'),
-    render: function() { this.$el.html(this.template(this.model.toJSON())); },
-    model: currentUserModel
-  });	
+  // var userSignupView = new UserView({
+  //   el: '#user-signup',
+  //   template: require('hbs!templates/user-signup'),
+  //   render: function() { this.$el.html(this.template(this.model.toJSON())); },
+  //   model: currentUserModel
+  // });	
 
   var userFoodView = new UserView({
     el: '#user-food',
@@ -100,12 +113,13 @@ define(function(require) {
     // User Header Views
     'userView': userView,
     'userSigninView': userSigninView,
-    'userSignupView': userSignupView,
+    // 'userSignupView': userSignupView,
 
     // Schedule Views
     'currentScheduleView': currentScheduleView,
-    'userFoodView': userFoodView
+    // 'userFoodView': userFoodView
     // User Awards Views
+    'menuTag': '#user-menu'
   });
 
   Backbone.history.start();

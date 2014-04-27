@@ -23,7 +23,7 @@ define(function(require) {
 		    this.userView = options.userView;
 		    this.currentScheduleView = options.currentScheduleView;
 		    this.userFoodView = options.userFoodView;
-		    
+		    this.menuTag = options.menuTag;
 		},
 
 		initPage: function() {
@@ -42,48 +42,77 @@ define(function(require) {
 		},
 
 		showUserSignin: function () {
-	    this.userSigninView.$el.show();
-	    this.userSignupView.$el.hide();
-	    this.userView.$el.hide();
-	    this.userFoodView.$el.hide();
-			this.currentScheduleView.$el.show();
-			$("#most-recent-result").show();
-			$("#contact-info").show();
-			$(".col-xs-6").last().show();
+
+			this.showUserElement('signIn');
+
+		 //    this.userSigninView.$el.show();
+		 //    this.userSignupView.$el.hide();
+		 //    this.userView.$el.hide();
+		 //    this.userFoodView.$el.hide();
+			// this.currentScheduleView.$el.show();
+			// $("#most-recent-result").show();
+			// $("#contact-info").show();
+			// $(".col-xs-6").last().show();
 		},
 
 		showUser: function (options) {
-	    this.userSigninView.$el.hide();
-	    this.userSignupView.$el.hide();
-	    this.userView.$el.show();
-	    this.userFoodView.$el.hide();
-			this.currentScheduleView.$el.show();
-			$("#most-recent-result").show();
-			$("#contact-info").show();
-			$(".col-xs-6").last().show();
+			this.showUserElement('userDisplay');
+		 //    this.userSigninView.$el.hide();
+		 //    this.userSignupView.$el.hide();
+		 //    this.userView.$el.show();
+		 //    this.userFoodView.$el.hide();
+			// this.currentScheduleView.$el.show();
+			// $("#most-recent-result").show();
+			// $("#contact-info").show();
+			// $(".col-xs-6").last().show();
 		},
 
 		showSignup: function () {
-	    this.userSigninView.$el.hide();
-	    this.userView.$el.hide();
-	    this.userSignupView.$el.show();
-	    this.userFoodView.$el.hide();
-			this.currentScheduleView.$el.show();
-			$("#most-recent-result").show();
-			$("#contact-info").show();
-			$(".col-xs-6").last().show();
+		 //    this.userSigninView.$el.hide();
+		 //    this.userView.$el.hide();
+		 //    this.userSignupView.$el.show();
+		 //    this.userFoodView.$el.hide();
+			// this.currentScheduleView.$el.show();
+			// $("#most-recent-result").show();
+			// $("#contact-info").show();
+			// $(".col-xs-6").last().show();
 		},
 
 		showUserFood: function () {
-	    this.userSigninView.$el.hide();
-	    this.userView.$el.hide();
-	    this.userSignupView.$el.hide();
-	    this.userFoodView.$el.show();
-			this.currentScheduleView.$el.hide();
-			$("#most-recent-result").hide();
-			$("#contact-info").hide();
-			$(".col-xs-6").last().hide();
-		}
+		 //    this.userView.$el.hide();
+		 //    this.userSignupView.$el.hide();
+		 //    this.userFoodView.$el.show();
+			// this.currentScheduleView.$el.hide();
+		},
+
+		showUserElement: function(element) {
+
+	      if (element === 'signIn') {
+	        this.userSigninView.$el.show();
+	        $('#about').show();
+	      } else {
+	        this.userSigninView.$el.hide();
+	      }
+
+	      if (element === 'userDisplay') {
+		    this.userView.$el.show();            
+		    this.showMenu();
+		    $('#about').hide();
+	      } else {
+		    this.userView.$el.hide();
+            this.hideMenu();
+
+	      }
+		  
+		},
+
+		showMenu: function() {
+	        $(this.menuTag).show();
+	    },
+
+	    hideMenu: function() {
+	      $(this.menuTag).hide();
+	    }
 
 
 	});

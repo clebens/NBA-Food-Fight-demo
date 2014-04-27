@@ -17,6 +17,10 @@ hr {
     background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
 }
 
+.incol.hr {
+	width: 50%%;
+}
+
 @font-face {
 	font-family: "Melbourne-bold";
 	src: url("/fonts/melbourne-bold.otf");
@@ -33,6 +37,10 @@ hr {
 
 	text-align: center;
 	
+}
+
+#headers {
+	display:inline;
 }
 
 .panel {
@@ -83,6 +91,10 @@ hr {
 	text-align: center;
 }
 
+#user-menu {
+	text-align: right;
+}
+
 .red {
 	color: #FF0000;
 }
@@ -115,7 +127,7 @@ hr {
 
 #user-display {
 	display: inline;
-	text-align: center;
+	text-align: left;
 	margin: auto;
 }
 
@@ -236,6 +248,19 @@ img {
 	padding-bottom: 5px;
 }
 
+.username-panel {
+	width: 100%;
+	font-family: 'Melbourne-bold';
+	text-align: center;
+	border-color: #454545;
+	border-width: 2px;
+	border-radius: 13px;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 .game-panel.panel-heading {
 	background-color: #454545;
 }
@@ -247,4 +272,11 @@ img {
 }
 
 
+.menu-output {
+	text-align: center;
+}
+
+.user-name {
+	display: inline;
+}
 

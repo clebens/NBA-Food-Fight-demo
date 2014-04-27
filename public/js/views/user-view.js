@@ -10,18 +10,34 @@ define(function (require) {
    events: {
     'click #signup-button': 'signUp',
     'click #signin-button': 'signIn',
+    'keypress :input': 'loginKeypressHandler',
+    'keypress :input': 'loginKeypressHandler',
     'click #user-signout': 'signOut',
     'click #food': 'removeGreeting',
     'click #home': 'addHello'
 
    },
 
+    loginKeypressHandler: function(key) {
+      if (key.charCode  === 13) {
+        this.signIn();
+      }
+    }, 
+
     initialize: function (options) {
       
       // Template initialization Workaround
       if (options.template) {
       	this.template = options.template;
+        this.menuTemplate = options.menuTemplate;
+        this.menu = options.menu;
+        this.menuTag = options.menuTag;
       }
+
+      // if (this.menu === true) {
+      //   this.showMenu();
+      //   $('#user-menu').show();
+      // }
 
       this.listenTo(this.model, 'change', this.render);
       this.listenTo(this.model, 'manualRerender', this.render);
@@ -43,20 +59,15 @@ define(function (require) {
     render: function() { 
       this.$el.html(this.template(this.model.toJSON())); 
       if (this.model.get('userName')) {
+
          this.showLastResult(); 
          this.dailyPick();
      
+
       }
-    },
-
-    renderRecentResult: function() {
-      var recentTemplate = require('hbs!templates/recent-game');
-      $('#most-recent-result').html(recentTemplate());
-    }, 
-
-    resetInterface: function () {
 
     },
+
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
@@ -88,9 +99,8 @@ define(function (require) {
       $.removeCookie('user-name');
       this.model.clear();
       $('#most-recent-result').html('');
-      //this.model.clearData();
-      // debugger;
       this.removeGreeting();
+
       window.location.href = '#user-signin';
     },
 
@@ -112,7 +122,7 @@ define(function (require) {
             self.model.trigger('manualRerender');
             $.cookie('user-name', userName, { expires: 7, path: '/' });
             window.location.href = '#user-view';
-            // this.showLastResult();
+
 
           } else {
              self.$el.show();
@@ -122,9 +132,9 @@ define(function (require) {
         }, 
 
         error: function(model, response, options) {
-          $('#user-loading').html('');
-          console.log(response);
-          //if(response.responseText === "No user found.") {
+            $('#user-loading').html('');
+            console.log(response);
+ 
             self.$el.show();
             $('#failed-login').html('<p class="text-danger">Invalid username or password.');
         },
@@ -144,11 +154,24 @@ define(function (require) {
               } else {
                 previousResult.result = "LOSER";
               }
-          
+
               var recentTemplate = require('hbs!templates/recent-game');
 
             $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
+
+          } else {
+
+            noRecentResults();
+          
+
           }
+        } else {
+          noRecentResults();
+        }
+
+
+        function noRecentResults() {
+          $('#most-recent-result').html('<h3 style="text-align:center;">You have no previous picks.</h3>');
         }
               
      },

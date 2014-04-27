@@ -39,8 +39,41 @@ hr {
 	
 }
 
+#about {
+	font-size: 13pt;
+}
+
+.about-panel {
+	width: 100%;
+	font-family: 'Droid Serif';
+	text-align: center;
+	border-color: #454545;
+	border-width: 2px;
+	border-radius: 13px;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+
+
 #headers {
 	display:inline;
+}
+
+#user-picks {
+	font-family: "Melbourne-bold";
+}
+
+#user-picks img {
+	width: 100%;
+	height: 100%;
+}
+
+#user-picks h3 {
+	text-align: center;
 }
 
 .panel {
@@ -128,6 +161,7 @@ hr {
 #user-display {
 	display: inline;
 	text-align: left;
+	vertical-align: center;
 	margin: auto;
 }
 
@@ -248,7 +282,7 @@ img {
 	padding-bottom: 5px;
 }
 
-.username-panel {
+/*.username-panel {
 	width: 100%;
 	font-family: 'Melbourne-bold';
 	text-align: center;
@@ -260,6 +294,7 @@ img {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+*/
 
 .game-panel.panel-heading {
 	background-color: #454545;

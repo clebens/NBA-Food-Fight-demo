@@ -1,6 +1,4 @@
 
-
-
  <div class="row">
 
     <div class="col-md-12">
@@ -11,6 +9,7 @@
 
 <!-- Begin Panel Body -->
 
+{{#if result}}
 <div class="game-time">
 	<div class="panel-heading">
 			<div >
@@ -19,48 +18,39 @@
 
 	</div>
 </div>
+{{else}}
+<div class="game-time">
+	<div class="panel-heading">
+			<div >
+				<h3>{{ readableTime }}</h3>
+			</div>
 
+	</div>
+</div>
+{{/if}}
 <div class="panel-body">     
 		
 	<br>
 	<div class="row">
-		<div class="col-md-8">
-			<div class="row">
-				<div class="col-md-3 col-md-offset-1">
-					<img src="{{ awayTeam.teamLogo }}" />
-				</div>
-
-				<div class="col-md-7">
-					<h4>{{ awayTeam.teamName }}</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-				<div class="row">
-				<div class="col-md-3 col-md-offset-1"></div>
-				<div class="col-md-7">			<center>vs.</center></div>
-				</div>
-		
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-md-offset-1">
-					<img src="{{ homeTeam.teamLogo }}" />
-				</div>
-
-				<div class="col-md-7">
-					<h4>{{ homeTeam.teamName }}</h4>
-				</div>
-			</div>
+		<div class="col-md-5">
+			<img src="{{ awayTeam.teamLogo }}" />
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-2"><h6>at</h6></div>
+		<div class="col-md-5">
+			<img src ="{{ homeTeam.teamLogo }}" />
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+				
 				<div class="rule-food-icon">
 					<img src="{{#each homeTeam.foodRules }}
 						{{ this.foodIcon }}{{/each}}"  />
 				</div>
 		</div>
 	</div>
-	<br>
+	
 	<div class="row">
 		<div class="foodrule col-md-10 col-md-offset-1">
 						{{#each homeTeam.foodRules }}

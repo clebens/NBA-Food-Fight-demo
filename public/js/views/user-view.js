@@ -145,11 +145,12 @@ define(function (require) {
 
      showLastResult: function() {
 
-      var previousResult = this.model.get('previousResult');
-      previousResult.title = "Previous Result";
+      var previousResult = $.extend(true, {}, this.model.get('previousResult'));
 
         if (typeof previousResult === 'object' && previousResult != null) {
           if(Object.keys(previousResult).length) {
+              previousResult.title = "Previous Result";
+
               if (previousResult.homeTeam.foodRules[0].foodWon === true) {
                 previousResult.result = "WINNER";
               } else {
@@ -157,8 +158,8 @@ define(function (require) {
               }
 
               var recentTemplate = require('hbs!templates/recent-game');
-
-            $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
+              console.log(previousResult);
+            $('#most-recent-result').html(recentTemplate(previousResult));
 
           } else {
 
@@ -179,7 +180,6 @@ define(function (require) {
 
      dailyPick: function() {
       var dailySelection = $.extend(true, {}, this.model.get('dailySelection'));
-      dailySelection.title = "Current Selection";
       
       var dailyPickTemplate = require('hbs!templates/recent-game');
 
@@ -187,6 +187,7 @@ define(function (require) {
         if (typeof dailySelection === 'object' && dailySelection != null) {
 
           if (Object.keys(dailySelection).length) {
+             dailySelection.title = "Current Selection";
              // $('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + dailySelection.homeTeam.teamName  + '. Good luck!</h5></div>');
              $('#today-picks').html(dailyPickTemplate(dailySelection));
              dailySelection.title

@@ -4,8 +4,22 @@
       <div class="panel game-panel panel-default">
           <div class="food-awards">
             <p>Your overall record:<br />
-              <strong>{{record.wins}}</strong> {{checkIfOneWin record.wins}},
-              <strong>{{record.losses}}</strong>{{checkIfOneLoss record.losses}}
+              
+              <strong>
+                {{#if record.wins}}
+                  {{record.wins}}
+                {{else}}
+                  0
+                {{/if}}
+              </strong> {{checkIfOneWin record.wins}},
+              
+              <strong>
+                {{#if record.losses}}
+                  {{record.losses}}
+                {{else}}
+                  0
+                {{/if}}
+              </strong>{{checkIfOneLoss record.losses}}
           </p></div>
         </div>
       <div class="panel game-panel panel-default">

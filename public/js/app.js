@@ -8,34 +8,38 @@ define(function(require) {
   var backbone = require('backbone');
   var Router = require('router');
   var app = {};
-
+  
   // initialize menu handlers
-  $('menu-about').on('click', null, "about", displayMenuItem);
-  $('menu-most-recent-result').on('click', null, "most-recent-result", displayMenuItem);
+  $('#menu-about').click("about", displayMenuItem);
+  $('#menu-most-recent-result').click("most-recent-result", displayMenuItem);
+  $('#menu-currently-selected-game').click("currently-selected-game", displayMenuItem);
+  $('#menu-user-food').click("user-food", displayMenuItem);
 
+
+  displayMenuItem({data: "about"});
 
   function displayMenuItem(eventObject) {
-      console.log("event.data" + event.data);
+      console.log("eventObject.data:" + eventObject.data);
       
-      if (event.data === 'about') {
+      if (eventObject.data === 'about') {
         $('#about').show();
       } else {
         $('#about').hide();
       }
 
-      if (event.data === 'most-recent-result') {
+      if (eventObject.data === 'most-recent-result') {
        $('#most-recent-result').show();
       } else {
         $('#most-recent-result').hide();
       }
 
-      if (event.data === 'currently-selected-game') {
+      if (eventObject.data === 'currently-selected-game') {
         $('#currently-selected-game').show();
       } else {
         $('#currently-selected-game').hide();
       }
 
-      if (event.data === 'user-food') {
+      if (eventObject.data === 'user-food') {
         $('#user-food').show();
       } else {
         $('#user-food').hide();

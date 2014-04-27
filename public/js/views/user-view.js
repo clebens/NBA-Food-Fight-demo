@@ -47,15 +47,6 @@ define(function (require) {
       }
     },
 
-    renderRecentResult: function() {
-      var recentTemplate = require('hbs!templates/recent-game');
-      $('#most-recent-result').html(recentTemplate());
-    }, 
-
-    resetInterface: function () {
-
-    },
-
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
       var userName = this.$el.find('#user-name-signup').val();
@@ -120,9 +111,9 @@ define(function (require) {
         }, 
 
         error: function(model, response, options) {
-          $('#user-loading').html('');
-          console.log(response);
-          //if(response.responseText === "No user found.") {
+            $('#user-loading').html('');
+            console.log(response);
+            //if(response.responseText === "No user found.") {
             self.$el.show();
             $('#failed-login').html('<p class="text-danger">Invalid username or password.');
         },
@@ -142,12 +133,22 @@ define(function (require) {
               } else {
                 previousResult.result = "LOSER";
               }
-              console.log(this.model.get('previousResult'));
               var recentTemplate = require('hbs!templates/recent-game');
 
             $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
 
+          } else {
+
+            noRecentResults();
+          
           }
+        } else {
+          noRecentResults();
+        }
+
+
+        function noRecentResults() {
+          $('#most-recent-result').html('<h3 style="text-align:center;">You have no previous picks.</h3>');
         }
      }
 

@@ -42,47 +42,47 @@ define(function(require) {
 		},
 
 		showUserSignin: function () {
-	    this.userSigninView.$el.show();
-	    this.userSignupView.$el.hide();
-	    this.userView.$el.hide();
-	    this.userFoodView.$el.hide();
+		    this.userSigninView.$el.show();
+		    this.userSignupView.$el.hide();
+		    this.userView.$el.hide();
+		    this.userFoodView.$el.hide();
 			this.currentScheduleView.$el.show();
-			$("#most-recent-result").show();
-			$("#contact-info").show();
-			$(".col-xs-6").last().show();
+			// $("#most-recent-result").show();
+			// $("#contact-info").show();
+			// $(".col-xs-6").last().show();
 		},
 
 		showUser: function (options) {
-	    this.userSigninView.$el.hide();
-	    this.userSignupView.$el.hide();
-	    this.userView.$el.show();
-	    this.userFoodView.$el.hide();
+		    this.userSigninView.$el.hide();
+		    this.userSignupView.$el.hide();
+		    this.userView.$el.show();
+		    this.userFoodView.$el.hide();
 			this.currentScheduleView.$el.show();
-			$("#most-recent-result").show();
-			$("#contact-info").show();
-			$(".col-xs-6").last().show();
+			// $("#most-recent-result").show();
+			// $("#contact-info").show();
+			// $(".col-xs-6").last().show();
 		},
 
 		showSignup: function () {
-	    this.userSigninView.$el.hide();
-	    this.userView.$el.hide();
-	    this.userSignupView.$el.show();
-	    this.userFoodView.$el.hide();
+		    this.userSigninView.$el.hide();
+		    this.userView.$el.hide();
+		    this.userSignupView.$el.show();
+		    this.userFoodView.$el.hide();
 			this.currentScheduleView.$el.show();
-			$("#most-recent-result").show();
-			$("#contact-info").show();
-			$(".col-xs-6").last().show();
+			// $("#most-recent-result").show();
+			// $("#contact-info").show();
+			// $(".col-xs-6").last().show();
 		},
 
 		showUserFood: function () {
-	    this.userSigninView.$el.hide();
-	    this.userView.$el.hide();
-	    this.userSignupView.$el.hide();
-	    this.userFoodView.$el.show();
+		    this.userSigninView.$el.hide();
+		    this.userView.$el.hide();
+		    this.userSignupView.$el.hide();
+		    this.userFoodView.$el.show();
 			this.currentScheduleView.$el.hide();
-			$("#most-recent-result").hide();
-			$("#contact-info").hide();
-			$(".col-xs-6").last().hide();
+			// $("#most-recent-result").hide();
+			// $("#contact-info").hide();
+			// $(".col-xs-6").last().hide();
 		}
 
 

@@ -52,7 +52,7 @@ function checkUsers() {
 					
 				// FOOD RULE DATA AVAILABLE
 				user.previousResult = dailySelection;
-				user.dailySelection = null;
+				user.dailySelection = undefined;
 
         if (!user.foodAwards.length) {
 					user.foodAwards = [];

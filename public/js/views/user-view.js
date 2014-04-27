@@ -125,21 +125,22 @@ define(function (require) {
 
 
           } else {
-             self.$el.show();
-             $('#failed-login').html('<p class="text-danger">Invalid username or password.');
-             console.log('Incorrect Password');
+            failedLogin();
           }
         }, 
 
         error: function(model, response, options) {
-            $('#user-loading').html('');
-            console.log(response);
- 
-            self.$el.show();
-            $('#failed-login').html('<p class="text-danger">Invalid username or password.');
+          $('#user-loading').html('');
+          failedLogin();
         },
 
       });
+
+      function failedLogin() {
+            console.log('here');
+            self.$el.show();
+            $('#failed-login').html('<p class="text-danger">Invalid username or password.</p>');
+      }
       
      },
 

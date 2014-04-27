@@ -315,3 +315,8 @@ img {
 	display: inline;
 }
 
+#failed-login {
+	text-align: center;
+	font-family: "Droid Serif";
+	font-size: 18pt;
+}

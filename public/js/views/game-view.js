@@ -39,9 +39,21 @@ define(function(require) {
 			
 		},
 
-		gameDisplay: function() {
+		currentGameDisplay: function() {
+			var userGameSelect = new User();
+
+
+			userGameSelect.fetch({
+				success: function (model, response, options) {
+					var todayPick = model.get('dailySelection').homeTeam.teamName;
+					$('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + todayPick  + '. Good luck!</h5></div>');
+
+				}
+			});
+
 			var gameModel = new GameModel({'id': this.model.get('dailySelection')});
 			var gameSelect = (this.model.attributes.homeTeam.teamName);
+			
 			gameModel.fetch({
 				success: function() {
 					$('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + gameSelect + '. Good luck!</h5></div>');
@@ -74,7 +86,7 @@ define(function(require) {
 				this.showModal('Not Signed In', 'Sign up or sign in to select a game.');				
 				return;
 			}
-			this.gameDisplay();
+		
 
 
 			var curUser = new User({
@@ -90,6 +102,7 @@ define(function(require) {
 				return;
 			} else {
 			this.gameBorder();
+
 			
 			curUser.fetch({
 				success: function(model, response, options) {

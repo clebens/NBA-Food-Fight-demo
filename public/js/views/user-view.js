@@ -128,13 +128,13 @@ define(function (require) {
         },
 
 
-      });
-      
-   },
+    });
+    }
+  });
     
 
-  });
+
 
   return UserView;
 
-})
+});

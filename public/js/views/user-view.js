@@ -132,7 +132,8 @@ define(function (require) {
      },
 
      showLastResult: function() {
-        if(this.model.get('previousResult').id) {
+
+        if(Object.keys(this.model.get('previousResult')).length) {
             var previousResult = this.model.get('previousResult');
             if (previousResult.homeTeam.foodRules[0].foodWon === true) {
               previousResult.result = "WINNER";

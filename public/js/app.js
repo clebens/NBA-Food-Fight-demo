@@ -15,7 +15,7 @@ define(function(require) {
 
 
   function displayMenuItem(eventObject) {
-      console.log(event.data);
+      console.log("event.data" + event.data);
       
       if (event.data === 'about') {
         $('#about').show();

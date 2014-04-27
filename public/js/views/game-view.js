@@ -31,7 +31,7 @@ define(function(require) {
 
 		},
 
-		gameClick: function() {
+		gameBorder: function() {
 			$('.active').removeClass('active');
 			$(this.el).find('.panel').addClass('active');
 
@@ -90,7 +90,7 @@ define(function(require) {
 			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
 				return;
 			} else {
-			this.gameClick();
+			this.gameBorder();
 			curUser.fetch({
 				success: function(model, response, options) {
 					model.set('dailySelection', curEventId);

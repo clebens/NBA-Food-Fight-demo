@@ -133,18 +133,21 @@ define(function (require) {
 
      showLastResult: function() {
 
-        if(Object.keys(this.model.get('previousResult')).length) {
-            var previousResult = this.model.get('previousResult');
-            if (previousResult.homeTeam.foodRules[0].foodWon === true) {
-              previousResult.result = "WINNER";
-            } else {
-              previousResult.result = "LOSER";
-            }
-            console.log(this.model.get('previousResult'));
-            var recentTemplate = require('hbs!templates/recent-game');
+        var previousResult = this.model.get('previousResult');
+        
+        if (typeof previousResult == 'object') {
+          if(Object.keys(this.model.get('previousResult')).length) {
+              if (previousResult.homeTeam.foodRules[0].foodWon === true) {
+                previousResult.result = "WINNER";
+              } else {
+                previousResult.result = "LOSER";
+              }
+              console.log(this.model.get('previousResult'));
+              var recentTemplate = require('hbs!templates/recent-game');
 
-          $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
+            $('#most-recent-result').html(recentTemplate(this.model.get('previousResult')));
 
+          }
         }
      }
 

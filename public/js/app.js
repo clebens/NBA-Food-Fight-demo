@@ -8,8 +8,8 @@ define(function(require) {
   var backbone = require('backbone');
   var Router = require('router');
   var app = {};
-  
-  // initialize menu handlers
+
+    // initialize menu handlers
   $('#menu-about').click("about", displayMenuItem);
   $('#menu-most-recent-result').click("most-recent-result", displayMenuItem);
   $('#menu-currently-selected-game').click("currently-selected-game", displayMenuItem);
@@ -45,8 +45,7 @@ define(function(require) {
         $('#user-food').hide();
       } 
   }
-
-
+  
   var UserView = require('views/user-view');
   var UserModel = require('models/user-model');
   var currentUserModel = new UserModel({
@@ -64,22 +63,26 @@ define(function(require) {
   var userView = new UserView({
     el: '#user-display',
     template: require('hbs!templates/user-display'),
+    menuTemplate: require('hbs!templates/user-menu'),
+    show: true,
+    menuTag: '#user-menu',
     model: currentUserModel
   });
 
   var userSigninView = new UserView({
     el: '#user-signin',
+    showMenu: false,
     template: require('hbs!templates/user-signin'),
     render: function() { this.$el.html(this.template(this.model.toJSON())); },
     model: currentUserModel
   });
 
-  var userSignupView = new UserView({
-    el: '#user-signup',
-    template: require('hbs!templates/user-signup'),
-    render: function() { this.$el.html(this.template(this.model.toJSON())); },
-    model: currentUserModel
-  });	
+  // var userSignupView = new UserView({
+  //   el: '#user-signup',
+  //   template: require('hbs!templates/user-signup'),
+  //   render: function() { this.$el.html(this.template(this.model.toJSON())); },
+  //   model: currentUserModel
+  // });	
 
   var userFoodView = new UserView({
     el: '#user-food',
@@ -104,11 +107,11 @@ define(function(require) {
     // User Header Views
     'userView': userView,
     'userSigninView': userSigninView,
-    'userSignupView': userSignupView,
+    // 'userSignupView': userSignupView,
 
     // Schedule Views
     'currentScheduleView': currentScheduleView,
-    'userFoodView': userFoodView
+    // 'userFoodView': userFoodView
     // User Awards Views
   });
 

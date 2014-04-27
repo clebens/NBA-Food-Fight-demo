@@ -219,6 +219,7 @@ img {
 
 .game-panel {
 	width: 100%;
+	font-family: 'Melbourne-bold';
 	text-align: center;
 	border-color: #454545;
 	border-width: 2px;

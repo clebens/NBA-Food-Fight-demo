@@ -3,6 +3,8 @@ define(function(require) {
 	var Backbone = require('backbone');
 	var template = require('hbs!templates/game-in-schedule');
 	var User = require('models/user-model');
+	var GameModel = require('models/game-model');
+
 
 	var GameView = Backbone.View.extend({
 
@@ -31,6 +33,19 @@ define(function(require) {
 
 		gameBorder: function() {
 			$('.active').removeClass('active');
+			$(this.el).find('.panel').addClass('active');
+
+			var gameModel = new GameModel({'id': this.model.get('dailySelection')});
+			console.log(gameModel);
+
+			gameModel.fetch({
+				success: function() {
+					var gameSelect = gameModel.get('homeTeamId');
+					console.log(gameSelect);
+					$('#most-recent-result').replaceWith(gameSelect);
+				}
+			});
+
 			$(this.el).find('.panel').addClass("active");
 			$('.modal-title').removeClass('red').addClass('green');
 			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
@@ -97,7 +112,9 @@ define(function(require) {
 					console.log(model.get('password'));
 					console.log(model.get('dailySelection'));
 					console.log(model.get('id') + " selected " + model.get('dailySelection'));
-					model.save();	
+					model.save();
+
+				
 				},
 
 				error: function(model, response, options) {

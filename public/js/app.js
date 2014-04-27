@@ -8,8 +8,42 @@ define(function(require) {
   var backbone = require('backbone');
   var Router = require('router');
   var app = {};
-  var UserView = require('views/user-view');
 
+  // initialize menu handlers
+  $('menu-about').on('click', null, "about", displayMenuItem);
+  $('menu-most-recent-result').on('click', null, "most-recent-result", displayMenuItem);
+
+
+  function displayMenuItem(eventObject) {
+      console.log("event.data" + event.data);
+      
+      if (event.data === 'about') {
+        $('#about').show();
+      } else {
+        $('#about').hide();
+      }
+
+      if (event.data === 'most-recent-result') {
+       $('#most-recent-result').show();
+      } else {
+        $('#most-recent-result').hide();
+      }
+
+      if (event.data === 'currently-selected-game') {
+        $('#currently-selected-game').show();
+      } else {
+        $('#currently-selected-game').hide();
+      }
+
+      if (event.data === 'user-food') {
+        $('#user-food').show();
+      } else {
+        $('#user-food').hide();
+      } 
+  }
+
+
+  var UserView = require('views/user-view');
   var UserModel = require('models/user-model');
   var currentUserModel = new UserModel({
     initialize:  function () {

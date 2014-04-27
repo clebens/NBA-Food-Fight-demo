@@ -113,6 +113,7 @@ define(function(require) {
     'currentScheduleView': currentScheduleView,
     // 'userFoodView': userFoodView
     // User Awards Views
+    'menuTag': '#user-menu'
   });
 
   Backbone.history.start();

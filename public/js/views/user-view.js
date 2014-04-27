@@ -64,13 +64,6 @@ define(function (require) {
 
     },
 
-    // showMenu: function() {
-    //     $(this.menuTag).html(this.menuTemplate);
-    // },
-
-    // hideMenu: function() {
-    //   $(this.menuTag).html('');
-    // },
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));

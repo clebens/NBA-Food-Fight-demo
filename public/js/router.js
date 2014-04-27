@@ -23,7 +23,7 @@ define(function(require) {
 		    this.userView = options.userView;
 		    this.currentScheduleView = options.currentScheduleView;
 		    this.userFoodView = options.userFoodView;
-		    
+		    this.menuTag = options.menuTag;
 		},
 
 		initPage: function() {
@@ -94,12 +94,24 @@ define(function(require) {
 	      }
 
 	      if (element === 'userDisplay') {
-		    this.userView.$el.show();
+		    this.userView.$el.show();            
+		    this.showMenu();
+
 	      } else {
 		    this.userView.$el.hide();
+            this.hideMenu();
+
 	      }
 		  
-		}
+		},
+
+		showMenu: function() {
+	        $(this.menuTag).show();
+	    },
+
+	    hideMenu: function() {
+	      $(this.menuTag).hide();
+	    },
 
 
 	});

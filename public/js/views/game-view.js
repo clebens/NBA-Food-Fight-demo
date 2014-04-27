@@ -30,7 +30,8 @@ define(function(require) {
 
 		},
 
-	gameBorder: function() {
+		gameBorder: function() {
+
 			$('.active').removeClass('active');
 			$(this.el).find('.panel').addClass('active');
 
@@ -89,6 +90,14 @@ define(function(require) {
 			$('#alert-modal').modal('show');
 		},
 
+		// verifySelection: function (curUser) {
+		// 	if (curUser.attributes.dailySelection !== {} ) {
+		// 		console.log ("You already got a game, dude")
+		// 	} else if (curUser.attributes.dailySelection !== {} ) {
+		// 		console.log("no games selected");
+		// 	}
+		// },
+
 		selectGame: function() {
 			// $.cookie('user-name', 'doggy');
 
@@ -111,6 +120,11 @@ define(function(require) {
 			$('.modal-title').removeClass('green').addClass('red');
 			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
 				return;
+			// } else if (curUser.attributes.dailySelection !== {} ) {
+			// 	$('.modal-title').removeClass('green').addClass('red');
+
+			// 	console.log(curUser);
+				
 			} else {
 			this.gameBorder();
 
@@ -125,9 +139,7 @@ define(function(require) {
 					model.save();
 
 				
-					
 				},
-
 
 				error: function(model, response, options) {
 					console.log(response.responseText);
@@ -135,7 +147,6 @@ define(function(require) {
 
 			});
 		}
-			
 			//curUser.save();
 		}
 

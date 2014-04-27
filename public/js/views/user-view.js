@@ -31,7 +31,6 @@ define(function (require) {
 
     addHello: function() {
       $('#user-name').show();
-      this.currentGameDisplay();
     },
 
     loginTest: function() {
@@ -119,18 +118,6 @@ define(function (require) {
              console.log('Incorrect Password');
           }
         }, 
-
-          currentGameDisplay: function() {
-            var userGameSelect = new User();
-            userGameSelect.fetch({
-              success: function (model, response, options) {
-                var todayPick = model.get('dailySelection').homeTeam.teamName;
-                console.log(todayPick);
-                $('#today-picks').html('<div class="col-xs-6"><h5>Your pick today is: ' + todayPick  + '. Good luck!</h5></div>');
-
-              }
-            });
-          },
 
         error: function(model, response, options) {
           $('#user-loading').html('');

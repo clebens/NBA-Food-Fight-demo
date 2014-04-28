@@ -214,34 +214,35 @@ hr {
 }
 
 
-img {
+/*img {
 	padding-right: 1em;
+}*/
+
+.rule-row h2 {
+	margin-top: .5em;
 }
 
 .foodrule {
-	border: solid;
 	text-align: center;
+	font-size: 13pt;
 	border-color: #454545;
 	border-width: 2px;
 	border-radius: 7px;
 	padding-left: 5px;
 	padding-right: 5px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 2px;
+	padding-bottom: 5px;
 }
 
 .rule-food-icon {
 	text-align: center;
+	vertical-align: middle;
 	padding-right: 0;
 	padding-left: 0;
+	padding-top: 1em;
 }
 
-.rule-food-icon img {
-	max-width:140px; 
-	min-width: 0px;
-	max-height:140px;
-	min-height: 0px;
-}
+
 .food-awards p {
 	font-size: 2em;
 }
@@ -335,4 +336,42 @@ img {
 	text-align: center;
 	font-family: "Droid Serif";
 	font-size: 18pt;
+}
+
+
+#team-output h4 {
+	vertical-align: top;
+}
+
+/*#team-output img {
+	margin-right: 0;
+	padding-right: 0;
+}*/
+
+.game-team-name h2 {
+	font-size: 16pt; 
+	text-align: center;
+
+	display: inline-block;
+    vertical-align: middle;
+    float: none;
+	bottom-padding: 0;
+}
+
+.rule-food-icon img {
+	text-align: center;
+	margin-right: 0;
+	margin-left: 0;
+	max-width:100px; 
+	min-width: 0px;
+	max-height:100px;
+	min-height: 0px;
+}
+
+.panel-body {
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }

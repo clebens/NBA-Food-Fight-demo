@@ -2,72 +2,86 @@
 
 
  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-md-10 col-md-offset-1">
 
 <div class="panel game-panel panel-default">
 
 <!-- Begin Panel Body -->
 
 
+<!--
 <div class="game-time">
 	<div class="panel-heading">
 			<div >
-				<h3>{{ formatHour readableTime }}</h3>
 			</div>
 	</div>
 </div>
-
-	<div class="panel-body">     
+-->
+<div class="panel-body">     
 		
 
-<div class="row">
-	<div class="col-md-8">
+	<section id="team-output">
 		<div class="row">
-			<div class="col-md-3 col-md-offset-1">
+			<div class="col-md-5">
 				<img src="{{ awayTeam.teamLogo }}" />
 			</div>
-
-			<div class="col-md-7">
-				<h4>{{ awayTeam.teamName }}</h4>
+			
+			<div class="col-md-2">
+				<h3>{{ formatHour readableTime }}</h3>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-			<div class="row">
-			<div class="col-md-3 col-md-offset-1"></div>
-			<div class="col-md-7">			<center>vs.</center></div>
-			</div>
-	
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-md-offset-1">
+			
+			<div class="col-md-5">
 				<img src="{{ homeTeam.teamLogo }}" />
 			</div>
+		</div>
 
-			<div class="col-md-7">
-				<h4>{{ homeTeam.teamName }}</h4>
+		<div class="row">
+			<div class="col-md-5 team-name-col">
+				<div class="game-team-name"><h2>{{ awayTeam.teamName }}</h2></div>
+			</div>
+			
+			<div class="col-md-2">
+				<h3>vs.</h3>
+			</div>
+			
+			<div class="col-md-5 team-name-col">
+				<div class="game-team-name"><h2>{{ homeTeam.teamName }}</h2></div>
 			</div>
 		</div>
+	</section>
+
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<hr />
+		</div>
 	</div>
-	<div class="col-md-4">
-			<div class="rule-food-icon">
-				<img src="{{#each homeTeam.foodRules }}
-					{{ this.foodIcon }}{{/each}}"  />
+	
+	{{#each homeTeam.foodRules }}
+	<div class="rule-row row">
+		<div class="col-md-7 rule-container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2><p class="text-danger">Rule</p>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="foodrule">{{ this.ruleDescription }}</div>
+				</div>
+			</div>
+		
+
+		</div>
+	 	<div class="col-md-5">
+				<div class="rule-food-icon">
+					<img src="
+						{{ this.foodIcon }}"  />
+				</div>
+		</div>
 	</div>
-</div>
-<br>
-<div class="row">
-	<div class="foodrule col-md-10 col-md-offset-1">
-					{{#each homeTeam.foodRules }}
-							{{ this.ruleDescription }}
-				{{/each}}
-	</div>
-</div>
+	{{/each}}
 
 </div>
-
 
 <!-- End Panel Body -->
 

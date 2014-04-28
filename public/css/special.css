@@ -6,8 +6,8 @@ body {
 hr {
     border: 0;
 
-    margin-top: 3em;
-    margin-bottom: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 
     height: 1px;
     background: #333;
@@ -57,14 +57,25 @@ hr {
 }
 
 
-
+#schedule-output {
+	margin-top: 1em;
+}
 
 #headers {
 	display:inline;
 }
 
+#headers .row {
+	vertical-align: middle;
+}
+
+#user-food {
+	margin-top: 1em;
+}
+
 #user-picks {
 	font-family: "Melbourne-bold";
+	margin-top: 1em;
 }
 
 #user-picks img {
@@ -75,6 +86,7 @@ hr {
 
 #user-picks h3 {
 	text-align: center;
+	margin-top: 0;
 }
 
 .panel {
@@ -162,8 +174,11 @@ hr {
 #user-display {
 	display: inline;
 	text-align: left;
-	vertical-align: center;
+	vertical-align: middle;
 	margin: auto;
+}
+#user-display p {
+
 }
 
 #user-loading {

@@ -38,26 +38,23 @@ define(function(require) {
 			$('.modal-title').removeClass('red').addClass('green');
 			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
 			+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
-			
-			$('#today-picks').replaceWith('<div class="col-xs-6"><h5>Your pick today is: ' + this.model.attributes.homeTeam.teamName  + '. Good luck!</h5></div>');
-
-
+		
 
 		},
 
-		currentGameDisplay: function() {
-			var userGameSelect = new User();
+		// currentGameDisplay: function() {
+		// 	var userGameSelect = new User();
 
-			userGameSelect.fetch({
-				success: function(model, response, options) {
-					var dailySelection = model.get('dailySelection').homeTeam.teamName;
-					console.log(dailySelection);
-					$('#today-picks').replaceWith('<div class="col-xs-6"><h5>New pick: Your pick today is: ' + dailySelection  + '. Good luck!</h5></div>');
-				}
-			});
+		// 	userGameSelect.fetch({
+		// 		success: function(model, response, options) {
+		// 			var dailySelection = model.get('dailySelection').homeTeam.teamName;
+		// 			console.log(dailySelection);
+		// 			$('#today-picks').replaceWith('<div class="col-xs-6"><h5>New pick: Your pick today is: ' + dailySelection  + '. Good luck!</h5></div>');
+		// 		}
+		// 	});
 
 
-		},
+		// },
 
 
 		render: function () {

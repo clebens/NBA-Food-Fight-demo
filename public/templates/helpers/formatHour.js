@@ -3,7 +3,7 @@ define(function (require) {
 
 
   function formatHour( context, options ) {
-    var newTime = context.slice(0,-9) + context.slice(-3);
+    var newTime = context.slice(0,-6) + context.slice(-3);
     return newTime;
 
   }

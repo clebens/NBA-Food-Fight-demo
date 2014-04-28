@@ -1,6 +1,11 @@
 
 body {
-
+  background: url(../images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 }
 
 hr {
@@ -15,6 +20,10 @@ hr {
     background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
     background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
     background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
+}
+
+.container {
+	background-color: white;
 }
 
 .incol.hr {
@@ -292,8 +301,6 @@ img {
 	border-color: #454545;
 	border-width: 2px;
 	border-radius: 13px;
-	padding-left: 5%;
-	padding-right: 5%;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }

@@ -4,7 +4,7 @@
  <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
 
-<div class="panel game-panel panel-default">
+    <div class="panel game-panel panel-default">
 
 <!-- Begin Panel Body -->
 
@@ -71,25 +71,28 @@
 
 <!-- End Panel Body -->
 
-<div id="pick-new-game" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Heads up</h4>
-      </div>
-      <div class="modal-body">
-         This game has already started. Please select another game.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 </div>	
 
 </div>
+</div>
+
+<div id="pick-new-game" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title switch-game-title red" id="myModalLabel">Header</h4>
+      </div>
+      <div class="switch-game-body">
+         Body.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="switch-games" data-dismiss="modal">Switch games</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>

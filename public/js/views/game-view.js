@@ -11,7 +11,8 @@ define(function(require) {
 			className: 'gameContainer',
 			template: template,
 		events: {
-			"click": "selectGame"
+			"click .game-panel": "selectGame",
+			"click #switch-games": "switchGames"
 		},
 
 		initialize: function() {
@@ -30,26 +31,63 @@ define(function(require) {
 
 		},
 
+		switchGames: function() {
+
+			var curUser = new User({
+				id: $.cookie('user-name')
+			});
+
+			var self = this;
+
+			curUser.fetch({
+				success: function(model, response, options) {
+
+	
+				model.set('switchGame', true);
+				model.save();
+				// console.log(curUser);
+				self.gameBorder();
+				}
+			});
+		},
+
 		gameBorder: function() {
 
 			$('.active').removeClass('active');
 			$(this.el).find('.panel').addClass('active');
 
 			var gameModel = new GameModel({'id': this.model.get('dailySelection')});
-			console.log(gameModel);
+			// console.log(gameModel);
 
 			gameModel.fetch({
 				success: function() {
 					var gameSelect = gameModel.get('homeTeamId');
-					console.log(gameSelect);
+					// console.log(gameSelect);
 					$('#most-recent-result').replaceWith(gameSelect);
 				}
 			});
 
 			$(this.el).find('.panel').addClass("active");
-			$('.modal-title').removeClass('red').addClass('green');
-			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
-			+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+
+			var curUser = new User({
+				id: $.cookie('user-name')
+			});
+
+			curUser.fetch({
+				success: function(model, response, options) {
+
+						console.log(curUser);
+					if (curUser.attributes.switchGame === false) {
+						$('.modal-title').removeClass('red').addClass('green');
+						this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
+						+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+						this.model.set('switchGame', false);
+						console.log(this.model);
+						model.set('dailySelection', curEventId);
+						model.save();
+					}
+				}
+			});
 		},
 
 		currentGameDisplay: function() {
@@ -90,6 +128,14 @@ define(function(require) {
 			$('#alert-modal').modal('show');
 		},
 
+		showSwitchModal: function (header, description, curUser) {
+			$('#pick-new-game').find('.switch-game-body').empty();
+			$('#pick-new-game').find('.switch-game-title').empty();
+			$('#pick-new-game').find('.switch-game-body').html('<p>'+description+'</p>');
+			$('#pick-new-game').find('.switch-game-title').html('<p>'+header+'</p>');
+			$('#pick-new-game').modal('show');
+		},
+
 		// verifySelection: function (curUser) {
 		// 	if (curUser.attributes.dailySelection !== {} ) {
 		// 		console.log ("You already got a game, dude")
@@ -112,42 +158,49 @@ define(function(require) {
 			var curUser = new User({
 				id: $.cookie('user-name')
 			});
-			var curEventId = this.model.toJSON();
-			var unreadableGametime = Date.parse(this.model.get('eventTime'));
-			if (Date.now() >= unreadableGametime) {
-			// 	$('#pick-new-game').modal('toggle');
-			//	$('.modal-backdrop').remove();
-			$('.modal-title').removeClass('green').addClass('red');
-			this.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
-				return;
-			// } else if (curUser.attributes.dailySelection !== {} ) {
-			// 	$('.modal-title').removeClass('green').addClass('red');
 
-			// 	console.log(curUser);
-				
-			} else {
-			this.gameBorder();
+			var self = this;
 
 			curUser.fetch({
 				success: function(model, response, options) {
-					model.set('dailySelection', curEventId);
-					console.log(model.get('id'));
-					console.log(model.get('userName'));
-					console.log(model.get('password'));
-					console.log(model.get('dailySelection'));
-					console.log(model.get('id') + " selected " + model.get('dailySelection'));
-					model.save();
 
-				
-				},
+					var curEventId = self.model.toJSON();
+					var unreadableGametime = Date.parse(self.model.get('eventTime'));
+					console.log(curUser.attributes.dailySelection.id);
+					if (curUser.attributes.dailySelection.id === self.model.id) {
+						$('.modal-title').removeClass('red').addClass('green');
+						self.showModal('This Game Already Selected', 'You have already chosen this game.');				
+						return;
+					}			
+					else if (Date.now() >= unreadableGametime) {
+						// 	$('#pick-new-game').modal('toggle');
+						//	$('.modal-backdrop').remove();
+						$('.modal-title').removeClass('green').addClass('red');
+						self.showModal('Invalid Game', 'This game has already started. Please pick another game.');				
+						return;
+					
+					} else if (curUser.attributes.dailySelection.id !== undefined ) {
 
-				error: function(model, response, options) {
-					console.log(response.responseText);
+						// console.log(curUser);
+						console.log(curUser.attributes.dailySelection);
+						// console.log(self.model.id);
+						$('.modal-title').removeClass('green').addClass('red');
+						self.showSwitchModal('Other Game Already Selected', 'You have already chosen the ' + curUser.attributes.dailySelection.homeTeam.teamName + ' vs. the ' + curUser.attributes.dailySelection.awayTeam.teamName
+													 + '<p>Would you like to switch games or cancel and keep the previously selected game?', curUser);				
+						return;
+						// console.log(curUser);
+						
+					} else {
+					
+						self.gameBorder();
+						model.set('dailySelection', curEventId);
+						model.save();
+
+					}
+
 				}
-
 			});
-		}
-			//curUser.save();
+
 		}
 
 	});

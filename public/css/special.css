@@ -348,14 +348,39 @@ hr {
 	padding-right: 0;
 }*/
 
-.game-team-name h2 {
-	font-size: 16pt; 
-	text-align: center;
+.away-team-name {
+	text-align: left;
+}
 
+.away-team-name h2 {
+	font-size: 14pt; 
+	padding: 0;
 	display: inline-block;
     vertical-align: middle;
+    text-align: left;
     float: none;
 	bottom-padding: 0;
+	margin-top: 5px;
+}
+
+.game-display-vs h3 {
+	font-size: 10pt; 
+	margin: 0;
+}
+
+.home-team-name {
+	text-align: right
+}
+
+.home-team-name h2 {
+	font-size: 14pt; 
+	padding: 0;
+	display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    float: none;
+	bottom-padding: 0;
+	margin-top: 5px;
 }
 
 .rule-food-icon img {

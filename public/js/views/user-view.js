@@ -71,25 +71,45 @@ define(function (require) {
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
+      var UserModel = require('models/user-model');
       var userName = this.$el.find('#user-name-signup').val();
       var password = this.$el.find('#password-signup').val();
-      this.model.set("id", userName);
-      this.model.set("userName", userName)
-      this.model.set("password", password);
-      // console.log(this.model.id);
-      this.model.save();
-      $.cookie('user-name', userName, { expires: 7, path: '/' });
-      // var userName = $("#user-name")[0];
-      console.log('Created user: ' + userName);
-      // this.model.userName = $("#user-name").attr('value');
+      var checkUser = new UserModel({'id': userName});
+      checkUser.fetch({
 
-      // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
-      $('.modal-backdrop').remove();
-      window.location.href = "#user-view";
+        success: function(model, response, options) {
+          $('.modal-backdrop').remove();
+          window.location.href = "#user-signin";
 
-      $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!\nYour password is: ' + password);
-      $('#failed-login').show();
-      $('#user-name').hide();
+          $('#failed-login').html('<p class="text-danger">Sorry, ' + userName + ' already exists');
+          $('#failed-login').show();
+          $('#user-name').hide();
+
+        },
+
+        error: function(model, response, options) {
+          if (response.responseText === "No user found.") {
+            this.model.set("id", userName);
+            this.model.set("userName", userName)
+            this.model.set("password", password);
+            // console.log(this.model.id);
+            this.model.save();
+            $.cookie('user-name', userName, { expires: 7, path: '/' });
+            // var userName = $("#user-name")[0];
+            console.log('Created user: ' + userName);
+            // this.model.userName = $("#user-name").attr('value');
+
+            // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
+            $('.modal-backdrop').remove();
+            window.location.href = "#user-view";
+
+            $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!\nYour password is: ' + password);
+            $('#failed-login').show();
+            $('#user-name').hide();
+          }
+        }
+      });
+
       $('body').removeClass("modal-open");
 
     },

@@ -35,9 +35,9 @@ define(function(require) {
 			$('.active').removeClass('active');
 			$(this.el).find('.panel').addClass('active');
 
-			$('.modal-title').removeClass('red').addClass('green');
-			this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
-			+ '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+			// $('.modal-title').removeClass('red').addClass('green');
+			// this.showModal('Game Selected', 'You have chosen the ' + this.model.attributes.homeTeam.teamName + ' vs. the ' + this.model.attributes.awayTeam.teamName
+			// + '<p> ' + this.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
 		
 
 		},
@@ -109,9 +109,30 @@ define(function(require) {
 			} else {
 			this.gameBorder();
 			
+			var self = this;
 
 			curUser.fetch({
 				success: function(model, response, options) {
+
+
+					console.log(curUser.attributes);
+
+				if (curUser.attributes.dailySelection.id === self.model.id) {
+						$('.modal-title').removeClass('red').addClass('green');
+						self.showModal('This Game Already Selected', 'You have already chosen this game.');				
+				} else if (curUser.attributes.dailySelection.id === undefined) {
+				$('.modal-title').removeClass('red').addClass('green');
+			self.showModal('Game Selected', 'You have chosen the ' + self.model.attributes.homeTeam.teamName + ' vs. the ' + self.model.attributes.awayTeam.teamName
+			+ '<p> ' + self.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+				} else {
+					$('.modal-title').removeClass('green').addClass('red');
+			self.showModal('Switching Games', 'You previously chose the ' + curUser.attributes.dailySelection.homeTeam.teamName + ' vs. the ' + curUser.attributes.dailySelection.awayTeam.teamName + '.'
+			+ '<p> You have now chosen the ' + self.model.attributes.homeTeam.teamName + ' vs. the ' + self.model.attributes.awayTeam.teamName + '.'
+			+ '<p> ' + self.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+			
+				}
+
+
 					model.set('dailySelection', curEventId);
 					console.log(model.get('id'));
 					console.log(model.get('userName'));

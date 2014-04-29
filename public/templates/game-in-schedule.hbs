@@ -2,13 +2,13 @@
 
 
  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-md-12">
 
 <div class="panel game-panel panel-default">
 
 <!-- Begin Panel Body -->
 
-
+<!--
 <div class="game-time">
 	<div class="panel-heading">
 			<div >
@@ -16,55 +16,60 @@
 			</div>
 	</div>
 </div>
-
+-->
 	<div class="panel-body">     
 		
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="row">
-			<div class="col-md-3 col-md-offset-1">
+			<div class="game-display col-md-2">
 				<img src="{{ awayTeam.teamLogo }}" />
 			</div>
 
-			<div class="col-md-7">
-				<h4>{{ awayTeam.teamName }}</h4>
+			<div class="game-display col-md-3">
+				<h3>{{ awayTeam.teamName }}</h3>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-			<div class="row">
-			<div class="col-md-3 col-md-offset-1"></div>
-			<div class="col-md-7">			<center>vs.</center></div>
+		
+			<div class="game-display col-md-2">
+			<center><h3>{{ formatHour readableTime }}</h3></center>
 			</div>
-	
+		
+			<div class="game-display col-md-3">
+				<h3>{{ homeTeam.teamName }}</h3>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-md-offset-1">
+
+			<div class="game-display col-md-2">
 				<img src="{{ homeTeam.teamLogo }}" />
 			</div>
 
-			<div class="col-md-7">
-				<h4>{{ homeTeam.teamName }}</h4>
+		</div>
+	</div>
+
+</div>
+<hr />
+{{#each homeTeam.foodRules }}
+<div class="row">
+	<div class="foodrule col-md-12">
+		
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row food-rule-title">
+					<center><h3 class="text-danger">Rule</h3></center>
+				</div>
+				<div class="row">
+					<div class="food-rule-description">
+						{{ this.ruleDescription }}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 food-rule-icon">
+				<img src="{{ this.foodIcon }}" />
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4">
-			<div class="rule-food-icon">
-				<img src="{{#each homeTeam.foodRules }}
-					{{ this.foodIcon }}{{/each}}"  />
-			</div>
-	</div>
 </div>
-<br>
-<div class="row">
-	<div class="foodrule col-md-10 col-md-offset-1">
-					{{#each homeTeam.foodRules }}
-							{{ this.ruleDescription }}
-				{{/each}}
-	</div>
-</div>
+{{/each}}
 
 </div>
 

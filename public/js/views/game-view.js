@@ -121,14 +121,14 @@ define(function(require) {
 						$('.modal-title').removeClass('red').addClass('green');
 						self.showModal('This Game Already Selected', 'You have already chosen this game.');				
 				} else if (curUser.attributes.dailySelection.id === undefined) {
-				$('.modal-title').removeClass('red').addClass('green');
-			self.showModal('Game Selected', 'You have chosen the ' + self.model.attributes.homeTeam.teamName + ' vs. the ' + self.model.attributes.awayTeam.teamName
-			+ '<p> ' + self.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+					$('.modal-title').removeClass('red').addClass('green');
+					self.showModal('Game Selected', 'You have chosen the ' + self.model.attributes.homeTeam.teamName + ' vs. the ' + self.model.attributes.awayTeam.teamName
+					+ '<p> ' + self.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
 				} else {
-					$('.modal-title').removeClass('green').addClass('red');
-			self.showModal('Switching Games', 'You previously chose the ' + curUser.attributes.dailySelection.homeTeam.teamName + ' vs. the ' + curUser.attributes.dailySelection.awayTeam.teamName + '.'
-			+ '<p> You have now chosen the ' + self.model.attributes.homeTeam.teamName + ' vs. the ' + self.model.attributes.awayTeam.teamName + '.'
-			+ '<p> ' + self.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
+					$('.modal-title').removeClass('red').addClass('green');
+					self.showModal('Switching Games', 'You previously chose the ' + curUser.attributes.dailySelection.homeTeam.teamName + ' vs. the ' + curUser.attributes.dailySelection.awayTeam.teamName + '.'
+					+ '<p> You have now chosen the ' + self.model.attributes.homeTeam.teamName + ' vs. the ' + self.model.attributes.awayTeam.teamName + '.'
+					+ '<p> ' + self.model.attributes.homeTeam.foodRules[0].ruleDescription + '</p>' );
 			
 				}
 

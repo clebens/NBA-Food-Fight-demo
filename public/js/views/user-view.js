@@ -14,7 +14,9 @@ define(function (require) {
     'keypress :input': 'loginKeypressHandler',
     'click #user-signout': 'signOut',
     'click #food': 'removeGreeting',
-    'click #home': 'addHello'
+    'click #home': 'addHello',
+    'click #create-account-button': 'removeTransparency',
+    'click #cancel-button': 'makeTransparent'
 
    },
 
@@ -68,9 +70,17 @@ define(function (require) {
 
     },
 
+    removeTransparency: function () {
+      $('.container').removeClass('transparent');
+    },
+
+    makeTransparent: function () {
+      $('.container').addClass('transparent');
+    },
 
     signUp: function () {
       // this.$el.html(this.template(this.model.toJSON()));
+      $('.container').addClass('transparent');
       var UserModel = require('models/user-model');
       var userName = this.$el.find('#user-name-signup').val();
       var password = this.$el.find('#password-signup').val();

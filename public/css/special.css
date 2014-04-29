@@ -9,8 +9,12 @@ body {
 
 .container {
 	background-color: white;
-	opacity: 0.95;
+/*	opacity: 0.95;*/
 	min-height: 100%;
+}
+
+.transparent {
+		opacity: 0.95;
 }
 
 

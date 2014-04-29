@@ -75,6 +75,7 @@ define(function (require) {
       var userName = this.$el.find('#user-name-signup').val();
       var password = this.$el.find('#password-signup').val();
       var checkUser = new UserModel({'id': userName});
+      var self = this;
       checkUser.fetch({
 
         success: function(model, response, options) {
@@ -89,11 +90,11 @@ define(function (require) {
 
         error: function(model, response, options) {
           if (response.responseText === "No user found.") {
-            this.model.set("id", userName);
-            this.model.set("userName", userName)
-            this.model.set("password", password);
+            self.model.set("id", userName);
+            self.model.set("userName", userName)
+            self.model.set("password", password);
             // console.log(this.model.id);
-            this.model.save();
+            self.model.save();
             $.cookie('user-name', userName, { expires: 7, path: '/' });
             // var userName = $("#user-name")[0];
             console.log('Created user: ' + userName);
@@ -101,6 +102,7 @@ define(function (require) {
 
             // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
             $('.modal-backdrop').remove();
+            self.model.trigger('manualRerender');
             window.location.href = "#user-view";
 
             $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!\nYour password is: ' + password);
@@ -194,7 +196,7 @@ define(function (require) {
 
 
         function noRecentResults() {
-          $('#most-recent-result').html('<h3 style="text-align:center;">You have no previous picks.</h3>');
+          $('#most-recent-result').html('   <div class="panel game-panel panel-default"><h3 style="text-align:center;">You have no previous picks.</h3></div>');
         }
               
      },
@@ -219,7 +221,7 @@ define(function (require) {
           noDailySelection();
         }
         function noDailySelection() {
-          $('#today-picks').html('<div class="col-xs-6"><h5>You have not made a pick today. Select below.</h5></div>');
+          $('#today-picks').html('    <div class="panel game-panel panel-default"><h3 style="text-align:center;">You have not made a pick today.</h3></div>');
         }
       }
      //            if (typeof currentSelection == null) {

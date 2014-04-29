@@ -14,7 +14,7 @@ define(function(require) {
 
 		}, 
 
-		url: '/Events/Today'
+		url: '/Events/Date/20140428'
 
 	});
 

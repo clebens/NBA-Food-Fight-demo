@@ -46,14 +46,17 @@ hr {
 .about-panel {
 	width: 100%;
 	font-family: 'Droid Serif';
+	font-size: 11pt;
 	text-align: center;
 	border-color: #454545;
 	border-width: 2px;
 	border-radius: 13px;
-	padding-left: 5%;
-	padding-right: 5%;
-	padding-top: 20px;
-	padding-bottom: 20px;
+/*	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+*/
+	padding: 13px;
 }
 
 
@@ -74,14 +77,15 @@ hr {
 }
 
 #user-picks {
-	font-family: "Melbourne-bold";
+	font-family: "Lato";
+	font-weight: bold;
 	margin-top: 1em;
 }
 
 #user-picks img {
-	width: 100%;
+/*	width: 100%;
 	height: 100%;
-	max-width: 140px;
+*/	max-height: 80px;
 }
 
 #user-picks h3 {
@@ -89,9 +93,26 @@ hr {
 	margin-top: 0;
 }
 
+#user-picks h6 {
+	text-align: center;
+	font-size: 16pt;
+	margin-top: 25px;
+}
+
+#user-picks .panel-heading {
+	padding-bottom: 0;
+}
+
+#user-picks .panel-heading {
+	padding-bottom: 0;
+}
 .panel {
 	.margin: 0px;
 	.border: 24;
+}
+
+.page-title .panel-body {
+	padding: 0;
 }
 
 .page-title h1 {
@@ -104,7 +125,9 @@ hr {
 .firstcharacter { 
 	font-family: 'Melbourne-bold'; 
 	font-size: 96pt; 
-	display: inline; }
+	display: inline; 
+	margin-bottom: -15px;
+}
 
 .page-title h2 {
 	font-family: 'Melbourne-bold';
@@ -164,11 +187,11 @@ hr {
 }
 
 #user-name-login {
-	width:27%;
+	margin-bottom: 5px;
 }
 
 #password-login {
-	width:27%;
+	margin-bottom: 5px;
 }
 
 #user-display {
@@ -176,6 +199,7 @@ hr {
 	text-align: left;
 	vertical-align: middle;
 	margin: auto;
+	padding-top: 25px;
 }
 #user-display p {
 
@@ -219,16 +243,9 @@ img {
 }
 
 .foodrule {
-	border: solid;
 	text-align: center;
 	border-color: #454545;
-	border-width: 2px;
-	border-radius: 7px;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
+	}
 
 .rule-food-icon {
 	text-align: center;
@@ -237,10 +254,11 @@ img {
 }
 
 .rule-food-icon img {
-	max-width:140px; 
+	max-width:100px; 
 	min-width: 0px;
-	max-height:140px;
+	max-height: 100px;
 	min-height: 0px;
+	padding: 0;
 }
 .food-awards p {
 	font-size: 2em;
@@ -287,7 +305,7 @@ img {
 
 .game-panel {
 	width: 100%;
-	font-family: 'Melbourne-bold';
+	font-family: 'Lato';
 	text-align: center;
 	border-color: #454545;
 	border-width: 2px;
@@ -327,12 +345,89 @@ img {
 	text-align: center;
 }
 
-.user-name {
+#user-name {
 	display: inline;
+	font-style: "Lato";
+	font-size: 19.8pt;
+	padding-top: 80px;
 }
 
 #failed-login {
 	text-align: center;
-	font-family: "Droid Serif";
-	font-size: 18pt;
+	font-family: "Lato";
+	font-size: 14pt;
+}
+
+.game-display h3 {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+.game-display img {
+	max-height: 67px;
+}
+
+.game-display.col-md-2 {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.game-display-divider hr {
+	margin-top: 7px;
+}
+
+.food-rule-title {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.food-rule-title h3 {
+	padding-top: 0;
+	font-family: "Lato";
+	font-weight: bold;
+	padding-bottom: 0;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.food-rule-description {
+	font-size: 13pt;
+	font-family: "Lato";
+	font-weight: normal;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.food-rule-icon {
+	margin-top: 0;
+	text-align: center;
+}
+
+.food-rule-icon img {
+	max-width: 100px;
+}
+
+.results-panel .panel-body {
+	padding-bottom: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.results-panel img {
+	max-height: 67px;
+}
+
+.results-panel .food-rule-title {
+	padding-top: 0;
+	font-family: "Lato";
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.food-rule-title p {
+	margin-bottom: 2px;
 }

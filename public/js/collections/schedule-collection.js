@@ -11,10 +11,24 @@ define(function(require) {
 		comparator: 'eventTime',
 
 		initialize: function() {
-
+			this.url = '/Events/Date/' + this.getDate();
 		}, 
 
-		url: '/Events/Date/20140428'
+		getDate: function() {
+			var date = new Date();
+			var year = date.getFullYear().toString();
+			var month = (date.getMonth() + 1).toString();
+			if(parseInt(month, 10) < 10) {
+				month = '0' + month;
+			}
+	
+			var day = date.getDate().toString();
+			
+			if(parseInt(day, 10) < 10) {
+				day = '0' + day;
+			}
+			return year + month + day;
+		}
 
 	});
 

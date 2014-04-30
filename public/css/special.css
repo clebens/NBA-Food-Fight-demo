@@ -446,3 +446,14 @@ img {
 .food-rule-title p {
 	margin-bottom: 2px;
 }
+
+
+.navbar-default {
+	background-color: white;
+	border-color: white;
+}
+
+.navbar-toggle {
+	float: left;
+}
+

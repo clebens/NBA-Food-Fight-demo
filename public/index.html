@@ -54,13 +54,32 @@
     </div>
     <div class="col-md-6">
       <div id="user-menu">
-        <button type="button" class="btn btn-success" id="menu-user-picks">your picks</button>
-        <button type="button" class="btn btn-success" id="menu-current-schedule">current schedule</button>
-        <button type="button" class="btn btn-success" id="menu-user-food">food won</button>
-        <button type="button" class="btn btn-danger" id="menu-user-signout">sign out</button>
-      </div>
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
     </div>
-  </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li>
+                <button type="button" class="btn btn-success navbar-btn" data-toggle="collapse" id="menu-user-picks">your picks</button></li>
+                <li><button type="button" class="btn btn-success navbar-btn" data-toggle="collapse" id="menu-current-schedule">current schedule</button></li>
+                <li><button type="button" class="btn btn-success navbar-btn"data-toggle="collapse" id="menu-user-food">food won</button></li>
+                <li><button type="button" class="btn btn-danger navbar-btn" data-toggle="collapse" id="menu-user-signout">sign out</button></li>
+              </ul>
+            </div><!-- end collapse navbar -->
+        </div><!-- end container -->
+      </nav>
+    </div><!-- end user menu -->
+  </div><!-- end col md -- >
+</div><!-- end row -- >
   <div class="row">
     <div class="col-md-8 col-md-offset-2"><hr />
     </div>

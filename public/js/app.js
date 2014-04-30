@@ -50,6 +50,8 @@ define(function(require) {
         userView.signOut();
         $('#schedule-output').show();
       }
+      $('#failed-login').hide();
+      $('#user-name').show();
   }
   
   var UserView = require('views/user-view');

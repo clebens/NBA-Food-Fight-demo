@@ -105,21 +105,15 @@ define(function (require) {
             self.model.set("id", userName);
             self.model.set("userName", userName)
             self.model.set("password", password);
-            // console.log(this.model.id);
             self.model.save();
+            self.render();
             $.cookie('user-name', userName, { expires: 7, path: '/' });
-            // var userName = $("#user-name")[0];
-            console.log('Created user: ' + userName);
-            // this.model.userName = $("#user-name").attr('value');
-
-            // alert("Thanks for signing up, " + userName + "!\nYour password is: " + password);
             $('.modal-backdrop').remove();
-            self.model.trigger('manualRerender');
-            window.location.href = "#user-view";
-
             $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!');
             $('#failed-login').show();
-            $('#user-name').hide();
+            $('#user-name').show();
+            window.location.href = "#user-view";
+
           }
         }
       });

@@ -372,8 +372,9 @@ img {
 #user-name {
 	display: inline;
 	font-style: "Lato";
-	font-size: 19.8pt;
-	padding-top: 80px;
+	font-size: 11pt;
+	padding-top: 75px;
+	padding-bottom: 0;
 }
 
 #failed-login {

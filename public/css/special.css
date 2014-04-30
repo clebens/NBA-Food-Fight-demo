@@ -185,7 +185,7 @@ hr {
 }
 
 #user-menu {
-	text-align: right;
+	text-align: center;
 }
 
 .red {
@@ -220,10 +220,9 @@ hr {
 
 #user-display {
 	display: inline;
-	text-align: left;
+	text-align: center;
 	vertical-align: middle;
 	margin: auto;
-	padding-top: 25px;
 }
 #user-display p {
 
@@ -370,11 +369,9 @@ img {
 }
 
 #user-name {
-	display: inline;
-	font-style: "Lato";
-	font-size: 11pt;
-	padding-top: 75px;
-	padding-bottom: 0;
+	text-align: center;
+	font-family: "Lato";
+	font-size: 14pt;
 }
 
 #failed-login {

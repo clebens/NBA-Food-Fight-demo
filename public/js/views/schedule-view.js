@@ -24,6 +24,7 @@ define(function(require) {
 
 		render: function() {
 			this.$el.html('');
+			this.$el.append('<center><h2>Today\'s Schedule</h2></center>');
 			this.collection
 			.each(function(item) {
 				this.renderGame(item);

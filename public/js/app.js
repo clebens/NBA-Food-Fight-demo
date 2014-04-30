@@ -105,9 +105,6 @@ define(function(require) {
   
   var currentSchedule  = new Schedule();
 
-  currentSchedule.fetch();
-
-
   var currentScheduleView = new ScheduleView(currentSchedule);
 
   userView.render();
@@ -125,5 +122,8 @@ define(function(require) {
   });
 
   Backbone.history.start();
+  currentSchedule.fetch();
+
+
 
 });

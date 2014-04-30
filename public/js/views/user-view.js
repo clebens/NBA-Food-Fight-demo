@@ -89,10 +89,12 @@ define(function (require) {
       checkUser.fetch({
 
         success: function(model, response, options) {
+          $('user-name-signup').val('');
+          $('password-signup').val('');
           $('.modal-backdrop').remove();
           window.location.href = "#user-signin";
 
-          $('#failed-login').html('<p class="text-danger">Sorry, ' + userName + ' already exists');
+          $('#failed-login').html('<p class="text-danger">Sorry, user \'' + userName + '\' already exists');
           $('#failed-login').show();
           $('#user-name').hide();
 
@@ -115,7 +117,7 @@ define(function (require) {
             self.model.trigger('manualRerender');
             window.location.href = "#user-view";
 
-            $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!\nYour password is: ' + password);
+            $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!');
             $('#failed-login').show();
             $('#user-name').hide();
           }

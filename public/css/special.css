@@ -17,6 +17,11 @@ body {
 		opacity: 0.95;
 }
 
+.opaque {
+	opacity: 1;
+	background-color: white;
+}
+
 
 hr {
     border: 0;

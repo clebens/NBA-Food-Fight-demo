@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="css/special.css" charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+      <link rel="icon" type="image/png" href="images/sports-icons/png/64px/basketball.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <div class="container transparent">
 
 <section id='nba-food-fight-app' >
@@ -42,8 +44,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div id="failed-login"></div>     
-        <div id="user-signin" ></div>
-        <div id="user-signup" style="display: none"></div>
+        <div id="user-signin"></div>
+        <div id="user-signup" style="display: none;"></div>
         <div id="user-loading"></div> 
     </div>
   </div>
@@ -53,7 +55,7 @@
       <div id="user-display" style="display: none"></div>
     </div>
     <div class="col-md-6">
-      <div id="user-menu">
+      <div id="user-menu" style="display: none;">
         <button type="button" class="btn btn-success" id="menu-user-picks">your picks</button>
         <button type="button" class="btn btn-success" id="menu-current-schedule">current schedule</button>
         <button type="button" class="btn btn-success" id="menu-user-food">food won</button>
@@ -139,7 +141,8 @@
       </div>
    </div>
   </div>
-</div>
+
+</div> <!-- Transparent Container -->
 
 <!-- <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">

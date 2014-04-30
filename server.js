@@ -89,7 +89,8 @@ app.get('/Events/Today', function (req, res) {
 		var outputArr = [];
 		
 		result.body.results.forEach(function(item) {
-			outputArr.push(item.value);
+			var eventTime = new Date(item.value.eventTime);
+			if (eventTime.getHours() > 6) outputArr.push(item.value);
 		});
 		
 		res.send(outputArr);
@@ -98,7 +99,7 @@ app.get('/Events/Today', function (req, res) {
 
 		res.end('/Events/date/:date - There are no games on that date.')
 	})
-})
+});
 
 app.get('/Events/Date/:date', function (req, res) {
 	 db.search('Events', req.params.date)
@@ -106,7 +107,8 @@ app.get('/Events/Date/:date', function (req, res) {
 		var outputArr = [];
 		
 		result.body.results.forEach(function(item) {
-			outputArr.push(item.value);
+			var eventTime = new Date(item.value.eventTime);
+			if (eventTime.getHours() > 6) outputArr.push(item.value);
 		});
 		
 		res.send(outputArr);
@@ -115,7 +117,7 @@ app.get('/Events/Date/:date', function (req, res) {
 
 		res.end('/Events/date/:date - There are no games on that date.')
 	})
-})
+});
 
 app.get('/Events/:gamekey', function (req, res) {
 	 db.get('Events', req.params.gamekey)

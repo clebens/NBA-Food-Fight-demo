@@ -49,6 +49,7 @@ define(function(require) {
       if (eventObject.data === "user-signout") {
         userView.signOut();
         $('#schedule-output').show();
+        $('.active').removeClass('active');
       }
       $('#failed-login').hide();
       $('#user-name').show();

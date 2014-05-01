@@ -111,9 +111,9 @@ define(function (require) {
             $('.modal-backdrop').remove();
             $('#failed-login').html('<p class="text-success">Thanks for signing up, ' + userName + '!');
             $('#failed-login').show();
-            $('#user-name').show();
+            
             window.location.href = "#user-view";
-
+            $('#user-name').hide();
           }
         }
       });

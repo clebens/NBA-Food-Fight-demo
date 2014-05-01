@@ -52,7 +52,7 @@ define(function(require) {
         $('.active').removeClass('active');
       }
       $('#failed-login').hide();
-      // $('#user-name').show();
+      $('#user-name').show();
   }
   
   var UserView = require('views/user-view');

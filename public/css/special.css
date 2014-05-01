@@ -11,6 +11,7 @@ body {
 	background-color: white;
 /*	opacity: 0.95;*/
 	min-height: 100%;
+	padding-bottom: 5em;
 }
 
 .navbar-settings {
@@ -41,6 +42,10 @@ body {
 
 .disclaimer {
 	font-size: 7.5pt;
+}
+
+#menu-output {
+	min-height: 325px;
 }
 
 

@@ -56,11 +56,30 @@
     </div>
     <div class="col-md-8 col-md-offset-2">
       <div id="user-menu">
-        <button type="button" class="btn btn-success" id="menu-user-picks">your picks</button>
-        <button type="button" class="btn btn-success" id="menu-current-schedule">current schedule</button>
-        <button type="button" class="btn btn-success" id="menu-user-food">food won</button>
-        <button type="button" class="btn btn-danger" id="menu-user-signout">sign out</button>
-      </div>
+        <nav class="navbar navbar-default navbar-settings" role="navigation">
+          <div class="container-fluid navbar-container">
+            <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
+    </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="button-spacing">
+                <button type="button" class="btn btn-success navbar-btn" data-toggle="collapse" id="menu-user-picks">your picks</button></li>
+                <li class="button-spacing"><button type="button" class="btn btn-success navbar-btn button-spacing" data-toggle="collapse" id="menu-current-schedule">current schedule</button></li>
+                <li class="button-spacing"><button type="button" class="btn btn-success navbar-btn button-spacing" data-toggle="collapse" id="menu-user-food">food won</button></li>
+                <li class="button-spacing"><button type="button" class="btn btn-danger navbar-btn button-spacing" data-toggle="collapse" id="menu-user-signout">sign out</button></li>
+              </ul>
+            </div><!-- end collapse navbar -->
+        </div><!-- end container -->
+      </nav>
+    </div><!-- end user menu -->
     </div>
   </div>
   <div class="row">

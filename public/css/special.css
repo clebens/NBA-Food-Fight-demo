@@ -13,6 +13,22 @@ body {
 	min-height: 100%;
 }
 
+.navbar-settings {
+	background-color: white;
+	border: 0;
+	text-align: center;
+	display: inline-block;
+  	float: none;
+}
+
+.navbar-toggle {
+	margin-right:0;
+}
+
+.button-spacing {
+	margin-left: 2px;
+	margin-right: 2px;
+}
 .transparent {
 		opacity: 0.965;
 }

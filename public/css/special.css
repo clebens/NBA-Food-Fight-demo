@@ -23,6 +23,7 @@ body {
 
 .navbar-toggle {
 	margin-right:0;
+	float: none;
 }
 
 .button-spacing {

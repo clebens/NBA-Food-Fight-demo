@@ -15,7 +15,7 @@ define(function(require) {
 		}, 
 
 		getDate: function() {
-			var date = new Date("12/31/2013");
+			var date = new Date("12/25/2013");
 			var year = date.getFullYear().toString();
 			var month = (date.getMonth() + 1).toString();
 			if(parseInt(month, 10) < 10) {

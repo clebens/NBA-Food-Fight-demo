@@ -1,3 +1,4 @@
+#!/usr/local/bin/node
 
 function getEvents(date) {
 
@@ -137,7 +138,7 @@ function addTeamToDB(teamId, teamObject) {
 	db.put('Teams', teamId, teamObject); 
 }
 
-var today = new Date();
+var today = new Date("12/25/2013");
 var yesterday = new Date();
 var tomorrow = new Date();
 var twodays = new Date();

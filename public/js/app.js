@@ -58,22 +58,22 @@ define(function(require) {
   var UserView = require('views/user-view');
   var UserModel = require('models/user-model');
   var currentUserModel = new UserModel({
-    initialize:  function () {
-    var curUserName = $.cookie('user-name');
+    //initialize:  function () {
+        //var curUserName = $.cookie('user-name');
 
-      if (curUserName) {
-        this.set('userName', curUserName);
-        this.set('id', curUserName);
-        this.fetch();
-      }
-    }
+        //if (curUserName) {
+        //   this.set('userName', curUserName);
+        //this.set('id', curUserName);
+        //this.fetch();
+      //}
+    //}
   });
   
   var userView = new UserView({
     el: '#user-display',
     template: require('hbs!templates/user-display'),
     menuTemplate: require('hbs!templates/user-menu'),
-    show: true,
+    show: false,
     menuTag: '#user-menu',
     model: currentUserModel
   });

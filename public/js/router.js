@@ -27,8 +27,6 @@ define(function(require) {
 		},
 
 		initPage: function() {
-			console.log('here');
-			console.log($.cookie('user-name'));
 			if ($.cookie('user-name')) {
 				this.showUser();
 			} else {

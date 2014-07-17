@@ -167,7 +167,7 @@ define(function (require) {
             console.log('here');
             self.$el.show();
             $('#failed-login').html('<p class="text-danger">Invalid username or password.</p>');
-            $('#failed-long').show();
+            $('#failed-login').show();
       }
       
      },

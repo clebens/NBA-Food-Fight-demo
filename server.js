@@ -20,7 +20,7 @@ var db = require('orchestrate')(orcKey);
 
 var app = express();
 
-var port = 80; //Number(process.env.PORT || 5000);
+var port = process.env.PORT || 5000;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

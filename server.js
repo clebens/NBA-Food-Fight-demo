@@ -11,23 +11,23 @@ var exphbs = require('express3-handlebars');
 
 //Grab Orchestrate.io API key from local file 
 //(to support easy key shielding)
-var orcKey = fs.readFileSync('./orcKey', {encoding: 'utf8'}).replace('\n', '');
+var orcKey = ORC_KEY || fs.readFileSync('./orcKey', {encoding: 'utf8'}).replace('\n', '');
 
 //Grab xmlstats API key from local file
-var xmlstatsKey = fs.readFileSync('./xmlstatsKey', {encoding: 'utf8'}).replace('\n', '');
+var xmlstatsKey = XMLSTATS_KEY || fs.readFileSync('./xmlstatsKey', {encoding: 'utf8'}).replace('\n', '');
 var xmlstatsRoot = 'https://erikberg.com/';
 var db = require('orchestrate')(orcKey);
 
 var app = express();
 
-var port = Number(process.env.PORT || 5000);
+var port = 80; //Number(process.env.PORT || 5000);
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
-
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
